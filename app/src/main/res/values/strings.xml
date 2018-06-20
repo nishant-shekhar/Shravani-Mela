@@ -3,4 +3,22 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="urgent_notifcation">Urgent Notification</string>
+    <string name="ambulance">Ambulance</string>
+    <string name="atm">Atm</string>
+    <string name="help_line">Helpline</string>
+    <string name="bathroom">Bathroom</string>
+    <string name="disaster">Disaster</string>
+    <string name="doctor">Doctor</string>
+    <string name="drinking_water">Drinking Water</string>
+    <string name="electric">Electric</string>
+    <string name="food_rate">Food Rate</string>
+    <string name="food_inspector">Food Inspector</string>
+    <string name="medical_store">Medical Store</string>
+    <string name="parking">Parking</string>
+    <string name="bhagalpur">Bhalagpur</string>
+    <string name="medium_crowd">Medium Crowd</string>
+    <string name="crowd_status">Crowd Status</string>
+    <string name="sultangunj">Sultangunj</string>
+    <string name="heavy_crowd">Heavy Crowd</string>
 </resources>
