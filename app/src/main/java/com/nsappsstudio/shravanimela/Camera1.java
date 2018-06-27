@@ -47,7 +47,7 @@ public class Camera1 extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private int cameraId;
-    private DatabaseReference mDatabaseReferance;
+    private DatabaseReference mDatabaseReference;
 
     public Camera1() {
         // Required empty public constructor
@@ -88,7 +88,7 @@ public class Camera1 extends Fragment {
 
         v = inflater.inflate(R.layout.fragment_camera1,container, false);
         cameraId = getArguments().getInt("camera");
-        mDatabaseReferance= FirebaseDatabase.getInstance().getReference();
+        mDatabaseReference= FirebaseDatabase.getInstance().getReference();
 
         playerView=v.findViewById(R.id.playerView);
         c = getContext();
@@ -110,7 +110,7 @@ public class Camera1 extends Fragment {
     public void onStart() {
         super.onStart();
 
-        DatabaseReference mCameraLinkRef=mDatabaseReferance.child("GlobalParameter").child("Camera");
+        DatabaseReference mCameraLinkRef=mDatabaseReference.child("GlobalParameter").child("Camera");
         mCameraLinkRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

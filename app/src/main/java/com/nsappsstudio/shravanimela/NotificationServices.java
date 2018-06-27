@@ -14,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -44,15 +45,17 @@ public class NotificationServices extends Service {
         String defaultTime=defaultTimeLong.toString();
         final String updatedTimeStampString=sharedPref.getString("updatedTS",defaultTime);
         updatedTimeStamp=Long.parseLong(updatedTimeStampString);
+        //toastMessage(defaultTime);
         
         
-        Query mNotificationRef= mDatabaseReference.child("Notification").child("public").orderByValue().startAt(updatedTimeStamp);
+        Query mNotificationRef= mDatabaseReference.child("public").child("Notification");
         mNotificationRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
                 final String noticeKey = dataSnapshot.getKey();
                 Long tsLong = dataSnapshot.getValue(Long.class);
-                //toastMessage(ts);
+                //toastMessage(noticeKey);
                 if (tsLong != null) {
                     tsLong = tsLong + 1;
                     updatedTimeStamp = tsLong;
@@ -71,6 +74,7 @@ public class NotificationServices extends Service {
                             String title= dataSnapshot.child("title").getValue(String.class);
                             String body= dataSnapshot.child("body").getValue(String.class);
                             String type= dataSnapshot.child("type").getValue(String.class);
+                            //toastMessage(title);
 
                             int requestCode;
                             Random r = new Random();
@@ -153,5 +157,9 @@ public class NotificationServices extends Service {
                 restartServicePendingIntent);
 
         super.onTaskRemoved(rootIntent);
+    }
+    private void toastMessage(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+
     }
 }

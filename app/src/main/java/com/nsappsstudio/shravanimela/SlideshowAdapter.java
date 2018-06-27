@@ -17,7 +17,7 @@ public class SlideshowAdapter extends PagerAdapter {
         this.context = context;
     }
     private int[] imageList={
-            R.drawable.baba,R.drawable.baba1,R.drawable.baba2,R.drawable.baba3,R.drawable.baba4,R.drawable.baba5,R.drawable.baba6
+            R.drawable.baba,R.drawable.baba2,R.drawable.baba3,R.drawable.baba4,R.drawable.baba5,R.drawable.baba6,R.drawable.baba1
     };
     public String[] text={
             "my name is nishant","i am 26 year old","it's nice to meet you"

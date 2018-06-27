@@ -1,5 +1,6 @@
 package com.nsappsstudio.shravanimela;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent serviceIntent = new Intent(this, NotificationServices.class);
+        startService(serviceIntent);
 
         AppBarLayout.OnOffsetChangedListener mListener = new AppBarLayout.OnOffsetChangedListener() {
             @Override
@@ -56,6 +59,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }.start();
+    }
+    public void GoToCamera(View view){
+
+        Intent intent= new Intent(this,Camera.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+    public void GoToSOS(View view){
+
+        Intent intent= new Intent(this,SOS.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
     private void growUpAnim(View view){
 

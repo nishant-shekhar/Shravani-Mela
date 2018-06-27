@@ -21,4 +21,20 @@
     <string name="crowd_status">Crowd Status</string>
     <string name="sultangunj">Sultangunj</string>
     <string name="heavy_crowd">Heavy Crowd</string>
+    <string name="live_arti">Watch Live Aarti</string>
+    <string name="police_station">Police Station</string>
+    <string name="rest_room">Rest room</string>
+    <string name="toilet">Toilet</string>
+    <string name="waterfall">Waterfall</string>
+    <string name="alert">Alerts / Notifications</string>
+    <string name="permission_rationale">Location permission is needed for core functionality</string>
+    <string name="permission_denied_explanation">Permission was denied, but is needed for core
+        functionality.</string>
+    <string name="settings">Settings</string>
+    <string name="title_activity_sos">Map</string>
+    <string name="sos1">Help! I am in Danger</string>
+    <string name="sos2">Help! I am being Kidnap</string>
+    <string name="sos3">Help! I am lost</string>
+    <string name="safe_now">Now I am Safe</string>
+    <string name="title_activity_places">Map</string>
 </resources>
