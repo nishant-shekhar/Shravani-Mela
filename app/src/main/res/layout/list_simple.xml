@@ -1,139 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp">
+    android:layout_height="64dp"
+    android:layout_margin="1dp"
+    android:background="#47efe3c4">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:visibility="visible"
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="1dp"
+        app:cardBackgroundColor="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/ld_time_card"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="2dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/ld_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/ld_venue"
-                    android:layout_width="0dp"
-                    android:layout_height="19dp"
-                    android:background="@android:color/holo_blue_light"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-            </android.support.constraint.ConstraintLayout>
-        </android.support.v7.widget.CardView>
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="1dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="2dp"
-            android:layout_marginTop="2dp"
-            android:background="@android:color/holo_blue_bright"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
-        </View>
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/ld_detail_card"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="2dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginTop="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/view"
-            app:layout_constraintTop_toTopOf="parent">
+                <ImageView
+                    android:id="@+id/ls_image_type"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:contentDescription="@string/bathroom"
+                    android:gravity="center" />
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/holo_orange_light" />
+
+            <LinearLayout
+                android:id="@+id/ls_content_layout"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/ld_title"
-                    android:layout_width="0dp"
-                    android:layout_height="19dp"
+                    android:id="@+id/ls_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="@android:color/holo_blue_dark" />
+
+                <TextView
+                    android:id="@+id/ls_subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     android:layout_marginStart="4dp"
-                    android:layout_marginTop="2dp"
-                    android:background="@color/white_purple"
+                    android:fontFamily="@font/roboto"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/holo_orange_light" />
+
+            <LinearLayout
+                android:id="@+id/gmap_layout"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ls_view_gmap"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="10dp"
+                    android:contentDescription="@string/bathroom"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/open_g_map"
+                    android:textAlignment="center"
                     android:textColor="@android:color/holo_blue_dark"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textSize="10sp" />
+            </LinearLayout>
 
-                <TextView
-                    android:id="@+id/ld_dept"
-                    android:layout_width="0dp"
-                    android:layout_height="19dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginStart="4dp"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ld_title" />
-
-                <TextView
-                    android:id="@+id/ld_description"
-                    android:layout_width="0dp"
-                    android:layout_height="37dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginStart="4dp"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ld_dept" />
-            </android.support.constraint.ConstraintLayout>
-        </android.support.v7.widget.CardView>
-    </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>

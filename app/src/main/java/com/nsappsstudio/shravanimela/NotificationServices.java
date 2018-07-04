@@ -48,7 +48,7 @@ public class NotificationServices extends Service {
         //toastMessage(defaultTime);
         
         
-        Query mNotificationRef= mDatabaseReference.child("public").child("Notification");
+        Query mNotificationRef= mDatabaseReference.child("public").child("Notification").orderByValue().startAt(updatedTimeStamp);
         mNotificationRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -66,6 +66,7 @@ public class NotificationServices extends Service {
                     editor.putString("updatedTS", ts);
                     editor.apply();
 
+                    assert noticeKey != null;
                     DatabaseReference mNoticeRef= mDatabaseReference.child("Notification").child(noticeKey);
                     mNoticeRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override

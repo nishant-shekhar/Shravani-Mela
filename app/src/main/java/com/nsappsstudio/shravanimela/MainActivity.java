@@ -72,6 +72,12 @@ public class MainActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+    public void GoToPlaces(View view){
+
+        Intent intent= new Intent(this,PLaces.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
     private void growUpAnim(View view){
 
         Animation grow = AnimationUtils.loadAnimation(this, R.anim.grow);

@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
-import android.os.CountDownTimer;
 import android.os.Looper;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -19,11 +17,12 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ScrollView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.ApiException;
@@ -37,6 +36,7 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.location.SettingsClient;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -45,16 +45,19 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ServerValue;
 
-import java.util.Random;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class SOS extends FragmentActivity implements OnMapReadyCallback {
-    private static final String TAG = com.nsappsstudio.shravanimela.SOS.class.getSimpleName();
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class PLaces extends FragmentActivity implements OnMapReadyCallback {
+    private static final String TAG = PLaces.class.getSimpleName();
 
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
     private static final int REQUEST_CHECK_SETTINGS = 0x1;
@@ -65,47 +68,36 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
     private LocationSettingsRequest mLocationSettingsRequest;
     private LocationCallback mLocationCallback;
     private Location mCurrentLocation;
+    private RecyclerView recyclerView;
 
-    private DatabaseReference mDatabaseReference;
     private GoogleMap mMap;
-    private boolean mapIsReady;
-    private FirebaseUser user;
-    private String uPhoneNo;
-    private SharedPreferences sharedPref;
-    private ScrollView scrollView;
-    private CardView dangerCard;
-    private CardView kidnapCard;
-    private CardView lostCard;
+    private double mLatitude;
+    private double mLongitude;
+    private boolean flagRecyclerView;
+    private ArrayList<Float> distanceList= new ArrayList<>();
+    private CardView detailCard;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sos);
+        setContentView(R.layout.activity_places);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        flagRecyclerView=false;
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         mSettingsClient = LocationServices.getSettingsClient(this);
-        mDatabaseReference= FirebaseDatabase.getInstance().getReference();
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        user= mAuth.getCurrentUser();
-        scrollView=findViewById(R.id.scroll);
-        dangerCard=findViewById(R.id.danger_card);
-        lostCard=findViewById(R.id.lost_card);
-        kidnapCard=findViewById(R.id.kidnap_card);
-
-        if (user!=null) {
-            uPhoneNo = user.getPhoneNumber();
-        }
-        sharedPref=getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-
+        recyclerView=findViewById(R.id.places_recyclerView);
+        detailCard=findViewById(R.id.p_detail_card);
+        detailCard.setVisibility(View.GONE);
 
         createLocationCallback();
         createLocationRequest();
         buildLocationSettingsRequest();
+
     }
 
 
@@ -121,17 +113,159 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        mapIsReady=true;
-
-        LatLng latLng = new LatLng(25.254602, 86.738479);
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-
         // Add a marker in Sydney and move the camera
+        fillRecyclerView();
+    }
+    public String loadJSONFromAsset() {
+        String json ;
+        try {
+            Context c=this;
+            InputStream is = c.getAssets().open("Toilet.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+    private void fillRecyclerView(){
+        recyclerView.hasFixedSize();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        List<PlacesItem> placesItems = new ArrayList<>();
+        try {
+            JSONObject obj = new JSONObject(loadJSONFromAsset());
+            JSONArray m_jArry = obj.getJSONArray("sightings");
+
+            for (int i = 0; i < m_jArry.length(); i++) {
+                JSONObject jo_inside = m_jArry.getJSONObject(i);
+                String category = jo_inside.getString("Category");
+                String place_name = jo_inside.getString("Place_Name");
+                double latitude = jo_inside.getDouble("Latitude");
+                double longitude = jo_inside.getDouble("Longitude");
+                String distance;
+                int np;
+                if (mCurrentLocation!=null) {
+                    distance = "Air Distance: " + GetDistance(latitude, longitude) + "m";
+                    if (i==m_jArry.length()-1){
+                        np=GetNearestPlace();
+                        recyclerView.scrollToPosition(np);
+                        detailCard.setVisibility(View.VISIBLE);
+                        if (np==i){
+                            onPlaceClicked(latitude,longitude,place_name);
+                            detailCard(latitude,longitude,place_name,distance,category);
+                        }else {
+                            onPlaceClicked(placesItems.get(np).getLat(),placesItems.get(np).getLang(),placesItems.get(np).getTitle());
+                            detailCard(placesItems.get(np).getLat(),placesItems.get(np).getLang(),placesItems.get(np).getTitle(),placesItems.get(np).getSubtitle(),placesItems.get(np).getItemType());
+
+                        }
+
+                    }
+                }else {
+                    distance=null;
+                }
+
+                LatLng placeMarker = new LatLng(latitude, longitude);
+                mMap.addMarker(new MarkerOptions().position(placeMarker).title(place_name));
+
+
+                String title=String.valueOf(i+1)+". "+place_name;
+                PlacesItem placesItem = new PlacesItem(title, distance,category,i,null ,latitude,longitude);
+                placesItems.add(placesItem);
+                RecyclerView.Adapter adapter = new Places_list_Adapter(placesItems, PLaces.this);
+                recyclerView.setAdapter(adapter);
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public void onPlaceClicked(double lat,double lang, String place_name){
+        LatLng placeMarker = new LatLng(lat, lang);
+        CameraUpdate location = CameraUpdateFactory.newLatLngZoom(placeMarker, 16);
+        mMap.animateCamera(location);
 
     }
+    public void reLoadRecyclerView(View v){
+        mMap.clear();
+        fillRecyclerView();
+    }
+    public void startNavigation(double lat,double lang){
+        String url="google.navigation:q="+lat+","+lang;//+"&mode=w";
+        Uri gmmIntentUri = Uri.parse(url);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
+    }
+    public void detailCard(final double lat, final double lang, String place_name, String subtitle, String category){
+        TextView titleView=findViewById(R.id.p_card_title);
+        TextView subTitleView=findViewById(R.id.p_card_title2);
+        ImageView imageView=findViewById(R.id.p_card_image);
+        CardView gmap=findViewById(R.id.p_gmap);
+        CardView navigate=findViewById(R.id.p_navigate);
+
+        if(category.equals("Toilet")){
+            imageView.setImageResource(R.drawable.toilet);
+        }
+
+        String title=place_name+" | "+category;
+        titleView.setText(title);
+        subTitleView.setText(subtitle);
+
+        gmap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url="geo:"+lat+","+lang+"?z=15";
+
+                Uri gmmIntentUri = Uri.parse(url);
+
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                }
+            }
+        });
+        navigate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url="google.navigation:q="+lat+","+lang;//+"&mode=w";
+                Uri gmmIntentUri = Uri.parse(url);
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                }
+            }
+        });
 
 
+
+
+
+    }
+    private float GetDistance(double uLatitude,double uLongitude){
+
+            float[] results = new float[10];
+            Location.distanceBetween(mLatitude, mLongitude,uLatitude, uLongitude, results);
+            distanceList.add(results[0]);
+            return results[0];
+    }
+    private int GetNearestPlace(){
+
+        float nearestDistance= distanceList.get(0);
+        int i=0;
+        for (int n=1;n<distanceList.size();n++){
+            if (nearestDistance>distanceList.get(n)){
+                nearestDistance=distanceList.get(n);
+               i=n;
+            }
+        }
+        return i;
+    }
 
     @Override
     public void onResume() {
@@ -142,80 +276,12 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
             requestPermissions();
         }
     }
-    public void helpDanger(View v){
-        String type= "Help I am in Danger";
-        String status="HN";
-        sos(type,status);
-    }
-    public void helpKidnap(View v){
-        String type= "Help I am being Kidnap";
-        String status="HN";
-        sos(type,status);
 
-    }
-    public void helpLost(View v){
-        String type= "Help I am Lost";
-        String status="HN";
-        sos(type,status);
-
-    }
-    public void safe(View v){
-        String type= "Now I am Safe.Marked By User";
-        String status="Safe";
-        sos(type,status);
-
-        onBackPressed();
+    @Override
+    protected void onStop() {
+        super.onStop();
         stopLocationUpdates();
-
-
     }
-
-    private void sos(String type, String status){
-        if(!status.equals("Safe")) {
-            Toast.makeText(this, "We are sending your location to control room", Toast.LENGTH_LONG).show();
-        }
-        if (user!=null && uPhoneNo!=null) {
-
-            DatabaseReference mSosRef = mDatabaseReference.child("ControlRoom").child("SOS").child(uPhoneNo);
-            mSosRef.child("type").setValue(type);
-            mSosRef.child("status").setValue(status).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    slideDown(scrollView);
-                    dangerCard.setFocusable(false);
-                    kidnapCard.setFocusable(false);
-                    lostCard.setFocusable(false);
-                }
-            });
-        }else {
-            String userId=sharedPref.getString("userId",null);
-
-            if (userId == null) {
-                int userNo;
-                Random n = new Random();
-                userNo = n.nextInt(1000000 );
-                userId=String.valueOf(userNo);
-
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("userId", userId);
-                editor.apply();
-            }
-            DatabaseReference mSosRef = mDatabaseReference.child("ControlRoom").child("SOS").child(userId);
-            mSosRef.child("type").setValue(type);
-            mSosRef.child("status").setValue(status).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    slideDown(scrollView);
-                    dangerCard.setFocusable(false);
-                    kidnapCard.setFocusable(false);
-                    lostCard.setFocusable(false);
-                }
-            });
-
-        }
-
-    }
-
 
     protected void createLocationRequest() {
         mLocationRequest = LocationRequest.create();
@@ -239,41 +305,20 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
             @Override
             public void onLocationResult(LocationResult locationResult) {
                 super.onLocationResult(locationResult);
-                if (mapIsReady) {
-                    mMap.clear();
+
                     mCurrentLocation = locationResult.getLastLocation();
-                    double mLatitude = mCurrentLocation.getLatitude();
-                    double mLongitude = mCurrentLocation.getLongitude();
+                    mLatitude = mCurrentLocation.getLatitude();
+                    mLongitude = mCurrentLocation.getLongitude();
                     LatLng latLng = new LatLng(mLatitude, mLongitude);
                     mMap.addMarker(new MarkerOptions().position(latLng).title("My Current Location"));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                    //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                    if (!flagRecyclerView){
+                        flagRecyclerView=true;
+                        mMap.clear();
+                        fillRecyclerView();
 
-                    if (user!=null && uPhoneNo!=null) {
-                        DatabaseReference mSosRef = mDatabaseReference.child("ControlRoom").child("SOS").child("");
-                        mSosRef.child("lat").setValue(mLatitude);
-                        mSosRef.child("lang").setValue(mLongitude);
-                        mSosRef.child("lastTime").setValue(ServerValue.TIMESTAMP);
-                    }else {
-                        String userId=sharedPref.getString("userId",null);
-
-                        if (userId == null) {
-                            int userNo;
-                            Random n = new Random();
-                            userNo = n.nextInt(1000000 );
-                            userId=String.valueOf(userNo);
-
-                            SharedPreferences.Editor editor = sharedPref.edit();
-                            editor.putString("userId", userId);
-                            editor.apply();
-                            }
-
-                        DatabaseReference mSosRef = mDatabaseReference.child("ControlRoom").child("SOS").child(userId);
-                        mSosRef.child("lat").setValue(mLatitude);
-                        mSosRef.child("lang").setValue(mLongitude);
-                        mSosRef.child("lastTime").setValue(ServerValue.TIMESTAMP);
                     }
 
-                }
             }
         };
     }
@@ -299,7 +344,7 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
                         @Override
                         public void onClick(View view) {
                             // Request permission
-                            ActivityCompat.requestPermissions(com.nsappsstudio.shravanimela.SOS.this,
+                            ActivityCompat.requestPermissions(PLaces.this,
                                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                                     REQUEST_PERMISSIONS_REQUEST_CODE);
                         }
@@ -309,7 +354,7 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
             // Request permission. It's possible this can be auto answered if device policy
             // sets the permission in a given state or the user denied the permission
             // previously and checked "Never ask again".
-            ActivityCompat.requestPermissions(com.nsappsstudio.shravanimela.SOS.this,
+            ActivityCompat.requestPermissions(PLaces.this,
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                     REQUEST_PERMISSIONS_REQUEST_CODE);
         }
@@ -378,7 +423,7 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
                         Log.i(TAG, "All location settings are satisfied.");
 
                         //noinspection MissingPermission
-                        if (ActivityCompat.checkSelfPermission(com.nsappsstudio.shravanimela.SOS.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(com.nsappsstudio.shravanimela.SOS.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        if (ActivityCompat.checkSelfPermission(PLaces.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(PLaces.this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                             // TODO: Consider calling
                             //    ActivityCompat#requestPermissions
                             // here to request the missing permissions, and then overriding
@@ -404,7 +449,7 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
                                     // Show the dialog by calling startResolutionForResult(), and check the
                                     // result in onActivityResult().
                                     ResolvableApiException rae = (ResolvableApiException) e;
-                                    rae.startResolutionForResult(com.nsappsstudio.shravanimela.SOS.this, REQUEST_CHECK_SETTINGS);
+                                    rae.startResolutionForResult(PLaces.this, REQUEST_CHECK_SETTINGS);
                                 } catch (IntentSender.SendIntentException sie) {
                                     Log.i(TAG, "PendingIntent unable to execute request.");
                                 }
@@ -413,7 +458,7 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
                                 String errorMessage = "Location settings are inadequate, and cannot be " +
                                         "fixed here. Fix in Settings.";
                                 Log.e(TAG, errorMessage);
-                                Toast.makeText(com.nsappsstudio.shravanimela.SOS.this, errorMessage, Toast.LENGTH_LONG).show();
+                                Toast.makeText(PLaces.this, errorMessage, Toast.LENGTH_LONG).show();
                         }
 
                     }
@@ -440,26 +485,8 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
 
         }
     }
+    private void toastMessage(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
 
-    private void slideDown(final View view){
-
-        Animation grow = AnimationUtils.loadAnimation(this, R.anim.slide_down);
-        view.startAnimation(grow);
-        new CountDownTimer(500, 500) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-
-            }
-
-            @Override
-            public void onFinish() {
-                view.setVisibility(View.GONE);
-
-
-            }
-        }.start();
     }
-
-
-
 }

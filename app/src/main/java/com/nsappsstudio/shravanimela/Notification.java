@@ -3,8 +3,6 @@ package com.nsappsstudio.shravanimela;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
