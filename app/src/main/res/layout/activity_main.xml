@@ -6,6 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="play_pauseMusic"
+        app:backgroundTint="@color/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_volume_up_black_24dp" />
+
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
@@ -20,7 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:visibility="visible">
 
             <android.support.design.widget.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar"
@@ -60,6 +76,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/background"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -74,7 +91,7 @@
                         android:layout_height="120dp"
                         android:layout_margin="1dp"
                         android:layout_weight="1"
-                        android:background="@color/background">
+                        android:background="@android:color/background_light">
 
 
                         <TextView
@@ -137,7 +154,7 @@
                         android:layout_height="120dp"
                         android:layout_margin="1dp"
                         android:layout_weight="1"
-                        android:background="@color/background">
+                        android:background="@android:color/background_light">
 
 
                         <TextView
@@ -196,698 +213,646 @@
                     </android.support.constraint.ConstraintLayout>
                 </LinearLayout>
 
-                <LinearLayout
+                <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white_purple"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:paddingBottom="10dp">
 
                     <android.support.v7.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="@color/background"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:id="@+id/card_live_video"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:onClick="GoToCamera"
+                        app:cardBackgroundColor="@color/gerua_trans"
+                        app:cardCornerRadius="5dp"
+                        app:layout_constraintEnd_toStartOf="@+id/card_notification"
+                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="@+id/card_notification">
 
-                        <android.support.constraint.ConstraintLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:onClick="GoToPlaces">
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:fontFamily="@font/noto_sans"
+                                android:text="@string/live_arti"
+                                android:textAlignment="center"
+                                android:textColor="@color/background"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/background" />
 
                             <ImageView
-                                android:id="@+id/imageView34"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
+                                android:layout_margin="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:background="@drawable/circle_bg"
                                 android:contentDescription="@string/app_name"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
+                                android:padding="10dp"
+                                app:srcCompat="@drawable/ic_videocam_24dp" />
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/card_notification"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:onClick="GoToNotification"
+                        app:cardBackgroundColor="@color/gerua_trans"
+                        app:cardCornerRadius="5dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/card_live_video"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:fontFamily="@font/noto_sans"
+                                android:text="@string/alert"
+                                android:textAlignment="center"
+                                android:textColor="@color/background"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/background" />
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_margin="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:background="@drawable/circle_bg"
+                                android:contentDescription="@string/app_name"
+                                android:padding="10dp"
+                                app:srcCompat="@drawable/ic_notifications_24dp" />
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/card_ambulance"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:onClick="GoToInstruction"
+                        app:cardBackgroundColor="@color/gerua_trans"
+                        app:cardCornerRadius="5dp"
+                        app:layout_constraintEnd_toStartOf="@+id/card_sos"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/card_sos">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="120dp"
+                            android:alpha="0.2"
+                            android:contentDescription="@string/ambulance"
+                            app:srcCompat="@drawable/frame" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/circle_bg_so"
+                                android:contentDescription="@string/app_name"
+                                android:padding="10dp"
                                 app:srcCompat="@drawable/ambulance" />
 
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/background" />
+
                             <TextView
-                                android:id="@+id/textView34"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginStart="4dp"
-                                android:fontFamily="@font/roboto"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/noto_sans"
                                 android:text="@string/ambulance"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView34" />
-                        </android.support.constraint.ConstraintLayout>
+                                android:textColor="@color/background"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
                     </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="@color/background"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:id="@+id/card_sos"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:onClick="GoToSOS"
+                        app:cardBackgroundColor="@android:color/holo_orange_dark"
+                        app:cardCornerRadius="5dp"
+                        app:layout_constraintEnd_toStartOf="@+id/card_toilet"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/card_ambulance"
+                        app:layout_constraintTop_toTopOf="@+id/card_toilet">
 
-                        <android.support.constraint.ConstraintLayout
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="120dp"
+                            android:alpha="0.2"
+                            android:contentDescription="@string/ambulance"
+                            app:srcCompat="@drawable/frame" />
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_gravity="center">
+                            android:gravity="center"
+                            android:orientation="vertical">
 
                             <ImageView
-                                android:id="@+id/imageView32"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:contentDescription="@string/atm"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/atm" />
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/circle_bg_so"
+                                android:contentDescription="@string/app_name"
+                                android:padding="7dp"
+                                app:srcCompat="@drawable/sos" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/background" />
 
                             <TextView
-                                android:id="@+id/textView32"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginStart="4dp"
-                                android:fontFamily="@font/roboto"
-                                android:text="@string/atm"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView32" />
-                        </android.support.constraint.ConstraintLayout>
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/noto_sans"
+                                android:text="@string/sos"
+                                android:textColor="@color/background"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
                     </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="@color/background"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/card_toilet"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:onClick="GoToPlaces"
+                        app:cardBackgroundColor="@color/gerua_trans"
+                        app:cardCornerRadius="5dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/card_sos"
+                        app:layout_constraintTop_toBottomOf="@+id/card_live_video">
 
-                        <android.support.constraint.ConstraintLayout
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="120dp"
+                            android:alpha="0.2"
+                            android:contentDescription="@string/ambulance"
+                            app:srcCompat="@drawable/frame" />
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_gravity="center">
+                            android:gravity="center"
+                            android:orientation="vertical">
 
                             <ImageView
-                                android:id="@+id/imageView31"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:contentDescription="@string/help_line"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/circle_bg"
+                                android:contentDescription="@string/app_name"
+                                android:padding="10dp"
+                                app:srcCompat="@drawable/toilet" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/background" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/noto_sans"
+                                android:text="@string/toilet"
+                                android:textColor="@color/background"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/card_medical_store"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:onClick="GoToCtrlRoom"
+                        app:cardBackgroundColor="@color/gerua_trans"
+                        app:cardCornerRadius="5dp"
+                        app:layout_constraintEnd_toStartOf="@+id/card_helpline"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/card_helpline">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="120dp"
+                            android:alpha="0.2"
+                            android:contentDescription="@string/ambulance"
+                            app:srcCompat="@drawable/frame" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/circle_bg"
+                                android:contentDescription="@string/app_name"
+                                android:paddingBottom="10dp"
+                                android:paddingEnd="10dp"
+                                android:paddingStart="10dp"
+                                android:paddingTop="10dp"
                                 app:srcCompat="@drawable/call_center" />
 
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/background" />
+
                             <TextView
-                                android:id="@+id/textView31"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginStart="4dp"
-                                android:fontFamily="@font/roboto"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/noto_sans"
+                                android:text="@string/control_room"
+                                android:textColor="@color/background"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/card_helpline"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/gerua_trans"
+                        app:cardCornerRadius="5dp"
+                        app:layout_constraintEnd_toStartOf="@+id/card_drinking_water"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/card_medical_store"
+                        app:layout_constraintTop_toTopOf="@+id/card_drinking_water">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="120dp"
+                            android:alpha="0.2"
+                            android:contentDescription="@string/ambulance"
+                            app:srcCompat="@drawable/frame" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/circle_bg"
+                                android:contentDescription="@string/app_name"
+                                android:padding="10dp"
+                                app:srcCompat="@drawable/helpline" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/background" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/noto_sans"
                                 android:text="@string/help_line"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView31" />
-                        </android.support.constraint.ConstraintLayout>
+                                android:textColor="@color/background"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
                     </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="@color/background"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:id="@+id/card_drinking_water"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardBackgroundColor="@color/gerua_trans"
+                        app:cardCornerRadius="5dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/card_helpline"
+                        app:layout_constraintTop_toBottomOf="@+id/card_toilet">
 
-                        <android.support.constraint.ConstraintLayout
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="120dp"
+                            android:alpha="0.2"
+                            android:contentDescription="@string/ambulance"
+                            app:srcCompat="@drawable/frame" />
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_gravity="center">
+                            android:gravity="center"
+                            android:orientation="vertical">
 
                             <ImageView
-                                android:id="@+id/imageView2"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:contentDescription="@string/bathroom"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/shower" />
-
-                            <TextView
-                                android:id="@+id/textView2"
-                                android:layout_width="0dp"
-                                android:layout_height="16dp"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginStart="4dp"
-                                android:fontFamily="@font/roboto"
-                                android:text="@string/bathroom"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-                        </android.support.constraint.ConstraintLayout>
-                    </android.support.v7.widget.CardView>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white_purple"
-                    android:orientation="horizontal">
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="@color/background"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <android.support.constraint.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/imageView35"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:contentDescription="@string/disaster"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/disaster" />
-
-                            <TextView
-                                android:id="@+id/textView35"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginStart="4dp"
-                                android:fontFamily="@font/roboto"
-                                android:text="@string/disaster"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView35" />
-                        </android.support.constraint.ConstraintLayout>
-                    </android.support.v7.widget.CardView>
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="@color/background"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <android.support.constraint.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/imageView36"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:contentDescription="@string/doctor"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/doctor" />
-
-                            <TextView
-                                android:id="@+id/textView36"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginStart="4dp"
-                                android:fontFamily="@font/roboto"
-                                android:text="@string/doctor"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView36" />
-                        </android.support.constraint.ConstraintLayout>
-                    </android.support.v7.widget.CardView>
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="@color/background"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <android.support.constraint.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/imageView37"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:contentDescription="@string/drinking_water"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/circle_bg"
+                                android:contentDescription="@string/app_name"
+                                android:padding="10dp"
                                 app:srcCompat="@drawable/drinking_water" />
 
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/background" />
+
                             <TextView
-                                android:id="@+id/textView37"
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginStart="4dp"
-                                android:fontFamily="@font/roboto"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/noto_sans"
                                 android:text="@string/drinking_water"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView37" />
-                        </android.support.constraint.ConstraintLayout>
+                                android:textColor="@color/background"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
                     </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="@color/background"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:id="@+id/card_police"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:onClick="GoToPolice"
+                        app:cardBackgroundColor="@color/gerua_trans"
+                        app:cardCornerRadius="5dp"
+                        app:layout_constraintEnd_toStartOf="@+id/card_rest_room"
+                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <android.support.constraint.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/imageView38"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:contentDescription="@string/electric"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/electric" />
-
-                            <TextView
-                                android:id="@+id/textView38"
-                                android:layout_width="0dp"
-                                android:layout_height="16dp"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginStart="4dp"
-                                android:fontFamily="@font/roboto"
-                                android:text="@string/electric"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView38" />
-                        </android.support.constraint.ConstraintLayout>
-                    </android.support.v7.widget.CardView>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white_purple"
-                    android:orientation="horizontal">
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="@color/background"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <android.support.constraint.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/imageView40"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:contentDescription="@string/food_rate"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/food_rate" />
-
-                            <TextView
-                                android:id="@+id/textView40"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginStart="4dp"
-                                android:fontFamily="@font/roboto"
-                                android:text="@string/food_rate"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView40" />
-                        </android.support.constraint.ConstraintLayout>
-                    </android.support.v7.widget.CardView>
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="@color/background"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <android.support.constraint.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/imageView41"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:contentDescription="@string/atm"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/inspection" />
-
-                            <TextView
-                                android:id="@+id/textView41"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginStart="4dp"
-                                android:fontFamily="@font/roboto"
-                                android:text="@string/food_inspector"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView41" />
-                        </android.support.constraint.ConstraintLayout>
-                    </android.support.v7.widget.CardView>
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="@color/background"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <android.support.constraint.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/imageView42"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:contentDescription="@string/help_line"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/medical_store" />
-
-                            <TextView
-                                android:id="@+id/textView42"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginStart="4dp"
-                                android:fontFamily="@font/roboto"
-                                android:text="@string/medical_store"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView42" />
-                        </android.support.constraint.ConstraintLayout>
-                    </android.support.v7.widget.CardView>
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginEnd="2dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="@color/background"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <android.support.constraint.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center">
-
-                            <ImageView
-                                android:id="@+id/imageView43"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="8dp"
-                                android:contentDescription="@string/bathroom"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/parking" />
-
-                            <TextView
-                                android:id="@+id/textView43"
-                                android:layout_width="0dp"
-                                android:layout_height="16dp"
-                                android:layout_marginEnd="4dp"
-                                android:layout_marginStart="4dp"
-                                android:fontFamily="@font/roboto"
-                                android:text="@string/parking"
-                                android:textAlignment="center"
-                                android:textColor="@color/colorPrimaryDark"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView43" />
-                        </android.support.constraint.ConstraintLayout>
-                    </android.support.v7.widget.CardView>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="160dp"
-                        android:layout_height="80dp"
-                        android:layout_margin="1dp"
-                        android:layout_weight="1"
-                        android:onClick="GoToCamera"
-                        app:cardBackgroundColor="@color/background">
+                        app:layout_constraintTop_toTopOf="@+id/card_rest_room">
 
                         <ImageView
-                            android:id="@+id/imageView3"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="5dp"
-                            android:contentDescription="@string/app_name"
-                            app:srcCompat="@drawable/ic_videocam_24dp" />
+                            android:layout_width="100dp"
+                            android:layout_height="120dp"
+                            android:alpha="0.2"
+                            android:contentDescription="@string/ambulance"
+                            app:srcCompat="@drawable/frame" />
 
-                        <TextView
-                            android:id="@+id/textView102"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="bottom|center_horizontal"
-                            android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/roboto"
-                            android:text="@string/live_arti"
-                            android:textColor="@color/colorPrimaryDark" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/circle_bg"
+                                android:contentDescription="@string/app_name"
+                                android:paddingBottom="10dp"
+                                android:paddingEnd="12dp"
+                                android:paddingStart="10dp"
+                                android:paddingTop="10dp"
+                                app:srcCompat="@drawable/police" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/background" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/noto_sans"
+                                android:text="@string/police_station"
+                                android:textColor="@color/background"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
                     </android.support.v7.widget.CardView>
 
                     <android.support.v7.widget.CardView
-                        android:layout_width="160dp"
-                        android:layout_height="80dp"
-                        android:layout_margin="1dp"
-                        android:layout_weight="1"
-                        android:onClick="GoToCamera"
-                        app:cardBackgroundColor="@color/background">
+                        android:id="@+id/card_rest_room"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:onClick="GoToStayPlaces"
+                        app:cardBackgroundColor="@color/gerua_trans"
+                        app:cardCornerRadius="5dp"
+                        app:layout_constraintEnd_toStartOf="@+id/card_waterfall"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/card_police"
+                        app:layout_constraintTop_toTopOf="@+id/card_waterfall">
 
                         <ImageView
-                            android:id="@+id/imageView104"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:layout_marginBottom="5dp"
-                            android:contentDescription="@string/app_name"
-                            app:srcCompat="@drawable/ic_notifications_24dp" />
+                            android:layout_width="100dp"
+                            android:layout_height="120dp"
+                            android:alpha="0.2"
+                            android:contentDescription="@string/ambulance"
+                            app:srcCompat="@drawable/frame" />
 
-                        <TextView
-                            android:id="@+id/textView104"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="bottom|center_horizontal"
-                            android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/roboto"
-                            android:text="@string/alert"
-                            android:textColor="@color/colorPrimaryDark" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/circle_bg"
+                                android:contentDescription="@string/app_name"
+                                android:padding="10dp"
+                                app:srcCompat="@drawable/rest_room" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/background" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/noto_sans"
+                                android:text="@string/rest_room"
+                                android:textColor="@color/background"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
                     </android.support.v7.widget.CardView>
 
-                </LinearLayout>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/card_waterfall"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:onClick="GoToJharna"
+                        app:cardBackgroundColor="@color/gerua_trans"
+                        app:cardCornerRadius="5dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/card_rest_room"
+                        app:layout_constraintTop_toBottomOf="@+id/card_drinking_water">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="120dp"
+                            android:alpha="0.2"
+                            android:contentDescription="@string/ambulance"
+                            app:srcCompat="@drawable/frame" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:background="@drawable/circle_bg"
+                                android:contentDescription="@string/app_name"
+                                android:padding="10dp"
+                                app:srcCompat="@drawable/waterfall" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/background" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/noto_sans"
+                                android:text="@string/waterfall"
+                                android:textColor="@color/background"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                </android.support.constraint.ConstraintLayout>
 
             </LinearLayout>
 
         </android.support.v4.widget.NestedScrollView>
 
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
-            android:onClick="GoToSOS"
-            app:backgroundTint="@android:color/holo_blue_bright"
-            app:layout_anchor="@id/appBar"
-            app:layout_anchorGravity="bottom|right|end"
-            app:srcCompat="@drawable/ic_location" />
+
     </android.support.design.widget.CoordinatorLayout>
 
 

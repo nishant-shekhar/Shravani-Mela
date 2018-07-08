@@ -246,7 +246,8 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
                     double mLongitude = mCurrentLocation.getLongitude();
                     LatLng latLng = new LatLng(mLatitude, mLongitude);
                     mMap.addMarker(new MarkerOptions().position(latLng).title("My Current Location"));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                    //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
 
                     if (user!=null && uPhoneNo!=null) {
                         DatabaseReference mSosRef = mDatabaseReference.child("ControlRoom").child("SOS").child("");

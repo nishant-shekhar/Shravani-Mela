@@ -77,6 +77,8 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
     private ArrayList<Float> distanceList= new ArrayList<>();
     private CardView detailCard;
 
+    private String fileName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +95,18 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
         recyclerView=findViewById(R.id.places_recyclerView);
         detailCard=findViewById(R.id.p_detail_card);
         detailCard.setVisibility(View.GONE);
+
+        try {
+            Intent intent=getIntent();
+            String typeID = intent.getStringExtra("type");
+            if (typeID!=null){
+                fileName=typeID;
+            }
+        }catch (IllegalArgumentException error){
+            //do nothing
+            fileName="Toilet.json";
+        }
+
 
         createLocationCallback();
         createLocationRequest();
@@ -120,7 +134,7 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
         String json ;
         try {
             Context c=this;
-            InputStream is = c.getAssets().open("Toilet.json");
+            InputStream is = c.getAssets().open(fileName);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -149,7 +163,17 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
                 String distance;
                 int np;
                 if (mCurrentLocation!=null) {
-                    distance = "Air Distance: " + GetDistance(latitude, longitude) + "m";
+
+                    float dist=GetDistance(latitude,longitude);
+                    int roundDistance=Math.round(dist);
+                    if (roundDistance>1000){
+                        double distKm=(double) roundDistance/1000.0;
+                        distance = "Air Distance: " +distKm + "Km";
+
+                    }else {
+                        distance = "Air Distance: " +roundDistance + "m";
+
+                    }
                     if (i==m_jArry.length()-1){
                         np=GetNearestPlace();
                         recyclerView.scrollToPosition(np);
@@ -162,7 +186,6 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
                             detailCard(placesItems.get(np).getLat(),placesItems.get(np).getLang(),placesItems.get(np).getTitle(),placesItems.get(np).getSubtitle(),placesItems.get(np).getItemType());
 
                         }
-
                     }
                 }else {
                     distance=null;
@@ -207,8 +230,23 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
         CardView gmap=findViewById(R.id.p_gmap);
         CardView navigate=findViewById(R.id.p_navigate);
 
-        if(category.equals("Toilet")){
-            imageView.setImageResource(R.drawable.toilet);
+
+        switch (category){
+            case "Toilet":
+                imageView.setImageResource(R.drawable.toilet);
+                break;
+            case "Jharna":
+                imageView.setImageResource(R.drawable.waterfall);
+                break;
+            case "Police Station":
+                imageView.setImageResource(R.drawable.police);
+                break;
+            case "Stay Place":
+                imageView.setImageResource(R.drawable.rest_room);
+                break;
+            case "Control Room ":
+                imageView.setImageResource(R.drawable.call_center);
+                break;
         }
 
         String title=place_name+" | "+category;

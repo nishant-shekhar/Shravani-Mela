@@ -3,19 +3,30 @@ package com.nsappsstudio.shravanimela;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
 
 public class Notification extends AppCompatActivity {
 
@@ -24,6 +35,9 @@ public class Notification extends AppCompatActivity {
     private TextView nBody;
     private TextView nType;
     private CardView nCardView;
+    private List<CardListItem> cardListItems;
+    private ProgressBar progressBar;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +50,9 @@ public class Notification extends AppCompatActivity {
         nType=findViewById(R.id.notification_type);
         nTitle=findViewById(R.id.notification_title);
         nBody=findViewById(R.id.notification_body);
-
+        progressBar=findViewById(R.id.n_progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+        showAllNotifications();
 
         try {
             Intent intent=getIntent();
@@ -48,18 +64,78 @@ public class Notification extends AppCompatActivity {
         }catch (NullPointerException error){
             //do nothing
         }
-       showAllNotifications();
 
 
     }
+
+    private void showAllNotifications() {
+        recyclerView=findViewById(R.id.n_recyclerView);
+        recyclerView.hasFixedSize();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        cardListItems = new ArrayList<>();
+
+        DatabaseReference mNoticeRef= mDatabaseReference.child("Notification");
+        mNoticeRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                progressBar.setVisibility(View.GONE);
+                String title= dataSnapshot.child("title").getValue(String.class);
+                String body= dataSnapshot.child("body").getValue(String.class);
+                String type= dataSnapshot.child("type").getValue(String.class);
+
+                String date = null;
+                try {
+                    Long timeStamp= dataSnapshot.child("ts").getValue(Long.class);
+                    Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+                    cal.setTimeInMillis(timeStamp);
+                    date = DateFormat.format("dd-MM-yyyy", cal).toString();
+                }catch (NullPointerException e){
+                    //do nothing
+                }
+
+
+                CardListItem cardListItem = new CardListItem(title,date,body,type,1);
+                cardListItems.add(cardListItem);
+                RecyclerView.Adapter adapter = new CardAdapter(cardListItems, Notification.this);
+                recyclerView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+    }
+
     private void showNotice(String noticeId){
 
         DatabaseReference mNoticeRef= mDatabaseReference.child("Notification").child(noticeId);
 
-
         mNoticeRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                recyclerView.setVisibility(View.GONE);
 
                 growAnim(nCardView);
                 String title= dataSnapshot.child("title").getValue(String.class);
@@ -80,7 +156,7 @@ public class Notification extends AppCompatActivity {
 
     }
     public void exitNotice(final View view){
-
+        recyclerView.setVisibility(View.VISIBLE);
         shrinkAnim(nCardView);
         view.setEnabled(false);
         new CountDownTimer(500,500){
@@ -126,8 +202,14 @@ public class Notification extends AppCompatActivity {
             }
         }.start();
     }
-    private void showAllNotifications(){
+    public void showNotificationOnClick(String title,String subtitle,String body,String type){
+        recyclerView.setVisibility(View.GONE);
 
+        growAnim(nCardView);
+        nTitle.setText(title);
+        String bodyString=subtitle+" | "+body;
+        nBody.setText(bodyString);
+        nType.setText(type);
     }
 
 }

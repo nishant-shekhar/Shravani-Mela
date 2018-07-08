@@ -16,7 +16,7 @@
     <string name="food_inspector">Food Inspector</string>
     <string name="medical_store">Medical Store</string>
     <string name="parking">Parking</string>
-    <string name="bhagalpur">Bhalagpur</string>
+    <string name="bhagalpur">Bhagalpur</string>
     <string name="medium_crowd">Medium Crowd</string>
     <string name="crowd_status">Crowd Status</string>
     <string name="sultangunj">Sultangunj</string>
@@ -39,4 +39,20 @@
     <string name="title_activity_places">Map</string>
     <string name="open_g_map">Navigate</string>
     <string name="view_on_gmap">View on Google Map</string>
+    <string name="sos">SOS</string>
+    <string name="register_now">Register Now</string>
+    <string name="welcome">Welcome</string>
+    <string name="next">Next</string>
+    <string name="welcome_note">Bhagalpur Admistration welcomes you to Shravani mela 2018. This app is dedicated towards the pilgrims safe and comfortable journey towards Baba Dham.</string>
+    <string name="back">Back</string>
+    <string name="finish">Finish</string>
+    <string name="donts">Don\'ts</string>
+    <string name="dos">DOs</string>
+    <string name="skip">Skip</string>
+    <string name="dos_list">1. Please follow all the instructions carefully \n2. Always move in group. \n3. Do not go to the jungle alone.
+        \n4.Take care of your luggage. \n5. Do remember your family member's mobile number</string>
+    <string name="do_not_list">1. First Instruction  \n2. Second Instruction. \n3. Third Instruction.
+        \n4.Fourth Instruction. \n5. Fifth Instruction. \n6. Sixth Instruction.\n7. Seventh Instruction. \n8. Eighth Instruction</string>
+    <string name="notifications">Notifications</string>
+    <string name="control_room">Control Room</string>
 </resources>

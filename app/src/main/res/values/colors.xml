@@ -7,6 +7,13 @@
     <color name="grey">#cccccc</color>
     <color name="white_purple">#edeaf1</color>
     <color name="blue">#254fb4</color>
-
+    <color name="gerua_trans">#baff5e00</color>
+    <color name="blue_tej">#4162F1</color>
+    <color name="dark">#2d3b42</color>
+    <color name="orange">#e76300</color>
+    <color name="light_orange">#ff892a</color>
+    <color name="light_yellow">#df9900</color>
+    <color name="grey_light">#dcdcdc</color>
+    ff892a
 
 </resources>

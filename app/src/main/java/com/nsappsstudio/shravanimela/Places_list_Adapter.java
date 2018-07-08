@@ -37,12 +37,22 @@ public class Places_list_Adapter extends RecyclerView.Adapter<Places_list_Adapte
         holder.subTitle.setText(placesItem.getSubtitle());
         holder.mapIcon.setImageResource(R.drawable.ic_map_24dp);
         switch (placesItem.getItemType()){
-            case "Toilet":
-                holder.imageType.setImageResource(R.drawable.toilet);
-                break;
-            default:
-                holder.imageType.setImageResource(R.drawable.crowd_3);
-                break;
+                case "Toilet":
+                    holder.imageType.setImageResource(R.drawable.toilet);
+                    break;
+                case "Jharna":
+                    holder.imageType.setImageResource(R.drawable.waterfall);
+                    break;
+                case "Police Station":
+                    holder.imageType.setImageResource(R.drawable.police);
+                    break;
+                case "Stay Place":
+                    holder.imageType.setImageResource(R.drawable.rest_room);
+                    break;
+                case "Control Room ":
+                    holder.imageType.setImageResource(R.drawable.call_center);
+                    break;
+
         }
         holder.contentLayout.setOnClickListener(new View.OnClickListener() {
             @Override

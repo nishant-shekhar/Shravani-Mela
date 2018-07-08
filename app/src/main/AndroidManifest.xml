@@ -17,9 +17,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.nsappsstudio.shravanimela.MainActivity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".Camera">
@@ -33,7 +33,9 @@
         <service
             android:name=".NotificationServices"
             android:exported="false" />
-
+        <service
+            android:name=".MusicService"
+            android:exported="false" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
@@ -68,7 +70,14 @@
 
         <activity
             android:name=".PLaces"
-            android:label="@string/title_activity_places"></activity>
+            android:label="@string/title_activity_places" />
+        <activity android:name=".InstructionPage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
