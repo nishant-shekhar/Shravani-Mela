@@ -8,10 +8,10 @@
     <string name="atm">Atm</string>
     <string name="help_line">Helpline</string>
     <string name="bathroom">Bathroom</string>
-    <string name="disaster">Disaster</string>
+    <string name="disaster">Disaster Helpline</string>
     <string name="doctor">Doctor</string>
     <string name="drinking_water">Drinking Water</string>
-    <string name="electric">Electric</string>
+    <string name="electric">Electric Helpline</string>
     <string name="food_rate">Food Rate</string>
     <string name="food_inspector">Food Inspector</string>
     <string name="medical_store">Medical Store</string>
@@ -55,4 +55,25 @@
         \n4.Fourth Instruction. \n5. Fifth Instruction. \n6. Sixth Instruction.\n7. Seventh Instruction. \n8. Eighth Instruction</string>
     <string name="notifications">Notifications</string>
     <string name="control_room">Control Room</string>
+    <string name="light_crowd">Light Crowd</string>
+    <string name="emergency">Emergency</string>
+    <string name="rate_chart">Rate Chart</string>
+    <string name="find_places">Find Places</string>
+    <string name="doctor_availability">Doctor\'s Availability</string>
+    <string name="mela_help_line">Mela HelpLine</string>
+    <string name="food_medical_inspector">Food/Medical Inspector</string>
+    <string name="puja_samagari">Puja Samagari</string>
+    <string name="medicine">Medicine</string>
+    <string name="electric_main_title">श्रावणी मेला 2018 के लिए निम्नलिखित कामगारोंको दिनांक-27.07.2018 से दिनांक-27.08.2018 तक निम्नलिखित स्थलों पर अंकित समयानुसार अपने पूर्व के आवंटित कार्य
+        एवं क्षेत्रों के अतिरिक्त कार्य करने का आदेश दिया जाता है। साथ ही इस अवधि में पड़नेवाले सभी साप्ताहिक अवकाश एवं सार्वजनिक अवकाश में भी सभी कामगार अपने कार्य पर उपस्थित रहेगें।
+        सभी मानवबल विभागीय कामगार की देख-रेख में काम करेंगे।</string>
+    <string name="electric_title1">कार्य क्षेत्र के ट्रांसफार्मर का नाम: चौक स्थित सभी ट्रांसफार्मर पार्वती मील बाहर भीतर दोनों, पीएचडी, स्टेशन, मालगोदाम, थाना के पास एवं ब्लॉक तक सभी ट्रांसफर्मर, लालकोठी</string>
+    <string name="electric_subtitle1">मुखयालय (फ्यूजकॉल सेंटर): चौकबाजार(फ्यूजकॉल सेंटर) 7033095829</string>
+    <string name="electric_title2">कार्य क्षेत्र के ट्रांसफार्मर का नाम: घाटरोड़, मोदीटोला,गोपाल गेट रोड़, अंदर एवं वाहर डोमासी गली काली स्थान, सीढ़ी घाट, बगीचा के सभी ट्रांसफार्मर</string>
+    <string name="electric_subtitle2">मुखयालय (फ्यूजकॉल सेंटर): नई सीढी घाट विद्युत नियंत्रण कक्ष 7033095829</string>
+    <string name="electric_title3">कार्य क्षेत्र के ट्रांसफार्मर का नाम: टी०पी० चौधरी,पुरानी दुर्गास्थान, चित्रा सिनेमा,जे०पी० पार्क, पेट्रोल पम्प, आदर्शनगर,सीतारामपुर,  शिवनन्दनपुर ,नयी दुर्गास्थान एवं मसदी के सभी ट्रांसफार्मर।</string>
+    <string name="electric_subtitle3">मुखयालय (फ्यूजकॉल सेंटर): विद्युतनियंत्रण कक्ष, जेपीपार्क, सुलतानगंज 7033095829</string>
+    <string name="electric_title4">आपातकालीन फ्यूज कॉल गैंगः- 24 घंटे कार्यरत रहेंगे।</string>
+    <string name="electric_title5">उपरोक्त सभी कामगार अपने कनीय विद्युत अभियंता सुलतानगंज (शहरी) तथा कनीय विद्युत अभियन्ता (ग्रामीण) के साथ कार्य पर तैनात रहेंगे।</string>
+    <string name="call">Call</string>
 </resources>

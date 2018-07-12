@@ -1,103 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/table_card"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/orange"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/table_title"
-            android:layout_width="600dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:fontFamily="@font/noto_sans"
-            android:paddingBottom="2dp"
-            android:paddingEnd="8dp"
-            android:paddingStart="8dp"
-            android:paddingTop="2dp"
-            android:text="@string/alert"
-            android:textAlignment="center"
-            android:textColor="@color/background" />
+
+        <LinearLayout
+            android:id="@+id/table_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:minHeight="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/cell1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:background="@drawable/cell_bg"
+                android:fontFamily="@font/roboto"
+                android:paddingBottom="5dp"
+                android:paddingStart="2dp"
+                android:paddingTop="5dp"
+                android:textAlignment="viewStart"
+                android:textColor="@color/background"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/cell2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:background="@drawable/cell_bg"
+                android:fontFamily="@font/roboto"
+                android:paddingBottom="5dp"
+                android:paddingStart="2dp"
+                android:paddingTop="5dp"
+                android:textAlignment="viewStart"
+                android:textColor="@color/background"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/cell3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:background="@drawable/cell_bg"
+                android:fontFamily="@font/roboto"
+                android:paddingBottom="5dp"
+                android:paddingStart="2dp"
+                android:paddingTop="5dp"
+                android:textAlignment="viewStart"
+                android:textColor="@color/background"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/cell4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:background="@drawable/cell_bg"
+                android:fontFamily="@font/roboto"
+                android:paddingBottom="5dp"
+                android:paddingStart="2dp"
+                android:paddingTop="5dp"
+                android:textAlignment="viewStart"
+                android:textColor="@color/background"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/cell5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:background="@drawable/cell_bg"
+                android:fontFamily="@font/roboto"
+                android:paddingBottom="5dp"
+                android:paddingStart="2dp"
+                android:paddingTop="5dp"
+                android:textAlignment="viewStart"
+                android:textColor="@color/background"
+                android:textSize="14sp" />
+        </LinearLayout>
     </android.support.v7.widget.CardView>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/table_row"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/table_card"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/table_card">
-
-        <TextView
-            android:id="@+id/cell1"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/white_purple"
-            android:fontFamily="@font/roboto"
-            android:minHeight="21dp"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="@+id/cell2"
-            app:layout_constraintEnd_toStartOf="@+id/cell2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/cell2"
-            android:layout_width="112dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_weight="1"
-            android:background="@color/white_purple"
-            android:fontFamily="@font/roboto"
-            android:minHeight="21dp"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="@+id/cell3"
-            app:layout_constraintEnd_toStartOf="@+id/cell3"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/cell1" />
-
-        <TextView
-            android:id="@+id/cell3"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_weight="1"
-            android:background="@color/white_purple"
-            android:fontFamily="@font/roboto"
-            android:minHeight="21dp"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="@+id/cell4"
-            app:layout_constraintEnd_toStartOf="@+id/cell4"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/cell2" />
-
-        <TextView
-            android:id="@+id/cell4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_weight="1"
-            android:background="@color/white_purple"
-            android:fontFamily="@font/roboto"
-            android:minHeight="21dp"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/cell3"
-            app:layout_constraintTop_toTopOf="@+id/cell1"
-            app:layout_constraintVertical_bias="0.0" />
-    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

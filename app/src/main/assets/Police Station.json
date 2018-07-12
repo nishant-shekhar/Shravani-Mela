@@ -1,9 +1,9 @@
 {"sightings":[
-{"Category":"Police Station","Place_Name":"Sultanganj Police Station","Latitude":25.246699,"Longitude":86.744429},
-{"Category":"Police Station","Place_Name":"Krishangad Police Station","Latitude":25.2467633,"Longitude":86.7420117},
-{"Category":"Police Station","Place_Name":"Dhouri Dharmshala Belhar Police Station","Latitude":24.97092,"Longitude":86.63381},
-{"Category":"Police Station","Place_Name":"Jilebiyamor Dharmshala Belhar Police Station","Latitude":25.89690,"Longitude":86.66280},
-{"Category":"Police Station","Place_Name":"Suiya Ghuthiya Chandan Police Station","Latitude":24.83453,"Longitude":86.66603},
-{"Category":"Police Station","Place_Name":"Katoriya Power Grid Campus Police Station","Latitude":24.75197,"Longitude":86.70232},
-{"Category":"Police Station","Place_Name":"Dumma Jharkhand Border Chandan Police Station","Latitude":24.57373,"Longitude":86.70025}
+{"Slno":1,"Category":"Police Station","Place_Name":"Sultanganj Police Station","Latitude":25.246699,"Longitude":86.744429,"type":"Govt.","distance":"0.26km","Contact_no":"09798945907","Address":"Sultanganj Thana"},
+{"Slno":2,"Category":"Police Station","Place_Name":"Krishangad Police Station","Latitude":25.2467633,"Longitude":86.7420117,"type":"Govt.","distance":"1.12km","Contact_no":"","Address":"Sultanganj - Bhagalpur Rd, Dilgouri, Sultanganj 813213, India"},
+{"Slno":3,"Category":"Police Station","Place_Name":"Dhouri Dharmshala Belhar Police Station","Latitude":24.97092,"Longitude":86.63381,"type":"Govt.","distance":"43.63km","Contact_no":"","Address":"Lakheraj, Manikpur, 813118, India"},
+{"Slno":4,"Category":"Police Station","Place_Name":"Jilebiyamor Dharmshala Belhar Police Station","Latitude":25.89690,"Longitude":86.66280,"type":"Govt.","distance":"49.98km","Contact_no":"","Address":"Deoghar Rd, Tola Kaithatikar, Bihar 813119, India"},
+{"Slno":5,"Category":"Police Station","Place_Name":"Suiya Ghuthiya Chandan Police Station","Latitude":24.83453,"Longitude":86.66603,"type":"Govt.","distance":"61.60km","Contact_no":"","Address":"Deoghar Rd, Tola Belsara, Bihar 813119, India"},
+{"Slno":6,"Category":"Police Station","Place_Name":"Katoriya Power Grid Campus Police Station","Latitude":24.75197,"Longitude":86.70232,"type":"Govt.","distance":"71.09km","Contact_no":"","Address":"Deoghar Rd, Chihutjor, Bihar 813106, India"},
+{"Slno":7,"Category":"Police Station","Place_Name":"Dumma Jharkhand Border Chandan Police Station","Latitude":24.57373,"Longitude":86.70025,"type":"Govt.","distance":"98.11km","Contact_no":"","Address":"Siljori, Bihar, India"}
 ]}

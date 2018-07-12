@@ -11,6 +11,7 @@
         android:id="@+id/c_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         app:cardCornerRadius="8dp"
@@ -21,7 +22,7 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/c_title"
@@ -31,6 +32,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/noto_sans"
+                android:textColor="@android:color/holo_blue_light"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -1,7 +1,6 @@
 {"sightings":[
-{"Category":"Control Room ","Place_Name":"Jahaj Ghat","Latitude":25.252803,"Longitude":86.739038},
-{"Category":"Control Room ","Place_Name":"Sidhi Ghat","Latitude":25.251392,"Longitude":86.737249},
-{"Category":"Control Room ","Place_Name":"Krishngadh","Latitude":25.2467633,"Longitude":86.7420117},
-{"Category":"Control Room ","Place_Name":"Jilebiyamor Dharmshala Belhar","Latitude":24.89690,"Longitude":86.66280},
-{"Category":"Control Room ","Place_Name":"Katoriya Power Grid Campus","Latitude":24.75197,"Longitude":86.70232}
+{"Slno":1,"Category":"Control Room ","Place_Name":"Jahaj Ghat","Latitude":25.252803,"Longitude":86.739038,"type":"Govt.","distance":"0.26km","Contact_no":"","Address":"Jahaj Ghat, Sultanganj"},
+{"Slno":2,"Category":"Control Room ","Place_Name":"Sidhi Ghat","Latitude":25.251392,"Longitude":86.737249,"type":"Govt.","distance":"0.33km","Contact_no":"","Address":"Sidhi Ghat, Sultanganj"},
+{"Slno":3,"Category":"Control Room ","Place_Name":"Jilebiyamor Dharmshala Belhar","Latitude":24.89690,"Longitude":86.66280,"type":"Govt.","distance":"49.98km","Contact_no":"8986956782","Address":"Deoghar Rd, Tola Kaithatikar, Bihar 813119, India"},
+{"Slno":4,"Category":"Control Room ","Place_Name":"Katoriya Power Grid Campus","Latitude":24.75197,"Longitude":86.70232,"type":"Govt.","distance":"71.09km","Contact_no":"8986956780","Address":"Deoghar Rd, Chihutjor, Bihar 813106, India"}
 ]}

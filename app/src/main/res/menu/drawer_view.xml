@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/group1"
+        android:title="@string/emergency" >
+        <menu>
+            <group android:checkableBehavior="single"
+                android:id="@+id/nav_emergency">
+                <item
+                    android:id="@+id/nav_ambulance"
+                    android:icon="@drawable/ambulance"
+                    android:title="@string/ambulance" />
+                <item
+                    android:id="@+id/nav_doctor"
+                    android:icon="@drawable/doctor"
+                    android:title="@string/doctor_availability" />
+
+            </group>
+        </menu>
+    </item>
+    <item android:id="@+id/group2"
+        android:title="@string/help_line" >
+        <menu>
+            <group android:checkableBehavior="single"
+                android:id="@+id/nav_helpline">
+                <item
+                    android:id="@+id/nav_mela_helpline"
+                    android:icon="@drawable/helpline"
+                    android:title="@string/mela_help_line" />
+                <item
+                    android:id="@+id/nav_disaster_helpline"
+                    android:icon="@drawable/disaster"
+                    android:title="@string/disaster" />
+                <item
+                    android:id="@+id/nav_electricity_helpline"
+                    android:icon="@drawable/electric"
+                    android:title="@string/electric" />
+                <item
+                    android:id="@+id/nav_food_inspector"
+                    android:icon="@drawable/inspection"
+                    android:title="@string/food_medical_inspector" />
+
+            </group>
+        </menu>
+    </item>
+    <item android:id="@+id/group3"
+        android:title="@string/rate_chart" >
+        <menu>
+            <group android:checkableBehavior="single"
+                android:id="@+id/nav_rate_chart">
+                <item
+                    android:id="@+id/nav_food_rate"
+                    android:icon="@drawable/food_rate"
+                    android:title="@string/food_rate" />
+                <item
+                    android:id="@+id/nav_puja_samagari"
+                    android:icon="@drawable/puja_rate"
+                    android:title="@string/puja_samagari" />
+                <item
+                    android:id="@+id/nav_medicine"
+                    android:icon="@drawable/medical_store"
+                    android:title="@string/medicine" />
+
+            </group>
+        </menu>
+    </item>
+    <item android:id="@+id/group4"
+        android:title="@string/find_places" >
+        <menu>
+            <group android:checkableBehavior="single"
+                android:id="@+id/nav_find_places">
+                <item
+                    android:id="@+id/nav_waterfall"
+                    android:icon="@drawable/waterfall"
+                    android:title="@string/waterfall" />
+                <item
+                    android:id="@+id/nav_drinking_water"
+                    android:icon="@drawable/drinking_water"
+                    android:title="@string/drinking_water" />
+
+            </group>
+        </menu>
+    </item>
+</menu>

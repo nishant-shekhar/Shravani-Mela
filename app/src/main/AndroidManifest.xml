@@ -36,6 +36,7 @@
         <service
             android:name=".MusicService"
             android:exported="false" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
@@ -78,6 +79,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Table" />
+        <activity android:name=".Electric" />
+        <activity android:name=".DutyCard"></activity>
     </application>
 
 </manifest>

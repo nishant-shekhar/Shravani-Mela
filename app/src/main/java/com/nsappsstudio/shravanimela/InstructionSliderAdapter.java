@@ -57,43 +57,7 @@ public class InstructionSliderAdapter extends PagerAdapter {
                 slide3.setVisibility(View.VISIBLE);
                 break;
         }
-        Button nextPage1=view.findViewById(R.id.button3);
-        nextPage1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((InstructionPage)context).nextPage();
-            }
-        });
-        Button nextPage2=view.findViewById(R.id.button4);
-        nextPage2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((InstructionPage)context).nextPage();
-            }
-        });
-        Button skipPage1=view.findViewById(R.id.button8);
-        skipPage1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((InstructionPage)context).goToMain();
-            }
-        });
-        Button skipPage2=view.findViewById(R.id.button5);
-        skipPage2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((InstructionPage)context).goToMain();
-            }
-        });
 
-        Button finish=view.findViewById(R.id.button6);
-        finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((InstructionPage)context).goToMain();
-
-            }
-        });
         container.addView(view);
         return view;
     }
