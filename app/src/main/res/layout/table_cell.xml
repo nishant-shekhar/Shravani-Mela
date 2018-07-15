@@ -33,7 +33,7 @@
                 android:paddingBottom="5dp"
                 android:paddingStart="2dp"
                 android:paddingTop="5dp"
-                android:textAlignment="viewStart"
+                android:textAlignment="center"
                 android:textColor="@color/background"
                 android:textSize="14sp" />
 

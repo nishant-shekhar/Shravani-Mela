@@ -43,16 +43,33 @@
     <string name="register_now">Register Now</string>
     <string name="welcome">Welcome</string>
     <string name="next">Next</string>
-    <string name="welcome_note">Bhagalpur Admistration welcomes you to Shravani mela 2018. This app is dedicated towards the pilgrims safe and comfortable journey towards Baba Dham.</string>
+    <string name="welcome_note">Bhagalpur Administration welcomes you to Shravani mela 2018 celebrating from 27th July to 28th Aug. This app is dedicated towards pilgrims safe and comfortable journey to Baba Dham.</string>
     <string name="back">Back</string>
     <string name="finish">Finish</string>
     <string name="donts">Don\'ts</string>
     <string name="dos">DOs</string>
     <string name="skip">Skip</string>
-    <string name="dos_list">1. Please follow all the instructions carefully \n2. Always move in group. \n3. Do not go to the jungle alone.
-        \n4.Take care of your luggage. \n5. Do remember your family member's mobile number</string>
-    <string name="do_not_list">1. First Instruction  \n2. Second Instruction. \n3. Third Instruction.
-        \n4.Fourth Instruction. \n5. Fifth Instruction. \n6. Sixth Instruction.\n7. Seventh Instruction. \n8. Eighth Instruction</string>
+    <string name="dos_list">1.	Always move in group \n2. Be sure to use torch and sticks during the night in the wild and mountainous pathways.
+\n3.	Do not associate with strangers
+\n4.	Protect your baggage security by your own.
+\n5.	Female travelers are requested to stay in touch with their male hitchhikers in the night.
+\n6.	In case of any sudden situation inform the local police station or the police in place of the place and cooperate with the police.
+\n7.	Remember your mobile phone or home address
+\n8.	All control room have police assistance center, use it.
+\n9.	All control rooms have free mobile charging system, you can charge your mobile phones.
+\n10.	Use the official Dharamsala or the Free Private Dharshala to stay.
+\n11.	Send Kanwaria to the nearest Police Help Center who get lost.
+\n12.	Do not go on rumor
+</string>
+    <string name="do_not_list">1.	Kanwaria Bandhu do not go alone in the night.
+\n2.	Do not eat any drug during travel.
+\n3.	Female travelers are requested to not go alone in the night.
+\n4.	Do not give your mobile number to any stranger
+\n5.	Do not stay in a deserted and dark place.
+\n6.	Do not pay more than the government rate on the food items.
+\n7.	Do not accept any food given by an unknown person or Kanwaria.
+\n8.	Do not give your mobile to any stranger to use.
+</string>
     <string name="notifications">Notifications</string>
     <string name="control_room">Control Room</string>
     <string name="light_crowd">Light Crowd</string>
@@ -76,4 +93,21 @@
     <string name="electric_title4">आपातकालीन फ्यूज कॉल गैंगः- 24 घंटे कार्यरत रहेंगे।</string>
     <string name="electric_title5">उपरोक्त सभी कामगार अपने कनीय विद्युत अभियंता सुलतानगंज (शहरी) तथा कनीय विद्युत अभियन्ता (ग्रामीण) के साथ कार्य पर तैनात रहेंगे।</string>
     <string name="call">Call</string>
+    <string name="centralizeContact">Centralized Contacts</string>
+    <string name="english">English</string>
+    <string name="hindi">हिंदी</string>
+    <string name="prefered_lang_english">Select your preferred language</string>
+    <string name="select_lang_hindi">अपनी पसंदीदा भाषा का चयन करें</string>
+    <string name="medicine_inspector">Medicine Inspector</string>
+    <string name="paramedic">Paramedic</string>
+    <string name="duty_chart">Duty Chart</string>
+    <string name="health">Health</string>
+    <string name="health_centre">Health Centre</string>
+    <string name="info_centre">Information Centre</string>
+    <string name="petrol_pump">Pertrol Pump</string>
+    <string name="sanskritik_centre">Sanskritik Centre</string>
+    <string name="shivir">Shivir</string>
+    <string name="stay_place">Stay Place</string>
+    <string name="vehicle_workshop">Vehicle Workshop</string>
+    <string name="slide_to_more">Slide to right to view more</string>
 </resources>

@@ -8,6 +8,7 @@
       "Longitude": "86.737249",
       "type": "Govt.",
       "distance": "2.00km",
+      "Contact_no": "",
       "Address": "Ghat Road, Sultanganj, Bihar 813213, India"
     },
     {
@@ -18,6 +19,7 @@
       "Longitude": "86.7278927",
       "type": "Govt.",
       "distance": "1.96km",
+      "Contact_no": "",
       "Address": "Bhagalpur-Munger Rd, Sultanganj, Bihar 813213, India"
     },
     {
@@ -28,6 +30,7 @@
       "Longitude": "86.7279817",
       "type": "Govt.",
       "distance": "2.78km",
+      "Contact_no": "",
       "Address": "Deoghar Rd, Masdi, Bihar 813213, India"
     },
     {
@@ -38,6 +41,7 @@
       "Longitude": "86.7176917",
       "type": "Govt.",
       "distance": "6.02km",
+      "Contact_no": "",
       "Address": "Deoghar Rd, Rajganj, Bihar 813213, India"
     },
     {
@@ -48,6 +52,7 @@
       "Longitude": "86.715219",
       "type": "Govt.",
       "distance": "6.77km",
+      "Contact_no": "",
       "Address": "Deoghar Rd, Bhim Buzurg, Bihar 813213, India"
     },
     {
@@ -58,6 +63,7 @@
       "Longitude": "86.7105231",
       "type": "Govt.",
       "distance": "8.27km",
+      "Contact_no": "",
       "Address": "Deoghar Rd, Jagardari, Bihar 813213, India"
     },
     {
@@ -68,6 +74,7 @@
       "Longitude": "86.7092073",
       "type": "Govt.",
       "distance": "8.68km",
+      "Contact_no": "",
       "Address": "Deoghar Rd, Jagardari, Bihar 813213, India"
     },
     {
@@ -78,6 +85,7 @@
       "Longitude": "86.7085205",
       "type": "Govt.",
       "distance": "8.92km",
+      "Contact_no": "",
       "Address": "Deoghar Rd, Jagardari, Bihar 813213, India"
     },
     {
@@ -88,6 +96,7 @@
       "Longitude": "86.7085205",
       "type": "Govt.",
       "distance": "8.92km",
+      "Contact_no": "",
       "Address": "Deoghar Rd, Jagardari, Bihar 813213, India"
     },
     {
@@ -98,6 +107,7 @@
       "Longitude": "86.7083156",
       "type": "Govt.",
       "distance": "8.96km",
+      "Contact_no": "",
       "Address": "Deoghar Rd, Jagardari, Bihar 813213, India"
     },
     {
@@ -108,6 +118,7 @@
       "Longitude": "86.7088374",
       "type": "Govt.",
       "distance": "10.45km",
+      "Contact_no": "",
       "Address": "Masudanpur, Bihar 813201, India"
     },
     {
@@ -118,6 +129,7 @@
       "Longitude": "86.7056024",
       "type": "Govt.",
       "distance": "11.20km",
+      "Contact_no": "",
       "Address": "Chapha, Bihar 813201, India"
     },
     {
@@ -128,6 +140,7 @@
       "Longitude": "86.6302714",
       "type": "Govt.",
       "distance": "19.70km",
+      "Contact_no": "",
       "Address": "Kharagpur-Asarganj Rd, Bihar 813201, India"
     },
     {
@@ -138,6 +151,7 @@
       "Longitude": "86.6302714",
       "type": "Govt.",
       "distance": "19.70km",
+      "Contact_no": "",
       "Address": "Kharagpur-Asarganj Rd, Bihar 813201, India"
     },
     {
@@ -148,6 +162,7 @@
       "Longitude": "86.6945739",
       "type": "Govt.",
       "distance": "13.94km",
+      "Contact_no": "",
       "Address": "Jalalabad, Bihar 813201, India"
     },
     {
@@ -158,6 +173,7 @@
       "Longitude": "86.692356",
       "type": "Govt.",
       "distance": "14.13km",
+      "Contact_no": "",
       "Address": "Jalalabad, Bihar 813201, India"
     },
     {
@@ -168,6 +184,7 @@
       "Longitude": "86.6868864",
       "type": "Govt.",
       "distance": "15.46km",
+      "Contact_no": "",
       "Address": "52 Deoghar Rd, Manikpur, Bihar 813201, India"
     },
     {
@@ -200,6 +217,7 @@
       "Longitude": "86.63701",
       "type": "Govt.",
       "distance": "43.01km",
+      "Contact_no": "",
       "Address": "Bihar, 813207, India"
     },
     {
@@ -210,6 +228,7 @@
       "Longitude": "86.64754",
       "type": "Non Govt.",
       "distance": "44.96km",
+      "Contact_no": "",
       "Address": "Bihar, 813207, India"
     },
     {
@@ -220,6 +239,7 @@
       "Longitude": "86.64806",
       "type": "Non Govt.",
       "distance": "41.82km",
+      "Contact_no": "",
       "Address": "Banka Belhar Road, Lulha, Bihar 813118, India"
     },
     {
@@ -230,6 +250,7 @@
       "Longitude": "86.6543",
       "type": "Non Govt.",
       "distance": "41.34km",
+      "Contact_no": "",
       "Address": "Banka Belhar Road, Lulha, Bihar 813118, India"
     },
     {
@@ -283,6 +304,7 @@
       "Latitude": "24.90129",
       "Longitude": "86.66113",
       "type": "Govt.",
+      "distance": "49.86km",
       "Contact_no": "8544428945",
       "Address": "Deoghar Rd, Tola Kaithatikar, Bihar 813119, India"
     },
@@ -294,6 +316,7 @@
       "Longitude": "86.66702",
       "type": "Non Govt.",
       "distance": "50.55km",
+      "Contact_no": "",
       "Address": "Deoghar Rd, Tola Kaithatikar, Bihar 813119, India"
     },
     {

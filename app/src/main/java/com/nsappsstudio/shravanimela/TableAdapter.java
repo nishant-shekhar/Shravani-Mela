@@ -93,15 +93,46 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolderCl
 
 
         switch (tableList.getType()){
+            case 1:
+                holder.cell1.setVisibility(View.VISIBLE);
+                holder.cell2.setVisibility(View.VISIBLE);
+                holder.cell3.setVisibility(View.VISIBLE);
+                holder.cell4.setVisibility(View.VISIBLE);
+                holder.cell5.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                holder.cell1.setVisibility(View.VISIBLE);
+                holder.cell2.setVisibility(View.GONE);
+                holder.cell3.setVisibility(View.VISIBLE);
+                holder.cell4.setVisibility(View.VISIBLE);
+                holder.cell5.setVisibility(View.VISIBLE);
+                break;
             case 3:
                 holder.cell1.setVisibility(View.GONE);
+                holder.cell2.setVisibility(View.VISIBLE);
+                holder.cell3.setVisibility(View.VISIBLE);
+                holder.cell4.setVisibility(View.VISIBLE);
                 holder.cell5.setVisibility(View.GONE);
                 break;
             case 4:
-                holder.cell3.setVisibility(View.GONE);
+                holder.cell1.setVisibility(View.VISIBLE);
+                holder.cell2.setVisibility(View.VISIBLE);
+                holder.cell3.setVisibility(View.VISIBLE);
+                holder.cell4.setVisibility(View.GONE);
                 holder.cell5.setVisibility(View.GONE);
                 break;
             case 5:
+                holder.cell1.setVisibility(View.VISIBLE);
+                holder.cell2.setVisibility(View.VISIBLE);
+                holder.cell3.setVisibility(View.VISIBLE);
+                holder.cell4.setVisibility(View.VISIBLE);
+                holder.cell5.setVisibility(View.GONE);
+                break;
+            case 6:
+                holder.cell1.setVisibility(View.VISIBLE);
+                holder.cell2.setVisibility(View.VISIBLE);
+                holder.cell3.setVisibility(View.GONE);
+                holder.cell4.setVisibility(View.VISIBLE);
                 holder.cell5.setVisibility(View.GONE);
                 break;
 

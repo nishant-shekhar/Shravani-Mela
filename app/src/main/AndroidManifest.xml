@@ -81,7 +81,9 @@
         </activity>
         <activity android:name=".Table" />
         <activity android:name=".Electric" />
-        <activity android:name=".DutyCard"></activity>
+        <activity android:name=".DutyCard" />
+        <activity android:name=".CentralizeContact" />
+        <activity android:name=".LanguageSelect"></activity>
     </application>
 
 </manifest>

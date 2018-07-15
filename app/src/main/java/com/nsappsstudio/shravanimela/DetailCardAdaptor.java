@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class DetailCardAdaptor extends RecyclerView.Adapter<DetailCardAdaptor.Vi
 
     @Override
     public void onBindViewHolder(@NonNull DetailCardAdaptor.ViewHolderClass holder, int position) {
-        DetailCardItem detailCardItem= detailCardItems.get(position);
+        final DetailCardItem detailCardItem= detailCardItems.get(position);
         if (detailCardItem.isTitle()){
             holder.detailCard.setVisibility(View.GONE);
             holder.mainTitle.setText(detailCardItem.getMainTitle());
@@ -43,14 +44,18 @@ public class DetailCardAdaptor extends RecyclerView.Adapter<DetailCardAdaptor.Vi
             holder.innerTitle.setText(detailCardItem.getInnerTitle());
             holder.subtitle.setText(detailCardItem.getSubTitle());
             holder.description.setText(detailCardItem.getDescription());
+            holder.mobile.setText(detailCardItem.getPhone());
             holder.shift.setText(detailCardItem.getShift());
             holder.call.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-
+                    ((DutyCard)context).dialPhoneNumber(detailCardItem.getPhone());
                 }
             });
+            if (detailCardItem.getDescription()==null){
+                holder.descriptionLinearLayout.setVisibility(View.GONE);
+            }
 
         }
 
@@ -70,8 +75,10 @@ public class DetailCardAdaptor extends RecyclerView.Adapter<DetailCardAdaptor.Vi
         public TextView innerTitle;
         public TextView subtitle;
         public TextView description;
+        public TextView mobile;
         public TextView shift;
         public TextView call;
+        public LinearLayout descriptionLinearLayout;
 
 
 
@@ -83,10 +90,12 @@ public class DetailCardAdaptor extends RecyclerView.Adapter<DetailCardAdaptor.Vi
             optionalTitle=itemView.findViewById(R.id.dc_title);
             innerTitle=itemView.findViewById(R.id.dc_name);
             subtitle=itemView.findViewById(R.id.dc_designation);
-            description=itemView.findViewById(R.id.dc_mobile);
+            mobile=itemView.findViewById(R.id.dc_mobile);
+            description=itemView.findViewById(R.id.dc_description);
             shift=itemView.findViewById(R.id.dc_shift);
             call=itemView.findViewById(R.id.dc_call);
             mainTitle=itemView.findViewById(R.id.dc_mainTitle);
+            descriptionLinearLayout=itemView.findViewById(R.id.dc_description_layout);
 
         }
     }

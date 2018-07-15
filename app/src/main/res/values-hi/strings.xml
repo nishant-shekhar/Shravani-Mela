@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shravani Mela</string>
+    <string name="urgent_notifcation">तत्काल अधिसूचना</string>
+    <string name="ambulance">एम्बुलेंस</string>
+    <string name="atm">एटीएम</string>
+    <string name="help_line">हेल्पलाइन</string>
+    <string name="bathroom">बाथरूम</string>
+    <string name="disaster">आपदा हेल्पलाइन</string>
+    <string name="doctor">डॉक्टर</string>
+    <string name="drinking_water">पीने का पानी</string>
+    <string name="electric">इलेक्ट्रिक हेल्पलाइन</string>
+    <string name="food_rate">खाद्य दर</string>
+    <string name="food_inspector">खाद्य निरीक्षक</string>
+    <string name="medical_store">मेडिकल स्टोर</string>
+    <string name="parking">पार्किंग</string>
+    <string name="bhagalpur">भागलपुर</string>
+    <string name="medium_crowd">मध्यम भीड़</string>
+    <string name="crowd_status">भीड़ स्थिति</string>
+    <string name="sultangunj">सुल्तानगंज</string>
+    <string name="heavy_crowd">भारी भीड़</string>
+    <string name="live_arti">लाइव आरती देखें</string>
+    <string name="police_station">पुलिस स्टेशन</string>
+    <string name="rest_room">Rest room</string>
+    <string name="toilet">शौचालय</string>
+    <string name="waterfall">झरना</string>
+    <string name="alert">अलर्ट / अधिसूचनाएं</string>
+
+    <string name="settings">सेटिंग्स</string>
+    <string name="title_activity_sos">Map</string>
+    <string name="sos1">सहायता! मैं खतरे में हूँ</string>
+    <string name="sos2"> सहायता करें! मुझे अपहरण किया जा रहा है</string>
+    <string name="sos3">सहायता करें! मैं खो गया हूँ</string>
+    <string name="safe_now">अब मैं सुरक्षित हूं </string>
+    <string name="title_activity_places">Map</string>
+    <string name="open_g_map">Navigate</string>
+    <string name="view_on_gmap">View on Google Map</string>
+    <string name="sos">SOS</string>
+    <string name="register_now">Register Now</string>
+    <string name="welcome">स्वागतम्</string>
+    <string name="next">आगे</string>
+    <string name="welcome_note">भागलपुर जिला प्रशासन श्रवानी मेला 2018 में आपका स्वागत करता है। यह ऐप तीर्थयात्रियों को सुल्तानगंज से बाबा धाम की सुरक्षित एवं  सुविधाजनक यात्रा के लिए समर्पित है।</string>
+    <string name="back">पीछे</string>
+    <string name="finish">प्रवेश करें</string>
+    <string name="donts">क्या नहीं करें</string>
+    <string name="dos">क्या करें</string>
+    <string name="skip">Skip</string>
+        
+</resources>

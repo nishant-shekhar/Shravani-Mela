@@ -26,6 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -118,52 +119,148 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
 
-        loadCrowdStatus();
-
     }
 
     private void loadFromMenu(int id) {
+        Intent intent;
         switch (id){
-            case R.id.nav_doctor:
 
-                break;
             case R.id.nav_ambulance:
-
+                intent= new Intent(this,DutyCard.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Ambulance.json");
+                startActivity(intent);
+                break;
+            case R.id.nav_doctor:
+                intent= new Intent(this,DutyCard.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","DoctorChart.json");
+                startActivity(intent);
                 break;
             case R.id.nav_mela_helpline:
 
                 break;
             case R.id.nav_disaster_helpline:
-
+                intent= new Intent(this,Table.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Disaster.json");
+                startActivity(intent);
                 break;
             case R.id.nav_electricity_helpline:
-                Intent intent= new Intent(this,Electric.class);
+                intent = new Intent(this, Electric.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 break;
             case R.id.nav_food_inspector:
-
+                intent= new Intent(this,DutyCard.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Food Inspector.json");
+                startActivity(intent);
+                break;
+            case R.id.nav_medicine_inspector:
+                intent= new Intent(this,DutyCard.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Medicine Inspector.json");
+                startActivity(intent);
+                break;
+            case R.id.nav_paramedic:
+                intent= new Intent(this,DutyCard.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Paramedic.json");
+                startActivity(intent);
+                break;
+            case R.id.nav_dutyChart:
+                intent= new Intent(this,DutyCard.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","DutyChart.json");
+                startActivity(intent);
+                break;
+            case R.id.nav_centralize_helpline:
+                intent = new Intent(this, CentralizeContact.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 break;
             case R.id.nav_food_rate:
-
+                intent= new Intent(this,Table.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Food Rate.json");
+                startActivity(intent);
                 break;
             case R.id.nav_puja_samagari:
+                intent= new Intent(this,Table.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Puja Samagari.json");
+                startActivity(intent);
+                break;
+            case R.id.nav_atm:
+                intent= new Intent(this,PLaces.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Atm.json");
+                startActivity(intent);
 
                 break;
-            case R.id.nav_medicine:
-
+            case R.id.nav_health_centre:
+                intent= new Intent(this,PLaces.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Health Centre.json");
+                startActivity(intent);
+                break;
+            case R.id.nav_info_centre:
+                intent= new Intent(this,PLaces.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Information Centre.json");
+                startActivity(intent);
+                break;
+            case R.id.nav_parking:
+                intent= new Intent(this,PLaces.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Parking.json");
+                startActivity(intent);
+                break;
+            case R.id.nav_petrol_pump:
+                intent= new Intent(this,PLaces.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Petrol Pump.json");
+                startActivity(intent);
+                break;
+            case R.id.nav_sanskritik_cente:
+                intent= new Intent(this,PLaces.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Sanskritik Centre.json");
+                startActivity(intent);
+                break;
+            case R.id.nav_shivir:
+                intent= new Intent(this,PLaces.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Shivir.json");
+                startActivity(intent);
+                break;
+            case R.id.nav_stay_places:
+                intent= new Intent(this,PLaces.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Stay Place.json");
+                startActivity(intent);
                 break;
             case R.id.nav_waterfall:
-
+                intent= new Intent(this,PLaces.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Jharna.json");
+                startActivity(intent);
                 break;
-            case R.id.nav_drinking_water:
-
+            case R.id.nav_vehicle_workshop:
+                intent= new Intent(this,PLaces.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","Vehicle Workshop.json");
+                startActivity(intent);
                 break;
+
 
         }
     }
 
-    private void loadCrowdStatus(){
+
+    public void loadCrowdStatus(View view){
+        view.setEnabled(false);
         final RecyclerView recyclerView=findViewById(R.id.crowd_recyclerview);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
@@ -191,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
                     //do nothing
                 }
 
-                Toast.makeText(MainActivity.this, date, Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this, date, Toast.LENGTH_LONG).show();
 
                 CrowdItemList crowdItemList=new CrowdItemList(date,place,crowdLevel);
                 crowdItemLists.add(crowdItemList);
@@ -254,17 +351,25 @@ public class MainActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
-    public void GoToPlaces(View view){
+    public void GoToToilet(View view){
 
         Intent intent= new Intent(this,PLaces.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("type","Toilet.json");
         startActivity(intent);
     }
-    public void GoToJharna(View view){
+    public void GoToDrinkingWater(View view){
 
-        Intent intent= new Intent(this,Table.class);
+        Intent intent= new Intent(this,PLaces.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("type","Drinking Water.json");
+        startActivity(intent);
+    }
+    public void GoToAmbulance(View view){
+
+        Intent intent= new Intent(this,DutyCard.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("type","Ambulance.json");
         startActivity(intent);
     }
     public void GoToPolice(View view){
@@ -281,11 +386,18 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("type","Control Room.json");
         startActivity(intent);
     }
-    public void GoToStayPlaces(View view){
+    public void GoToBathroom(View view){
 
         Intent intent= new Intent(this,PLaces.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("type","Stay Place.json");
+        intent.putExtra("type","Bathroom.json");
+        startActivity(intent);
+    }
+    public void GoToWaterfall(View view){
+
+        Intent intent= new Intent(this,PLaces.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("type","Jharna.json");
         startActivity(intent);
     }
     public void GoToNotification(View view){
@@ -294,9 +406,9 @@ public class MainActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
-    /*public void play_pauseMusic(View view){
+    public void play_pauseMusic(View view){
         Intent svc=new Intent(this, MusicService.class);
-        FloatingActionButton floatingActionButton=findViewById(R.id.floatingActionButton2);
+        ImageButton floatingActionButton=findViewById(R.id.music_button);
 
         if (isMyServiceRunning(MusicService.class)){
             stopService(svc);
@@ -308,7 +420,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-    }*/
+    }
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {

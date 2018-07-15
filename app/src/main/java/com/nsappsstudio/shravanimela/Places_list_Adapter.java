@@ -37,21 +37,57 @@ public class Places_list_Adapter extends RecyclerView.Adapter<Places_list_Adapte
         holder.subTitle.setText(placesItem.getSubtitle());
         holder.mapIcon.setImageResource(R.drawable.ic_map_24dp);
         switch (placesItem.getItemType()){
-                case "Toilet":
-                    holder.imageType.setImageResource(R.drawable.toilet);
-                    break;
-                case "Jharna":
-                    holder.imageType.setImageResource(R.drawable.waterfall);
-                    break;
-                case "Police Station":
-                    holder.imageType.setImageResource(R.drawable.police);
-                    break;
-                case "Stay Place":
-                    holder.imageType.setImageResource(R.drawable.rest_room);
-                    break;
-                case "Control Room ":
-                    holder.imageType.setImageResource(R.drawable.call_center);
-                    break;
+            case "ATM":
+                holder.imageType.setImageResource(R.drawable.atm);
+                break;
+            case "Bathroom":
+                holder.imageType.setImageResource(R.drawable.shower);
+                break;
+            case "Control Room ":
+                holder.imageType.setImageResource(R.drawable.call_center);
+                break;
+            case "Drinking water":
+                holder.imageType.setImageResource(R.drawable.drinking_water);
+                break;
+            case "Jharna":
+                holder.imageType.setImageResource(R.drawable.waterfall);
+                break;
+            case "Health Centre":
+                holder.imageType.setImageResource(R.drawable.ic_healing_black_24dp);
+                break;
+            case "Information Centre":
+                holder.imageType.setImageDrawable(context.getResources().getDrawable(R.drawable.rangoli_bitmap));
+                break;
+            case "Parking":
+                holder.imageType.setImageResource(R.drawable.parking);
+                break;
+            case "Petrol Pump":
+                holder.imageType.setImageResource(R.drawable.ic_local_gas_station_black_24dp);
+                break;
+            case "Sanskritik Centre":
+                holder.imageType.setImageDrawable(context.getResources().getDrawable(R.drawable.rangoli_bitmap));
+                break;
+            case "Police Station":
+                holder.imageType.setImageResource(R.drawable.police);
+                break;
+            case "Shivir":
+                holder.imageType.setImageResource(R.drawable.tent);
+                break;
+            case "Stay Place":
+                holder.imageType.setImageResource(R.drawable.rest_room);
+                break;
+            case "Temple":
+                holder.imageType.setImageDrawable(context.getResources().getDrawable(R.drawable.rangoli_bitmap));
+                break;
+            case "Toilet":
+                holder.imageType.setImageResource(R.drawable.toilet);
+                break;
+            case "Workshop":
+                holder.imageType.setImageResource(R.drawable.workshop);
+                break;
+            default:
+                holder.imageType.setImageDrawable(context.getResources().getDrawable(R.drawable.rangoli_bitmap));
+                break;
 
         }
         holder.contentLayout.setOnClickListener(new View.OnClickListener() {

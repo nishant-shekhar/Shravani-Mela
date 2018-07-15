@@ -232,11 +232,35 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
 
 
         switch (category){
-            case "Toilet":
-                imageView.setImageResource(R.drawable.toilet);
+            case "ATM":
+                imageView.setImageResource(R.drawable.atm);
+                break;
+            case "Bathroom":
+                imageView.setImageResource(R.drawable.shower);
+                break;
+            case "Control Room ":
+                imageView.setImageResource(R.drawable.call_center);
+                break;
+            case "Drinking water":
+                imageView.setImageResource(R.drawable.drinking_water);
                 break;
             case "Jharna":
                 imageView.setImageResource(R.drawable.waterfall);
+                break;
+            case "Health Centre":
+                imageView.setImageResource(R.drawable.ic_healing_black_24dp);
+                break;
+            case "Information Centre":
+                imageView.setImageResource(R.drawable.rangoli);
+                break;
+            case "Parking":
+                imageView.setImageResource(R.drawable.parking);
+                break;
+            case "Petrol Pump":
+                imageView.setImageResource(R.drawable.ic_local_gas_station_black_24dp);
+                break;
+            case "Sanskritik Centre":
+                imageView.setImageResource(R.drawable.rangoli);
                 break;
             case "Police Station":
                 imageView.setImageResource(R.drawable.police);
@@ -244,9 +268,21 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
             case "Stay Place":
                 imageView.setImageResource(R.drawable.rest_room);
                 break;
-            case "Control Room ":
-                imageView.setImageResource(R.drawable.call_center);
+            case "Shivir":
+                imageView.setImageResource(R.drawable.tent);
                 break;
+            case "Temple":
+                imageView.setImageResource(R.drawable.rangoli);
+                break;
+            case "Toilet":
+                imageView.setImageResource(R.drawable.toilet);
+                break;
+            case "Workshop":
+                imageView.setImageResource(R.drawable.workshop);
+                break;
+            default:
+                imageView.setImageDrawable(getResources().getDrawable(R.drawable.rangoli_bitmap));
+
         }
 
         String title=place_name+" | "+category;

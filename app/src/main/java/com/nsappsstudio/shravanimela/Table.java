@@ -1,10 +1,12 @@
 package com.nsappsstudio.shravanimela;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -22,15 +24,49 @@ public class Table extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table);
+        int type=5;
+        String filename="Puja Samagari.json";
+        try {
+            Intent intent=getIntent();
+            String typeID = intent.getStringExtra("type");
+            if (typeID!=null){
+                filename=typeID;
+            }
+        }catch (IllegalArgumentException error){
+            //do nothing
+            filename="Puja Samagari.json";
+        }
 
-        loadTable();
+        String title = null;
+        switch (filename){
+            case "Puja Samagari.json":
+                title="सुलतानगंज श्रावणी मेला- 2018\n" +
+                        "प्रस्तावित मूल्य तालिका\n" +
+                        "पूजा एवं अन्य सामग्री";
+                type=5;
+                break;
+            case "Food Rate.json":
+                title="सुलतानगंज श्रावणी मेला- 2018\n" +
+                        "प्रस्तावित मूल्य  तालिका\n" +
+                        "खाद्य सामग्री";
+                type=4;
+                break;
+            case "Disaster.json":
+                title=getResources().getString(R.string.disaster);
+                type=5;
+                break;
+
+        }
+        TextView titleView=findViewById(R.id.table_title);
+        titleView.setText(title);
+        loadTable(filename,type);
 
     }
-    public String loadJSONFromAsset() {
+    public String loadJSONFromAsset(String filename) {
         String json ;
         try {
             Context c=this;
-            InputStream is = c.getAssets().open("Bhagalpur Contact.json");
+            InputStream is = c.getAssets().open(filename);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
@@ -43,14 +79,14 @@ public class Table extends AppCompatActivity {
         return json;
     }
 
-    private void loadTable(){
+    private void loadTable(String filename,int type){
         RecyclerView recyclerView=findViewById(R.id.table_recyleview);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<TableList> tableLists = new ArrayList<>();
 
         try {
-            JSONObject obj = new JSONObject(loadJSONFromAsset());
+            JSONObject obj = new JSONObject(loadJSONFromAsset(filename));
             JSONArray m_jArray = obj.getJSONArray("table");
 
             for (int i = 0; i < m_jArray.length(); i++) {
@@ -59,6 +95,8 @@ public class Table extends AppCompatActivity {
                 String cell1 = jo_inside.getString("cell1");
                 String cell2 = jo_inside.getString("cell2");
                 String cell3 = jo_inside.getString("cell3");
+                String cell4 = jo_inside.getString("cell4");
+                String cell5 = jo_inside.getString("cell5");
                 boolean title;
                 boolean even;
 
@@ -77,7 +115,7 @@ public class Table extends AppCompatActivity {
                         even=false;
                     }
                 }
-                TableList tableList= new TableList(title,null,cell1,cell2,cell3 ,null,even,3);
+                TableList tableList= new TableList(title,cell1,cell2,cell3 ,cell4,cell5,even,type);
                 tableLists.add(tableList);
 
                 RecyclerView.Adapter adapter = new TableAdapter(tableLists, this);

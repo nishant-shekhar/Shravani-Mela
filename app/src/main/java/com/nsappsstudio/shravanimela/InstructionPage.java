@@ -1,6 +1,9 @@
 package com.nsappsstudio.shravanimela;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -20,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Locale;
+
 public class InstructionPage extends AppCompatActivity {
 
 
@@ -34,6 +39,19 @@ public class InstructionPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        String language= sharedPref.getString("lang",null);
+        if (language!=null){
+            setLanguage(language);
+            //toastMessage("lang"+language);
+        }else {
+            Intent intent= new Intent(this,LanguageSelect.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        }
+
         setContentView(R.layout.activity_instruction_page);
 
         slides = findViewById(R.id.instruction_view_pager);
@@ -124,6 +142,19 @@ public class InstructionPage extends AppCompatActivity {
 
         }
     };
+    private void setLanguage(String language){
+        Locale locale=new Locale(language);
+        Locale.setDefault(locale);
+        Configuration configuration= new Configuration();
+        configuration.locale=locale;
+        getBaseContext().getResources().updateConfiguration(configuration,getBaseContext().getResources().getDisplayMetrics());
+
+        /*SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("lang", language);
+        editor.apply();*/
+        //toastMessage("lang: "+language+String.valueOf(reStart));
+
+    }
     public void goToMain(){
 
         Intent intent= new Intent(this,MainActivity.class);

@@ -1,6 +1,8 @@
 package com.nsappsstudio.shravanimela;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,13 +59,13 @@ public class Electric extends AppCompatActivity {
                 case 3:
                     recyclerView=findViewById(R.id.electric_list4);
                     filename="Electric4.json";
-                    type=4;
+                    type=6;
                     loadTable(type,recyclerView,filename);
                     break;
                 case 4:
                     recyclerView=findViewById(R.id.electric_list5);
                     filename="Electric5.json";
-                    type=4;
+                    type=6;
                     loadTable(type,recyclerView,filename);
                     break;
 
@@ -213,4 +216,5 @@ public class Electric extends AppCompatActivity {
             }
         }.start();
     }
+
 }
