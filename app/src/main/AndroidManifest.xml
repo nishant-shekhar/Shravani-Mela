@@ -83,7 +83,11 @@
         <activity android:name=".Electric" />
         <activity android:name=".DutyCard" />
         <activity android:name=".CentralizeContact" />
-        <activity android:name=".LanguageSelect"></activity>
+        <activity android:name=".LanguageSelect" />
+        <activity android:name=".AboutMela" />
+        <activity android:name=".ImageHolder">
+
+        </activity>
     </application>
 
 </manifest>

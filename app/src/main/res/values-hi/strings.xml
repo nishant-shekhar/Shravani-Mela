@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Shravani Mela</string>
+    <string name="app_name">श्रावणी मेला</string>
     <string name="urgent_notifcation">तत्काल अधिसूचना</string>
     <string name="ambulance">एम्बुलेंस</string>
     <string name="atm">एटीएम</string>
@@ -27,7 +27,6 @@
     <string name="alert">अलर्ट / अधिसूचनाएं</string>
 
     <string name="settings">सेटिंग्स</string>
-    <string name="title_activity_sos">Map</string>
     <string name="sos1">सहायता! मैं खतरे में हूँ</string>
     <string name="sos2"> सहायता करें! मुझे अपहरण किया जा रहा है</string>
     <string name="sos3">सहायता करें! मैं खो गया हूँ</string>
@@ -36,14 +35,66 @@
     <string name="open_g_map">Navigate</string>
     <string name="view_on_gmap">View on Google Map</string>
     <string name="sos">SOS</string>
-    <string name="register_now">Register Now</string>
     <string name="welcome">स्वागतम्</string>
     <string name="next">आगे</string>
-    <string name="welcome_note">भागलपुर जिला प्रशासन श्रवानी मेला 2018 में आपका स्वागत करता है। यह ऐप तीर्थयात्रियों को सुल्तानगंज से बाबा धाम की सुरक्षित एवं  सुविधाजनक यात्रा के लिए समर्पित है।</string>
+    <string name="welcome_note">भागलपुर जिला प्रशासन श्रवानी मेला 2018 में आपका स्वागत करता है। यह ऐप तीर्थयात्रियों को सुल्तानगंज से बाबा धाम की सुरक्षित एवं  सुविधाजनक यात्रा के लिए समर्पित है। इस ऐप में एम्बुलेंस, डॉक्टर की शिफ्ट, टॉयलेट की लोकेशन से लेकर कई तरह की जानकारियां उपलब्ध है।</string>
     <string name="back">पीछे</string>
     <string name="finish">प्रवेश करें</string>
     <string name="donts">क्या नहीं करें</string>
     <string name="dos">क्या करें</string>
-    <string name="skip">Skip</string>
-        
+
+    <string name="dos_list">1. कांवरिया बन्धु हमेशा जत्था में चले।
+\n2. जंगली और पहाड़ी रास्ते में रात के समय टॉर्च  और लाठी का इस्तेमाल अवश्य करें ।
+\n3. किसी अपरिचित कांवरिया वेशधारी के साथ मेल जोल न बढ़ाए।
+\n4. अपने सामान की सुरक्षा स्वंम करें।
+\n5. महिला यात्रिओं से अनुरोध है की वे रात्रि में अपने पुरुष सहयात्री के संपर्क में रहें।
+\n6. किसी आकस्मिक स्थिति में जगह जगह बने अस्थायी थाना या पुलिस को सूचित करें एवं पुलिस का सहयोग लें।
+\n7. अपने घर के या परिचित के मोबाइल न० जरुर याद रखें।
+\n8. सभी नियंत्रण कक्ष में पुलिस सहायता केंद्र बने हैं , इसका उपयोग करें।
+\n9. सभी नियंत्रण कक्ष में मुफ्त मोबाइल चार्ज की व्यवस्था है, अपना मोबाइल चार्ज कर सकते है।
+\n10. ठहरने के लिए सरकारी धर्मशाला या निः शुल्क प्राइवेट धर्मशाला का ही उपयोग करें।
+\n11. भटके हुए कांवरिया को शीघ्र नजदीक के पुलिस सहायता केंद्र में पहुँचाने का कष्ट करें।
+\n12. अफवाह पर ना जाएं।
+
+</string>
+    <string name="do_not_list">1. कांवरिया बन्धु रात में अकेले नही चले।
+\n2. यात्रा के दौरान किसी मादक पदार्थ का सेवन नही करें ।
+\n3. महिला यात्रिओं से अनुरोध है की वे रात्रि में अकेले नही चलें।
+\n4. किसी अपरचित से संपर्क ना बढ़ाये।
+\n5. किसी अपरचित को अपना मोबाइल न० नही दें।
+\n6. सुनसान एवं अँधेरे जगह पर नही ठहरें।
+\n7. खाने-पीने के दुकानों पर लगे सरकारी रेट से अधिक भुगतान नही करें।
+\n8. कोई अनजान व्यक्ति या कांवरिया के दुआरा दिए गए कोई खाद्य पदार्थ ग्रहण नही करें।
+\n9. अपना मोबाइल किसी अनजान कांवरिया को उपयोग हेतु नही दें।
+
+</string>
+    <string name="notifications">सूचनाएं </string>
+    <string name="control_room">नियंत्रण कक्ष </string>
+    <string name="light_crowd">हल्की भीड़</string>
+    <string name="emergency">आपातकालीन</string>
+    <string name="rate_chart">दर चार्ट</string>
+    <string name="find_places">स्थान खोजें</string>
+    <string name="doctor_availability">डॉक्टर की उपलब्धता</string>
+    <string name="mela_help_line">मेला हेल्पलाइन</string>
+    <string name="food_medical_inspector">Food/Medical Inspector</string>
+    <string name="puja_samagari">पूजा सामग्री</string>
+    <string name="medicine">चिकित्सा</string>
+    <string name="call">कॉल करें</string>
+    <string name="centralizeContact">केंद्रीकृत संपर्क</string>
+    <string name="medicine_inspector">चिकित्सा निरीक्षक</string>
+    <string name="paramedic">पैरामेडिक </string>
+    <string name="duty_chart">ड्यूटी चार्ट</string>
+    <string name="health">स्वास्थ्य</string>
+    <string name="health_centre">स्वास्थ्य केंद्र </string>
+    <string name="info_centre">सूचना केंद्र</string>
+    <string name="petrol_pump">पेट्रोल पंप</string>
+    <string name="sanskritik_centre">संस्कृतिक केंद्र</string>
+    <string name="shivir">शिविर </string>
+    <string name="stay_place">रुकने का स्थान </string>
+    <string name="vehicle_workshop">वाहन कार्यशाला</string>
+    <string name="slide_to_more">मेनू देखने के लिए दाएं स्लाइड करें</string>
+    <string name="helpline_number" >श्रावणी मेला हेल्पलाइन</string>
+    <string name="change_lang">भाषा बदलें</string>
+    <string name="secure_ghats">सुरक्षित घाट नक्शा</string>
+
 </resources>

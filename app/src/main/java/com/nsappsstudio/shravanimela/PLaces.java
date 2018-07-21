@@ -160,6 +160,14 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
                 String place_name = jo_inside.getString("Place_Name");
                 double latitude = jo_inside.getDouble("Latitude");
                 double longitude = jo_inside.getDouble("Longitude");
+                String contact=null;
+                String address=null;
+                if (jo_inside.has("Contact_no")){
+                    contact=jo_inside.getString("Contact_no");
+                }
+                if (jo_inside.has("Address")){
+                    address=jo_inside.getString("Address");
+                }
                 String distance;
                 int np;
                 if (mCurrentLocation!=null) {
@@ -177,13 +185,14 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
                     if (i==m_jArry.length()-1){
                         np=GetNearestPlace();
                         recyclerView.scrollToPosition(np);
+                        //np for nearest place
                         detailCard.setVisibility(View.VISIBLE);
                         if (np==i){
                             onPlaceClicked(latitude,longitude,place_name);
-                            detailCard(latitude,longitude,place_name,distance,category);
+                            detailCard(latitude,longitude,place_name,distance,category,contact,address);
                         }else {
                             onPlaceClicked(placesItems.get(np).getLat(),placesItems.get(np).getLang(),placesItems.get(np).getTitle());
-                            detailCard(placesItems.get(np).getLat(),placesItems.get(np).getLang(),placesItems.get(np).getTitle(),placesItems.get(np).getSubtitle(),placesItems.get(np).getItemType());
+                            detailCard(placesItems.get(np).getLat(),placesItems.get(np).getLang(),placesItems.get(np).getTitle(),placesItems.get(np).getSubtitle(),placesItems.get(np).getItemType(),contact,address);
 
                         }
                     }
@@ -196,7 +205,7 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
 
 
                 String title=String.valueOf(i+1)+". "+place_name;
-                PlacesItem placesItem = new PlacesItem(title, distance,category,i,null ,latitude,longitude);
+                PlacesItem placesItem = new PlacesItem(title, distance,category,i,null ,latitude,longitude,contact,address);
                 placesItems.add(placesItem);
                 RecyclerView.Adapter adapter = new Places_list_Adapter(placesItems, PLaces.this);
                 recyclerView.setAdapter(adapter);
@@ -223,13 +232,18 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
     }
-    public void detailCard(final double lat, final double lang, String place_name, String subtitle, String category){
+    public void detailCard(final double lat, final double lang, String place_name, String subtitle, String category, final String mobileNum, String address){
         TextView titleView=findViewById(R.id.p_card_title);
         TextView subTitleView=findViewById(R.id.p_card_title2);
+        TextView descriptionView=findViewById(R.id.p_card_title3);
         ImageView imageView=findViewById(R.id.p_card_image);
         CardView gmap=findViewById(R.id.p_gmap);
         CardView navigate=findViewById(R.id.p_navigate);
-
+        if (address!=null){
+            descriptionView.setText(address);
+        }else {
+            descriptionView.setVisibility(View.GONE);
+        }
 
         switch (category){
             case "ATM":
@@ -292,7 +306,7 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
         gmap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url="geo:"+lat+","+lang+"?z=15";
+                /*String url="geo:"+lat+","+lang+"?z=15";
 
                 Uri gmmIntentUri = Uri.parse(url);
 
@@ -300,6 +314,19 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
                 mapIntent.setPackage("com.google.android.apps.maps");
                 if (mapIntent.resolveActivity(getPackageManager()) != null) {
                     startActivity(mapIntent);
+                }*/
+                if(mobileNum!=null){
+                    if (mobileNum.length()>4){
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:" + mobileNum));
+                        if (intent.resolveActivity(getPackageManager()) != null) {
+                            startActivity(intent);
+                        }
+                    }else {
+                        toastMessage("Number isn't Available");
+                    }
+                }else {
+                    toastMessage("Number isn't Available");
                 }
             }
         });

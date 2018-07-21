@@ -8,8 +8,10 @@ public class PlacesItem {
     public String additionalInfo;
     public double lat;
     public double lang;
+    public String contact;
+    public String address;
 
-    public PlacesItem(String title, String subtitle, String itemType, int rank, String additionalInfo, double lat, double lang) {
+    public PlacesItem(String title, String subtitle, String itemType, int rank, String additionalInfo, double lat, double lang, String contact, String address) {
         this.title = title;
         this.subtitle = subtitle;
         this.itemType = itemType;
@@ -17,6 +19,8 @@ public class PlacesItem {
         this.additionalInfo = additionalInfo;
         this.lat = lat;
         this.lang = lang;
+        this.contact = contact;
+        this.address = address;
     }
 
     public String getTitle() {
@@ -45,5 +49,13 @@ public class PlacesItem {
 
     public double getLang() {
         return lang;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public String getAddress() {
+        return address;
     }
 }

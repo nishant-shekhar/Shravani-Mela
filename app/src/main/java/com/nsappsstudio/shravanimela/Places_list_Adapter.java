@@ -94,7 +94,7 @@ public class Places_list_Adapter extends RecyclerView.Adapter<Places_list_Adapte
             @Override
             public void onClick(View v) {
                 ((PLaces)context).onPlaceClicked(placesItem.getLat(),placesItem.getLang(),placesItem.getTitle());
-                ((PLaces)context).detailCard(placesItem.getLat(),placesItem.getLang(),placesItem.getTitle(),placesItem.getSubtitle(),placesItem.getItemType());
+                ((PLaces)context).detailCard(placesItem.getLat(),placesItem.getLang(),placesItem.getTitle(),placesItem.getSubtitle(),placesItem.getItemType(),placesItem.getContact(),placesItem.getAddress());
 
             }
         });

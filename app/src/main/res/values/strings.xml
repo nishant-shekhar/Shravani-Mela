@@ -104,10 +104,19 @@
     <string name="health">Health</string>
     <string name="health_centre">Health Centre</string>
     <string name="info_centre">Information Centre</string>
-    <string name="petrol_pump">Pertrol Pump</string>
+    <string name="petrol_pump">Petrol Pump</string>
     <string name="sanskritik_centre">Sanskritik Centre</string>
     <string name="shivir">Shivir</string>
     <string name="stay_place">Stay Place</string>
     <string name="vehicle_workshop">Vehicle Workshop</string>
-    <string name="slide_to_more">Slide to right to view more</string>
+    <string name="slide_to_more">Slide right to view menu</string>
+    <string name="developed_by">Developed by\nNS Apps Innovations LLP</string>
+    <string name="helpline_number">Shravani Mela Helpline</string>
+    <string name="helpline_number_digit">7070747474</string>
+    <string name="about_mela">About Shravani Mela</string>
+    <string name="mela_description" />
+    <string name="change_lang">Change Language</string>
+    <string name="secure_ghats">Secure Ghats</string>
+    <string name="road_map">Road Map</string>
+
 </resources>

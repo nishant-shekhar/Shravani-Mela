@@ -97,7 +97,7 @@ public class InstructionPage extends AppCompatActivity {
             mDot[i]=new TextView(this);
             mDot[i].setText(Html.fromHtml("\u2022"));
             mDot[i].setTextSize(35);
-            mDot[i].setTextColor(getResources().getColor(R.color.gerua_trans));
+            mDot[i].setTextColor(getResources().getColor(R.color.light_orange));
 
             mDotsLayout.addView(mDot[i]);
         }

@@ -124,6 +124,12 @@ public class MainActivity extends AppCompatActivity {
     private void loadFromMenu(int id) {
         Intent intent;
         switch (id){
+            case R.id.nav_secure_ghat:
+                intent= new Intent(this,ImageHolder.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","secure_ghats");
+                startActivity(intent);
+                break;
 
             case R.id.nav_ambulance:
                 intent= new Intent(this,DutyCard.class);
@@ -138,7 +144,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.nav_mela_helpline:
-
+                intent= new Intent(this,AboutMela.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type","helpline");
+                startActivity(intent);
                 break;
             case R.id.nav_disaster_helpline:
                 intent= new Intent(this,Table.class);
@@ -253,13 +262,19 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("type","Vehicle Workshop.json");
                 startActivity(intent);
                 break;
-
+            case R.id.nav_change_lang:
+                intent= new Intent(this,LanguageSelect.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                break;
 
         }
     }
 
 
-    public void loadCrowdStatus(View view){
+    public void loadCrowdStatus(final View view){
+        //Toast.makeText(this,"This feature will be activated by 25th July",Toast.LENGTH_LONG).show();
+
         view.setEnabled(false);
         final RecyclerView recyclerView=findViewById(R.id.crowd_recyclerview);
         recyclerView.hasFixedSize();
@@ -300,6 +315,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
+
+
             }
 
             @Override
@@ -317,9 +334,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        
-
-       
 
 
     }
@@ -346,10 +360,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void GoToSOS(View view){
-
-        Intent intent= new Intent(this,SOS.class);
+        Toast.makeText(this,"SOS Service will start soon",Toast.LENGTH_LONG).show();
+        /*Intent intent= new Intent(this,SOS.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        startActivity(intent);*/
     }
     public void GoToToilet(View view){
 
@@ -436,5 +450,8 @@ public class MainActivity extends AppCompatActivity {
         view.setVisibility(View.VISIBLE);
         view.setEnabled(true);
         view.startAnimation(grow);
+    }
+    private void toastMessage(String text){
+        Toast.makeText(this,text,Toast.LENGTH_SHORT).show();
     }
 }

@@ -6,8 +6,8 @@ android {
         applicationId "com.nsappsstudio.shravanimela"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 6
-        versionName "0.9.6"
+        versionCode 9
+        versionName "0.9.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         lintOptions {
@@ -56,6 +56,8 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.google.android.gms:play-services-location:15.0.1'
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    implementation 'com.github.chrisbanes:PhotoView:2.1.4'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

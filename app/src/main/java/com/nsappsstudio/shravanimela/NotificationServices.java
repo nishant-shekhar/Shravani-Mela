@@ -48,7 +48,7 @@ public class NotificationServices extends Service {
         //toastMessage(defaultTime);
         
         
-        Query mNotificationRef= mDatabaseReference.child("public").child("Notification").orderByValue().startAt(updatedTimeStamp);
+        Query mNotificationRef= mDatabaseReference.child("NoticeKey").child("Notification").orderByValue().startAt(updatedTimeStamp);
         mNotificationRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {

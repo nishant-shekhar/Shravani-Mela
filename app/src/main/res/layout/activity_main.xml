@@ -53,9 +53,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="top|end"
-                    android:layout_marginBottom="10dp"
-                    app:layout_collapseMode="parallax"
+                    android:gravity="bottom|end"
+                    app:layout_collapseMode="pin"
                     android:orientation="horizontal">
 
                     <ImageButton
@@ -733,7 +732,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="wrap_content"
