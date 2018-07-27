@@ -45,7 +45,7 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundImage" value="C:\Users\Nishant\Desktop\back.png" />
-                                      <entry key="foregroundImage" value="C:\Users\Nishant\Desktop\shiv_icon_.png" />
+                                      <entry key="foregroundImage" value="C:\Users\Nishant\Desktop\shiv_icon_9.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -76,7 +76,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_swap_calls_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/hardware/ic_keyboard_backspace_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -86,8 +86,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="3691fc" />
-                            <entry key="outputName" value="ic_rpad" />
+                            <entry key="color" value="fcfcfc" />
+                            <entry key="outputName" value="ic_keyboard_backspace_black_24dp" />
                             <entry key="sourceFile" value="C:\Users\Nishant" />
                           </map>
                         </option>

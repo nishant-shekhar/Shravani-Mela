@@ -1,0 +1,28 @@
+{
+  "table": [
+    {
+      "cell1": "Sl. No.",
+      "cell2": "Name and designation of workers",
+      "cell3": " ",
+      "cell4": "Mobile No."
+    },
+    {
+      "cell1": "1",
+      "cell2": "Assistant Electrical Engineer, Sultanganj",
+      "cell3": " ",
+      "cell4": "7763814436"
+    },
+    {
+      "cell1": "2",
+      "cell2": "Junior Electrical Engineer, Sultanganj (Urban)",
+      "cell3": " ",
+      "cell4": "7763814438"
+    },
+    {
+      "cell1": "3",
+      "cell2": "Junior Electrical Engineer, Sultanganj (Rural)",
+      "cell3": " ",
+      "cell4": "9546347539"
+    }
+  ]
+}

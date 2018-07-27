@@ -1,0 +1,354 @@
+{
+  "table": [
+    {
+      "title": "Office of the Civil Surgeon cum Chief Medical Officer Bhagalpur", 
+      "s_num": " ",
+      "name": " ",
+      "designation": " ",
+      "shift": " ",
+      "mobile": " ",
+      "description": " ",
+      "type": "1"
+    },
+    {
+      "title": " World Famous Shrawani Mela 2018 Doctors' duty table in temporary medical camps in Sultanganj",
+      "s_num": " ",
+      "name": " ",
+      "designation": " ",
+      "shift": " ",
+      "mobile": " ",
+      "description": " ",
+      "type": "1"
+    },
+    {
+      "title": " ",
+      "s_num": "1",
+      "name": "Dr. Dina Nath ",
+      "designation": "Medical officer",
+      "shift": "1st shift 08:00 AM to 02:00 PM",
+      "mobile": "9939442020",
+      "description": "New Sidhhi Ghat",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "2",
+      "name": "Dr. Vinod Kumar ",
+      "designation": "Medical officer",
+      "shift": "2st shift 02:00 PM to 08:00 PM",
+      "mobile": "9661823934",
+      "description": "New Sidhhi Ghat",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "3",
+      "name": "Dr. Pankaj Kumar ",
+      "designation": "Medical officer",
+      "shift": "3st shift 08:00 PM to 08:00 AM",
+      "mobile": "8210687789",
+      "description": "New Sidhhi Ghat",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "4",
+      "name": "Dina Nath Pandit ",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "1st shift 08:00 AM to 02:00 PM",
+      "mobile": "9504909292",
+      "description": "Jahaz Ghat",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "5",
+      "name": "Dr. Arshad Husain ",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "2st shift 02:00 PM to 08:00 PM",
+      "mobile": "9934837676",
+      "description": "Jahaz Ghat",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "6",
+      "name": "Dr. Suman Rajak ",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "3st shift 08:00 PM to 08:00 AM",
+      "mobile": "7250077674",
+      "description": "Jahaz Ghat",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "7",
+      "name": "Dr. Anjana Prakash ",
+      "designation": "Medical officer",
+      "shift": "1st shift 08:00 AM to 02:00 PM",
+      "mobile": "9431873940",
+      "description": "Women's Hospital",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "8",
+      "name": "Dr. Renu Singh ",
+      "designation": "\r\nAyush Doctor",
+      "shift": "2st shift 02:00 PM to 08:00 PM",
+      "mobile": "8862986534",
+      "description": "Women's Hospital",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "9",
+      "name": "Dr. Mahmood Aalam Ayush",
+      "designation": "Medical officer Additional",
+      "shift": "3st shift 08:00 PM to 08:00 AM",
+      "mobile": " ",
+      "description": "Women's Hospital",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "10",
+      "name": "Dr. Shashi Bhusan Sharma",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "1st shift 08:00 AM to 02:00 PM",
+      "mobile": "9334532393",
+      "description": "Marwari Yuva Manch",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "11",
+      "name": "Dr. Akhilesh Kumar Vijay ",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "2st shift 02:00 PM to 08:00 PM",
+      "mobile": "9939351996",
+      "description": "Marwari Yuva Manch",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "12",
+      "name": "Dr. Birendra Kumar",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "3st shift 08:00 PM to 08:00 AM",
+      "mobile": " ",
+      "description": "Marwari Yuva Manch",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "13",
+      "name": "Dr. P.C. Sinha",
+      "designation": "Medical officer",
+      "shift": "1st shift 08:00 AM to 02:00 PM",
+      "mobile": "9801897890",
+      "description": "Krishnagard",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "14",
+      "name": "Dr. Ganesh Kumar Khandelia ",
+      "designation": "Medical officer",
+      "shift": "2st shift 02:00 PM to 08:00 PM",
+      "mobile": "9122181436",
+      "description": "Krishnagard",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "15",
+      "name": "Dr. Gyan Ranjan ",
+      "designation": "Sub-Divisional Medical Officer",
+      "shift": "3st shift 08:00 PM to 08:00 AM",
+      "mobile": "7870442584",
+      "description": "Krishnagard",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "16",
+      "name": "Dr. Ashok Kumar Mandal",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "1st shift 08:00 AM to 02:00 PM",
+      "mobile": "8863911282",
+      "description": "Asiachak Nadarpul",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "17",
+      "name": "Dr. Shamim Alam",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "2st shift 02:00 PM to 08:00 PM",
+      "mobile": "9234065609",
+      "description": "Asiachak Nadarpul",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "18",
+      "name": "Dr. Satish Kumar Sah",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "3st shift 08:00 PM to 08:00 AM",
+      "mobile": " ",
+      "description": "Asiachak Nadarpul",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "19",
+      "name": "Dr. Nripjeet singh ",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "1st shift 08:00 AM to 02:00 PM",
+      "mobile": "9097674247",
+      "description": "Rampur Kamrai",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "20",
+      "name": "Dr. Varun Kumar Sharma",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "2st shift 02:00 PM to 08:00 PM",
+      "mobile": " ",
+      "description": "Rampur Kamrai",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "21",
+      "name": "Dr. Sunil Kumar Poddar",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "3st shift 08:00 PM to 08:00 AM",
+      "mobile": "9472508525",
+      "description": "Rampur Kamrai",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "22",
+      "name": "Dr. Neeraj Kumar ",
+      "designation": "Medical officer",
+      "shift": "1st shift 08:00 AM to 02:00 PM",
+      "mobile": "9880814677",
+      "description": "Dhandhi Belari (High School)",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "23",
+      "name": "Dr. Vivekanand Das",
+      "designation": "Medical officer",
+      "shift": "2st shift 02:00 PM to 08:00 PM",
+      "mobile": "9835046429",
+      "description": "Dhandhi Belari (High School)",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "24",
+      "name": "Dr. Rakesh Roushan",
+      "designation": "Medical officer",
+      "shift": "3st shift 08:00 PM to 08:00 AM",
+      "mobile": "8271322089",
+      "description": "Dhandhi Belari (High School)",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "25",
+      "name": "Dr. Devbrat Kumar ",
+      "designation": "Medical officer Additional",
+      "shift": "1st shift 08:00 AM to 02:00 PM",
+      "mobile": "9431290987",
+      "description": "Gyatri Mandir Kachchi Sadak",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "26",
+      "name": "Dr. Satyendra Kumar Roy",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "2st shift 02:00 PM to 08:00 PM",
+      "mobile": " ",
+      "description": "Gyatri Mandir Kachchi Sadak",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "27",
+      "name": "Dr. Amarnath Sharma",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "3st shift 08:00 PM to 08:00 AM",
+      "mobile": " ",
+      "description": "Gyatri Mandir Kachchi Sadak",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "28",
+      "name": "Dr. Diwaker Poddar ",
+      "designation": "Medical officer",
+      "shift": "1st shift 08:00 AM to 02:00 PM",
+      "mobile": " ",
+      "description": "Teghra Pal Kachchi Sadak",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "29",
+      "name": "Dr. Razaram Sharma",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "2st shift 02:00 PM to 08:00 PM",
+      "mobile": " ",
+      "description": "Teghra Pal Kachchi Sadak",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "30",
+      "name": "Dr. Ramanand Paswan",
+      "designation": "\r\nAyush Doctor",
+      "shift": "3st shift 08:00 PM to 08:00 AM",
+      "mobile": "99316227167",
+      "description": "Teghra Pal Kachchi Sadak",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "31",
+      "name": "Dr. Jayshankar Prasad ",
+      "designation": "\r\nAyush Doctor",
+      "shift": "1st shift 08:00 AM to 02:00 PM",
+      "mobile": " ",
+      "description": "Middle School Sultanganj",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "32",
+      "name": "Dr. InduShekar Singh ",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "2st shift 02:00 PM to 08:00 PM",
+      "mobile": " ",
+      "description": "Middle School Sultanganj",
+      "type": "0"
+    },
+    {
+      "title": " ",
+      "s_num": "33",
+      "name": "Dr. Kamrul Hoda",
+      "designation": "\r\nAyush Doctor Additional",
+      "shift": "3st shift 08:00 PM to 08:00 AM",
+      "mobile": " ",
+      "description": "Middle School Sultanganj",
+      "type": "0"
+    }
+  ]
+}

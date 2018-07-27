@@ -21,7 +21,6 @@
     <string name="heavy_crowd">भारी भीड़</string>
     <string name="live_arti">लाइव आरती देखें</string>
     <string name="police_station">पुलिस स्टेशन</string>
-    <string name="rest_room">Rest room</string>
     <string name="toilet">शौचालय</string>
     <string name="waterfall">झरना</string>
     <string name="alert">अलर्ट / अधिसूचनाएं</string>
@@ -96,5 +95,14 @@
     <string name="helpline_number" >श्रावणी मेला हेल्पलाइन</string>
     <string name="change_lang">भाषा बदलें</string>
     <string name="secure_ghats">सुरक्षित घाट नक्शा</string>
+    <string name="give_feedback">सुझाव/शिकायत</string>
+    <string name="submit">भेजें</string>
+    <string name="verify">सत्यापित करें</string>
+    <string name="resend_otp">ओटीपी पुनः भेजें </string>
+    <string name="enter_otp">ओटीपी दर्ज करें</string>
+    <string name="wait_for_auto_verification">सत्यापन के लिए प्रतीक्षा करें</string>
+    <string name="register_mobile">फ़ोन नंबर पंजीकृत करें</string>
+    <string name="enter_mobile_no">मोबाइल नंबर दर्ज करें</string>
+    <string name="sign_up">साइन अप करें</string>
 
 </resources>

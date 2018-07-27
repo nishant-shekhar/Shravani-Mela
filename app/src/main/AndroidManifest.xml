@@ -85,8 +85,14 @@
         <activity android:name=".CentralizeContact" />
         <activity android:name=".LanguageSelect" />
         <activity android:name=".AboutMela" />
-        <activity android:name=".ImageHolder">
+        <activity android:name=".ImageHolder" />
+        <activity android:name=".FeedBack" />
+        <activity android:name=".MobileRegistration">
+            <intent-filter>
+                <action android:name="com.nsappsstudio.shravanimela.MobileRegistration" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

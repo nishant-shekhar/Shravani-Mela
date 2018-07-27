@@ -118,5 +118,14 @@
     <string name="change_lang">Change Language</string>
     <string name="secure_ghats">Secure Ghats</string>
     <string name="road_map">Road Map</string>
+    <string name="give_feedback">Give Feedback</string>
+    <string name="submit">Submit</string>
+    <string name="verify">Verify</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="wait_for_auto_verification">Wait for Auto Verification</string>
+    <string name="register_mobile">Register Mobile</string>
+    <string name="enter_mobile_no">Enter Mobile Number</string>
+    <string name="sign_up">Sign Up</string>
 
 </resources>
