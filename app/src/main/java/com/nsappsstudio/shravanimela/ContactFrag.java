@@ -1,6 +1,7 @@
 package com.nsappsstudio.shravanimela;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -87,6 +89,9 @@ public class ContactFrag extends Fragment {
         v = inflater.inflate(R.layout.fragment_contact,container, false);
         fileName = getArguments().getString("filename");
 
+
+
+
         recyclerView=v.findViewById(R.id.contact_recylerview);
         c = getContext();
         loadTable();
@@ -133,19 +138,52 @@ public class ContactFrag extends Fragment {
     }
 
     public String loadJSONFromAsset() {
-        String json ;
-        try {
-            InputStream is = c.getAssets().open(fileName);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
+        SharedPreferences sharedPref = Objects.requireNonNull(this.getActivity()).getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        String language= sharedPref.getString("lang",null);
+        if(language!=null && language.equals("en")){
+            String engFile=null;
+            switch (fileName){
+
+                case "Bhagalpur Contact.json":
+                    engFile = "Bhagalpur Contact_eng.json";
+                    break;
+                case "Munger Contact.json":
+                    engFile="Munger Contact_eng.json";
+                    break;
+                case "Banka Contact.json":
+                    engFile="Banka Contact_eng.json";
+                    break;
+            }
+                String json ;
+                try {
+                    InputStream is = c.getAssets().open(engFile);
+                    int size = is.available();
+                    byte[] buffer = new byte[size];
+                    is.read(buffer);
+                    is.close();
+                    json = new String(buffer, "UTF-8");
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    return null;
+                }
+                return json;
+
+        }else {
+
+            String json;
+            try {
+                InputStream is = c.getAssets().open(fileName);
+                int size = is.available();
+                byte[] buffer = new byte[size];
+                is.read(buffer);
+                is.close();
+                json = new String(buffer, "UTF-8");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                return null;
+            }
+            return json;
         }
-        return json;
     }
 
     private void loadTable(){

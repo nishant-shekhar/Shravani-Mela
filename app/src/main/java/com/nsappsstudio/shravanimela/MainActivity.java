@@ -31,6 +31,8 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -125,39 +127,39 @@ public class MainActivity extends AppCompatActivity {
     private void loadFromMenu(int id) {
         SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         String language= sharedPref.getString("lang",null);
-
+        if(language!=null && language.equals("en")){
 
         Intent intent;
-        switch (id){
+        switch (id) {
             case R.id.nav_secure_ghat:
-                intent= new Intent(this,ImageHolder.class);
+                intent = new Intent(this, ImageHolder.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","secure_ghats");
+                intent.putExtra("type", "secure_ghats");
                 startActivity(intent);
                 break;
 
             case R.id.nav_ambulance:
-                intent= new Intent(this,DutyCard.class);
+                intent = new Intent(this, DutyCard.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Ambulance.json");
+                intent.putExtra("type", "Ambulance_eng.json");
                 startActivity(intent);
                 break;
             case R.id.nav_doctor:
-                intent= new Intent(this,DutyCard.class);
+                intent = new Intent(this, DutyCard.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","DoctorChart.json");
+                intent.putExtra("type", "DoctorChart_eng.json");
                 startActivity(intent);
                 break;
             case R.id.nav_mela_helpline:
-                intent= new Intent(this,AboutMela.class);
+                intent = new Intent(this, AboutMela.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","helpline");
+                intent.putExtra("type", "helpline");
                 startActivity(intent);
                 break;
             case R.id.nav_disaster_helpline:
-                intent= new Intent(this,Table.class);
+                intent = new Intent(this, Table.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Disaster.json");
+                intent.putExtra("type", "Disaster_eng.json");
                 startActivity(intent);
                 break;
             case R.id.nav_electricity_helpline:
@@ -166,27 +168,27 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.nav_food_inspector:
-                intent= new Intent(this,DutyCard.class);
+                intent = new Intent(this, DutyCard.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Food Inspector.json");
+                intent.putExtra("type", "Food Inspector_eng.json");
                 startActivity(intent);
                 break;
             case R.id.nav_medicine_inspector:
-                intent= new Intent(this,DutyCard.class);
+                intent = new Intent(this, DutyCard.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Medicine Inspector.json");
+                intent.putExtra("type", "Medicine Inspector_eng.json");
                 startActivity(intent);
                 break;
             case R.id.nav_paramedic:
-                intent= new Intent(this,DutyCard.class);
+                intent = new Intent(this, DutyCard.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Paramedic.json");
+                intent.putExtra("type", "Paramedic_eng.json");
                 startActivity(intent);
                 break;
             case R.id.nav_dutyChart:
-                intent= new Intent(this,DutyCard.class);
+                intent = new Intent(this, DutyCard.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","DutyChart.json");
+                intent.putExtra("type", "DutyChart_eng.json");
                 startActivity(intent);
                 break;
             case R.id.nav_centralize_helpline:
@@ -195,101 +197,274 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.nav_food_rate:
-                intent= new Intent(this,Table.class);
+                intent = new Intent(this, Table.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Food Rate.json");
+                intent.putExtra("type", "Food Rate_eng.json");
                 startActivity(intent);
                 break;
             case R.id.nav_puja_samagari:
-                intent= new Intent(this,Table.class);
+                intent = new Intent(this, Table.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Puja Samagari.json");
+                intent.putExtra("type", "Puja Samagari_eng.json");
                 startActivity(intent);
                 break;
             case R.id.nav_atm:
-                intent= new Intent(this,PLaces.class);
+                intent = new Intent(this, PLaces.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Atm.json");
+                intent.putExtra("type", "Atm.json");
                 startActivity(intent);
 
                 break;
             case R.id.nav_health_centre:
-                intent= new Intent(this,PLaces.class);
+                intent = new Intent(this, PLaces.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Health Centre.json");
+                intent.putExtra("type", "Health Centre.json");
                 startActivity(intent);
                 break;
             case R.id.nav_info_centre:
-                intent= new Intent(this,PLaces.class);
+                intent = new Intent(this, PLaces.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Information Centre.json");
+                intent.putExtra("type", "Information Centre.json");
                 startActivity(intent);
                 break;
             case R.id.nav_parking:
-                intent= new Intent(this,PLaces.class);
+                intent = new Intent(this, PLaces.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Parking.json");
+                intent.putExtra("type", "Parking.json");
                 startActivity(intent);
                 break;
             case R.id.nav_petrol_pump:
-                intent= new Intent(this,PLaces.class);
+                intent = new Intent(this, PLaces.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Petrol Pump.json");
+                intent.putExtra("type", "Petrol Pump.json");
                 startActivity(intent);
                 break;
             case R.id.nav_sanskritik_cente:
-                intent= new Intent(this,PLaces.class);
+                intent = new Intent(this, PLaces.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Sanskritik Centre.json");
+                intent.putExtra("type", "Sanskritik Centre.json");
                 startActivity(intent);
                 break;
             case R.id.nav_shivir:
-                intent= new Intent(this,PLaces.class);
+                intent = new Intent(this, PLaces.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Shivir.json");
+                intent.putExtra("type", "Shivir.json");
                 startActivity(intent);
                 break;
             case R.id.nav_stay_places:
-                intent= new Intent(this,PLaces.class);
+                intent = new Intent(this, PLaces.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Stay Place.json");
+                intent.putExtra("type", "Stay Place.json");
                 startActivity(intent);
                 break;
             case R.id.nav_waterfall:
-                intent= new Intent(this,PLaces.class);
+                intent = new Intent(this, PLaces.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Jharna.json");
+                intent.putExtra("type", "Jharna.json");
                 startActivity(intent);
                 break;
             case R.id.nav_vehicle_workshop:
-                intent= new Intent(this,PLaces.class);
+                intent = new Intent(this, PLaces.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type","Vehicle Workshop.json");
+                intent.putExtra("type", "Vehicle Workshop.json");
                 startActivity(intent);
                 break;
             case R.id.nav_change_lang:
-                intent= new Intent(this,LanguageSelect.class);
+                intent = new Intent(this, LanguageSelect.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 break;
             case R.id.nav_feedback:
-                intent= new Intent(this,FeedBack.class);
+                intent = new Intent(this, FeedBack.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 break;
             case R.id.nav_reg_mobile:
-                intent= new Intent(this,MobileRegistration.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                FirebaseUser user= mAuth.getCurrentUser();
+                if (user!=null){
+                    String mobileNo=user.getPhoneNumber();
+                    toastMessage("Mobile is registered with "+mobileNo);
+                }else {
+                    intent = new Intent(this, MobileRegistration.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
                 break;
 
+        }
+        }else {
+            Intent intent;
+            switch (id) {
+                case R.id.nav_secure_ghat:
+                    intent = new Intent(this, ImageHolder.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "secure_ghats");
+                    startActivity(intent);
+                    break;
+
+                case R.id.nav_ambulance:
+                    intent = new Intent(this, DutyCard.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Ambulance.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_doctor:
+                    intent = new Intent(this, DutyCard.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "DoctorChart.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_mela_helpline:
+                    intent = new Intent(this, AboutMela.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "helpline");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_disaster_helpline:
+                    intent = new Intent(this, Table.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Disaster.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_electricity_helpline:
+                    intent = new Intent(this, Electric.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    break;
+                case R.id.nav_food_inspector:
+                    intent = new Intent(this, DutyCard.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Food Inspector.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_medicine_inspector:
+                    intent = new Intent(this, DutyCard.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Medicine Inspector.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_paramedic:
+                    intent = new Intent(this, DutyCard.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Paramedic.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_dutyChart:
+                    intent = new Intent(this, DutyCard.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "DutyChart.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_centralize_helpline:
+                    intent = new Intent(this, CentralizeContact.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    break;
+                case R.id.nav_food_rate:
+                    intent = new Intent(this, Table.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Food Rate.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_puja_samagari:
+                    intent = new Intent(this, Table.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Puja Samagari.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_atm:
+                    intent = new Intent(this, PLaces.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Atm.json");
+                    startActivity(intent);
+
+                    break;
+                case R.id.nav_health_centre:
+                    intent = new Intent(this, PLaces.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Health Centre.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_info_centre:
+                    intent = new Intent(this, PLaces.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Information Centre.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_parking:
+                    intent = new Intent(this, PLaces.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Parking.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_petrol_pump:
+                    intent = new Intent(this, PLaces.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Petrol Pump.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_sanskritik_cente:
+                    intent = new Intent(this, PLaces.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Sanskritik Centre.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_shivir:
+                    intent = new Intent(this, PLaces.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Shivir.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_stay_places:
+                    intent = new Intent(this, PLaces.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Stay Place.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_waterfall:
+                    intent = new Intent(this, PLaces.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Jharna.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_vehicle_workshop:
+                    intent = new Intent(this, PLaces.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Vehicle Workshop.json");
+                    startActivity(intent);
+                    break;
+                case R.id.nav_change_lang:
+                    intent = new Intent(this, LanguageSelect.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    break;
+                case R.id.nav_feedback:
+                    intent = new Intent(this, FeedBack.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    break;
+                case R.id.nav_reg_mobile:
+                    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                    FirebaseUser user= mAuth.getCurrentUser();
+                    if (user!=null){
+                        String mobileNo=user.getPhoneNumber();
+                        toastMessage("Mobile is registered with "+mobileNo);
+                    }else {
+                        intent = new Intent(this, MobileRegistration.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                    break;
+            }
         }
     }
 
 
     public void loadCrowdStatus(final View view){
-        Toast.makeText(this,"This feature will be activated by 28th July",Toast.LENGTH_LONG).show();
-        /*
+        //Toast.makeText(this,"This feature will be activated by 28th July",Toast.LENGTH_LONG).show();
+
+
         view.setEnabled(false);
         final RecyclerView recyclerView=findViewById(R.id.crowd_recyclerview);
         recyclerView.hasFixedSize();
@@ -349,7 +524,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-            */
+
 
     }
 

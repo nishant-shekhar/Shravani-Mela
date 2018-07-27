@@ -45,13 +45,30 @@ public class Table extends AppCompatActivity {
                         "पूजा एवं अन्य सामग्री";
                 type=5;
                 break;
+            case "Puja Samagari_eng.json":
+                title="Sultangunj Shravani Mela- 2018\n" +
+                        "Rate Chart\n" +
+                        "Puja Samagari";
+                type=5;
+                break;
             case "Food Rate.json":
                 title="सुलतानगंज श्रावणी मेला- 2018\n" +
                         "प्रस्तावित मूल्य  तालिका\n" +
                         "खाद्य सामग्री";
                 type=4;
                 break;
+            case "Food Rate_eng.json":
+                title="Sultangunj Shravani Mela- 2018\n" +
+                        "Rate Chart\n" +
+                        "Food Items";
+                type=4;
+                break;
+
             case "Disaster.json":
+                title=getResources().getString(R.string.disaster);
+                type=5;
+                break;
+            case "Disaster_eng.json":
                 title=getResources().getString(R.string.disaster);
                 type=5;
                 break;
