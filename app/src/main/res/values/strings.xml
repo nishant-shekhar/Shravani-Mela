@@ -127,5 +127,10 @@
     <string name="register_mobile">Register Mobile</string>
     <string name="enter_mobile_no">Enter Mobile Number</string>
     <string name="sign_up">Sign Up</string>
+    <string name="donot_show">Don\'t Show Again</string>
+    <string name="instruction">Instructions</string>
+    <string name="note">Note</string>
+    <string name="sos_instruction">1. Use this feature only in case of emergency \n2. Register mobile number before you ask for emergency help. </string>
+    <string name="call_helpline" >Call Helpline</string>
 
 </resources>

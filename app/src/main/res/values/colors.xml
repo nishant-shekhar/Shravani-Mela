@@ -14,9 +14,9 @@
     <color name="light_orange">#ff892a</color>
     <color name="light_yellow">#df9900</color>
     <color name="grey_light">#dcdcdc</color>
-    <color name="crowd1">#95ff00</color>
-    <color name="crowd2">#15e479</color>
-    <color name="crowd3">#FF00DDFF</color>
+    <color name="crowd1">#0de977</color>
+    <color name="crowd2">#FF00DDFF</color>
+    <color name="crowd3">#0191ff</color>
     <color name="crowd4">#ff7d12</color>
     <color name="crowd5">#d93810</color>
     <color name="title_bg">#4b626d</color>

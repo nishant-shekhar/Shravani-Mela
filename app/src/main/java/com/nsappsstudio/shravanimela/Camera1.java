@@ -9,13 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.source.ExtractorMediaSource;
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.android.exoplayer2.ui.PlayerView;
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
-import com.google.android.exoplayer2.util.Util;
+import com.devbrackets.android.exomedia.listener.OnPreparedListener;
+import com.devbrackets.android.exomedia.ui.widget.VideoView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
  * Use the {@link Camera1#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Camera1 extends Fragment {
+public class Camera1 extends Fragment implements OnPreparedListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -40,10 +35,11 @@ public class Camera1 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private PlayerView playerView;
-    private SimpleExoPlayer exoPlayer;
+    //private PlayerView playerView;
+    //private SimpleExoPlayer exoPlayer;
     private View v;
     private Context c;
+    private VideoView emVideoView;
 
     private OnFragmentInteractionListener mListener;
     private int cameraId;
@@ -89,14 +85,16 @@ public class Camera1 extends Fragment {
         v = inflater.inflate(R.layout.fragment_camera1,container, false);
         cameraId = getArguments().getInt("camera");
         mDatabaseReference= FirebaseDatabase.getInstance().getReference();
+        emVideoView = v.findViewById(R.id.video_view);
+        emVideoView.setOnPreparedListener(this);
 
-        playerView=v.findViewById(R.id.playerView);
+        //playerView=v.findViewById(R.id.playerView);
         c = getContext();
 
-        if (exoPlayer==null) {
+        /*if (exoPlayer==null) {
             exoPlayer = ExoPlayerFactory.newSimpleInstance(c, new DefaultTrackSelector());
             playerView.setPlayer(exoPlayer);
-        }
+        }*/
         return v;    }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -143,7 +141,9 @@ public class Camera1 extends Fragment {
                 }
 
 
-                try {
+                //For now we just picked an arbitrary item to play
+                emVideoView.setVideoURI(Uri.parse(linkPlay));
+                /*try {
                     DefaultDataSourceFactory dataSourceFactory=new DefaultDataSourceFactory(c, Util.getUserAgent(c,"exo-demo"));
                     ExtractorMediaSource mediaSource=new ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(linkPlay));
                     exoPlayer.prepare(mediaSource);
@@ -155,7 +155,7 @@ public class Camera1 extends Fragment {
                     ExtractorMediaSource mediaSource=new ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(linkPlay));
                     exoPlayer.prepare(mediaSource);
                     exoPlayer.setPlayWhenReady(false);
-                }
+                }*/
 
             }
 
@@ -182,9 +182,9 @@ public class Camera1 extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        playerView.setPlayer(null);
+        /*playerView.setPlayer(null);
         exoPlayer.release();
-        exoPlayer=null;
+        exoPlayer=null;*/
     }
 
     @Override
@@ -194,6 +194,18 @@ public class Camera1 extends Fragment {
 
         mListener = null;
 
+    }
+
+    @Override
+    public void onPrepared() {
+        //emVideoView.start();
+
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        //Pause Video Playback
+        emVideoView.pause();
     }
 
     /**

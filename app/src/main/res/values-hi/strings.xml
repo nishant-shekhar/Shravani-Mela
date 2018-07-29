@@ -104,5 +104,6 @@
     <string name="register_mobile">फ़ोन नंबर पंजीकृत करें</string>
     <string name="enter_mobile_no">मोबाइल नंबर दर्ज करें</string>
     <string name="sign_up">साइन अप करें</string>
+    <string name="donot_show">अगली बार ना दिखाएं</string>
 
 </resources>

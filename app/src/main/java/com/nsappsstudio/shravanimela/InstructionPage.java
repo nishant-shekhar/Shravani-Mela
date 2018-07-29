@@ -4,9 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.net.Uri;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,8 +34,12 @@ public class InstructionPage extends AppCompatActivity {
     private LinearLayout mDotsLayout;
     private Button next;
     private Button skip;
+    private Button doNotShowBtn;
     private int currentPage;
     private TextView[] mDot;
+    private CountDownTimer countDownTimer;
+    private ConstraintLayout slide1;
+    private String doNotShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +58,38 @@ public class InstructionPage extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_instruction_page);
+        doNotShow= sharedPref.getString("showInstruction",null);
+        slide1=findViewById(R.id.splash_Screen);
+        if (doNotShow==null){
+            slide1.setVisibility(View.GONE);
+        }else {
+            if (doNotShow.equals("y")){
+                slide1.setVisibility(View.VISIBLE);
+
+                countDownTimer=new CountDownTimer(1500, 500) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        Intent intent= new Intent(InstructionPage.this,MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish();
+                    }
+                }.start();
+
+            }
+        }
 
         slides = findViewById(R.id.instruction_view_pager);
         mDatabaseReference= FirebaseDatabase.getInstance().getReference();
         mDotsLayout=findViewById(R.id.dots_layout);
+        doNotShowBtn=findViewById(R.id.dont_show);
+        doNotShowBtn.setVisibility(View.GONE);
+
         next=findViewById(R.id.next_btn);
         skip=findViewById(R.id.skip_btn);
         next.setOnClickListener(new View.OnClickListener() {
@@ -78,14 +111,7 @@ public class InstructionPage extends AppCompatActivity {
         addDots(0);
         slides.addOnPageChangeListener(pageChangeListener);
 
-        /*Calendar calendar= Calendar.getInstance();
-        String year=String.valueOf(calendar.get(Calendar.YEAR));
-        String currentMonth =String.valueOf(calendar.get(Calendar.MONTH)+1);
-        String dayOfMonth=String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
-        if (dayOfMonth.length()==1){
-            dayOfMonth="0"+dayOfMonth;
-        }
-        String date=year+currentMonth+dayOfMonth;*/
+
         checkAppVersion();
     }
     private void addDots(int position){
@@ -117,6 +143,9 @@ public class InstructionPage extends AppCompatActivity {
             addDots(position);
             currentPage=position;
             if(currentPage== mDot.length-1){
+                if(doNotShow==null){
+                    doNotShowBtn.setVisibility(View.VISIBLE);
+                }
                 skip.setVisibility(View.GONE);
                 next.setText(getResources().getText(R.string.finish));
                 next.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +155,8 @@ public class InstructionPage extends AppCompatActivity {
                     }
                 });
             }else {
+                doNotShowBtn.setVisibility(View.GONE);
+
                 skip.setVisibility(View.VISIBLE);
                 next.setText(getResources().getText(R.string.next));
                 next.setOnClickListener(new View.OnClickListener() {
@@ -161,6 +192,30 @@ public class InstructionPage extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
+
+    }
+    public void goToMainAndDoNotShow(View view){
+        SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("showInstruction", "y");
+        editor.apply();
+
+        Intent intent= new Intent(this,MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+
+    }
+    public void goToMainSkip(View view){
+        countDownTimer.cancel();
+        Intent intent= new Intent(this,MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+    }
+    public void readInstruction(View view){
+        countDownTimer.cancel();
+        slide1.setVisibility(View.GONE);
 
     }
     public void nextPage(){
