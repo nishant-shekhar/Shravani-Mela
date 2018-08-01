@@ -1,7 +1,7 @@
 {
   "sightings": [
     {
-      "Slno": "2",
+      "Slno": "1",
       "Category": "Toilet",
       "Place_Name": "Sidhi Ghat",
       "Latitude": "25.251392",
@@ -10,9 +10,31 @@
       "distance": "2.00km",
       "Contact_no": "",
       "Address": "Ghat Road, Sultanganj, Bihar 813213, India"
+    },	
+	{
+      "Slno": "2",
+      "Category": "Toilet",
+      "Place_Name": "Adarsh Madhya Vidyalay Sultanganj",
+      "Latitude": "25.2455514",
+      "Longitude": "86.7376342",
+      "type": "Govt.",
+      "distance": "1.9km",
+      "Contact_no": "",
+      "Address": "Adarsh Madhya Vidyalay Sultanganj"
     },
+	{
+      "Slno": "3",
+      "Category": "Toilet",
+      "Place_Name": "Shanti Devi Morarkka Kanya Madhya Vidyalay Sultanganj",
+      "Latitude": "25.2440458",
+      "Longitude": "86.7379003",
+      "type": "Govt.",
+      "distance": "1.1km",
+      "Contact_no": "",
+      "Address": "Shanti Devi Morarkka Kanya Madhya Vidyalay Sultanganj"
+    },		
     {
-      "Slno": "1",
+      "Slno": "4",
       "Category": "Toilet",
       "Place_Name": "Kishangad",
       "Latitude": "25.243708",
@@ -22,19 +44,30 @@
       "Contact_no": "",
       "Address": "Bhagalpur-Munger Rd, Sultanganj, Bihar 813213, India"
     },
-    {
-      "Slno": "3",
+	  {
+      "Slno": "5",
       "Category": "Toilet",
-      "Place_Name": "Sitarampur ",
+      "Place_Name": "Krishnanand Suryamal Inter Vidyalay Sultanganj",
+      "Latitude": "25.2426543",
+      "Longitude": "86.7379028",
+      "type": "Govt.",
+      "distance": "1.3km",
+      "Contact_no": "",
+      "Address": "Krishnanand Suryamal Inter Vidyalay Sultanganj"
+    },
+	  {
+      "Slno": "6",
+      "Category": "Toilet",
+      "Place_Name": "AK Gopalan Inter College Sultanganj",
       "Latitude": "25.2373333",
       "Longitude": "86.7279817",
       "type": "Govt.",
       "distance": "2.78km",
       "Contact_no": "",
-      "Address": "Deoghar Rd, Masdi, Bihar 813213, India"
-    },
+      "Address": "AK Gopalan Inter College Sultanganj"
+    },	
     {
-      "Slno": "4",
+      "Slno": "7",
       "Category": "Toilet",
       "Place_Name": "Naunsar",
       "Latitude": "25.2098367",
@@ -45,7 +78,7 @@
       "Address": "Deoghar Rd, Rajganj, Bihar 813213, India"
     },
     {
-      "Slno": "5",
+      "Slno": "8",
       "Category": "Toilet",
       "Place_Name": "Ashiya Chak Moad",
       "Latitude": "25.20344",
@@ -56,7 +89,7 @@
       "Address": "Deoghar Rd, Bhim Buzurg, Bihar 813213, India"
     },
     {
-      "Slno": "6",
+      "Slno": "9",
       "Category": "Toilet",
       "Place_Name": "Kamray Chauk",
       "Latitude": "25.19062",
@@ -67,7 +100,7 @@
       "Address": "Deoghar Rd, Jagardari, Bihar 813213, India"
     },
     {
-      "Slno": "7",
+      "Slno": "10",
       "Category": "Toilet",
       "Place_Name": "Kamray",
       "Latitude": "25.1871861",
@@ -78,7 +111,7 @@
       "Address": "Deoghar Rd, Jagardari, Bihar 813213, India"
     },
     {
-      "Slno": "8",
+      "Slno": "11",
       "Category": "Toilet",
       "Place_Name": "Munger Gate",
       "Latitude": "25.1850602",
@@ -89,7 +122,7 @@
       "Address": "Deoghar Rd, Jagardari, Bihar 813213, India"
     },
     {
-      "Slno": "9",
+      "Slno": "12",
       "Category": "Toilet",
       "Place_Name": "Masumganj Chawk",
       "Latitude": "25.1850602",
@@ -100,7 +133,7 @@
       "Address": "Deoghar Rd, Jagardari, Bihar 813213, India"
     },
     {
-      "Slno": "10",
+      "Slno": "13",
       "Category": "Toilet",
       "Place_Name": "Kamray",
       "Latitude": "25.1847251",
@@ -111,7 +144,7 @@
       "Address": "Deoghar Rd, Jagardari, Bihar 813213, India"
     },
     {
-      "Slno": "11",
+      "Slno": "14",
       "Category": "Toilet",
       "Place_Name": "Masumganj ",
       "Latitude": "25.1769018",
@@ -122,7 +155,7 @@
       "Address": "Masudanpur, Bihar 813201, India"
     },
     {
-      "Slno": "12",
+      "Slno": "15",
       "Category": "Toilet",
       "Place_Name": "Rahmatpur",
       "Latitude": "25.1696157",
@@ -155,7 +188,7 @@
       "Address": "Kharagpur-Asarganj Rd, Bihar 813201, India"
     },
     {
-      "Slno": "13",
+      "Slno": "18",
       "Category": "Toilet",
       "Place_Name": "Asarganj",
       "Latitude": "25.1479086",
@@ -166,7 +199,7 @@
       "Address": "Jalalabad, Bihar 813201, India"
     },
     {
-      "Slno": "14",
+      "Slno": "19",
       "Category": "Toilet",
       "Place_Name": "Lakhanpur",
       "Latitude": "25.144777",
@@ -177,7 +210,7 @@
       "Address": "Jalalabad, Bihar 813201, India"
     },
     {
-      "Slno": "15",
+      "Slno": "20",
       "Category": "Toilet",
       "Place_Name": "Dhandhi Belari",
       "Latitude": "25.1308921",
@@ -188,7 +221,7 @@
       "Address": "52 Deoghar Rd, Manikpur, Bihar 813201, India"
     },
     {
-      "Slno": "24",
+      "Slno": "21",
       "Category": "Toilet",
       "Place_Name": "Dhouri Dharmshala, Belhar",
       "Latitude": "24.97092",
@@ -199,18 +232,7 @@
       "Address": "Lakheraj, Bihar 813118, India"
     },
     {
-      "Slno": "25",
-      "Category": "Toilet",
-      "Place_Name": "Dhouri Dharmshala, Belhar",
-      "Latitude": "24.97092",
-      "Longitude": "86.63381",
-      "type": "Govt.",
-      "distance": "43.63km",
-      "Contact_no": "8544428945",
-      "Address": "Lakheraj, Bihar 813118, India"
-    },
-    {
-      "Slno": "23",
+      "Slno": "22",
       "Category": "Toilet",
       "Place_Name": "Joripar Dharmshala, Belhar",
       "Latitude": "24.95542",
@@ -221,7 +243,7 @@
       "Address": "Bihar, 813207, India"
     },
     {
-      "Slno": "26",
+      "Slno": "23",
       "Category": "Toilet",
       "Place_Name": "Mahadev Nagar",
       "Latitude": "24.93664",
@@ -232,7 +254,7 @@
       "Address": "Bihar, 813207, India"
     },
     {
-      "Slno": "22",
+      "Slno": "24",
       "Category": "Toilet",
       "Place_Name": "Mahkara Dharmshala, Belhar",
       "Latitude": "24.93445",
@@ -243,7 +265,7 @@
       "Address": "Banka Belhar Road, Lulha, Bihar 813118, India"
     },
     {
-      "Slno": "21",
+      "Slno": "25",
       "Category": "Toilet",
       "Place_Name": "Shivlok Dharmshala, Belhar",
       "Latitude": "24.93004",
@@ -254,7 +276,7 @@
       "Address": "Banka Belhar Road, Lulha, Bihar 813118, India"
     },
     {
-      "Slno": "19",
+      "Slno": "26",
       "Category": "Toilet",
       "Place_Name": "Lulha Shivlok, Belhar",
       "Latitude": "24.92903",
@@ -265,18 +287,7 @@
       "Address": "Banka Belhar Road, Lulha, Bihar 813118, India"
     },
     {
-      "Slno": "20",
-      "Category": "Toilet",
-      "Place_Name": "Lulha Shivlok, Belhar",
-      "Latitude": "24.92903",
-      "Longitude": "86.65447",
-      "type": "Govt.",
-      "distance": "41.27km",
-      "Contact_no": "8544428945",
-      "Address": "Banka Belhar Road, Lulha, Bihar 813118, India"
-    },
-    {
-      "Slno": "18",
+      "Slno": "27",
       "Category": "Toilet",
       "Place_Name": "Daspasia Dharmshala, Belhar",
       "Latitude": "24.92283",
@@ -287,7 +298,7 @@
       "Address": "Banka Belhar Road, Lulha, Bihar 813118, India"
     },
     {
-      "Slno": "27",
+      "Slno": "28",
       "Category": "Toilet",
       "Place_Name": "Chandan Nagar Dharmshala, Belhar",
       "Latitude": "24.9107",
@@ -298,7 +309,7 @@
       "Address": "Deoghar Rd, Tola Kaithatikar, Bihar 813119, India"
     },
     {
-      "Slno": "46",
+      "Slno": "29",
       "Category": "Toilet",
       "Place_Name": "Inter College Jilebiya, Belhar",
       "Latitude": "24.90129",
@@ -309,7 +320,7 @@
       "Address": "Deoghar Rd, Tola Kaithatikar, Bihar 813119, India"
     },
     {
-      "Slno": "28",
+      "Slno": "30",
       "Category": "Toilet",
       "Place_Name": "Purniya Dharmshala, Belhar",
       "Latitude": "24.89923",
@@ -320,37 +331,15 @@
       "Address": "Deoghar Rd, Tola Kaithatikar, Bihar 813119, India"
     },
     {
-      "Slno": "29",
-      "Category": "Toilet",
-      "Place_Name": "Nimatad Belhar",
-      "Latitude": "24.87757",
-      "Longitude": "86.6669",
-      "type": "Govt.",
-      "distance": "52.38km",
-      "Contact_no": "8544428945",
-      "Address": "Bihar, 813207,India"
-    },
-    {
-      "Slno": "30",
-      "Category": "Toilet",
-      "Place_Name": "Nimatad Belhar",
-      "Latitude": "24.87757",
-      "Longitude": "86.6669",
-      "type": "Govt.",
-      "distance": "52.38km",
-      "Contact_no": "8544428945",
-      "Address": "Bihar, 813207,India"
-    },
-    {
       "Slno": "31",
       "Category": "Toilet",
-      "Place_Name": "Amma Tila",
-      "Latitude": "24.81229",
-      "Longitude": "86.67598",
+      "Place_Name": "Nimatad Belhar",
+      "Latitude": "24.87757",
+      "Longitude": "86.6669",
       "type": "Govt.",
-      "distance": "64.17km",
+      "distance": "52.38km",
       "Contact_no": "8544428945",
-      "Address": "Deoghar Rd, Tola Kaithatikar, Bihar 813119, India"
+      "Address": "Bihar, 813207,India"
     },
     {
       "Slno": "32",
@@ -377,17 +366,6 @@
     {
       "Slno": "34",
       "Category": "Toilet",
-      "Place_Name": "Dalsingh Sarai Sewa Samiti Abrakha",
-      "Latitude": "24.79887",
-      "Longitude": "86.68547",
-      "type": "Non Govt.",
-      "distance": "69.01km",
-      "Contact_no": "9006091255",
-      "Address": "Deoghar Rd, Alkosia, Bihar 813106, India"
-    },
-    {
-      "Slno": "36",
-      "Category": "Toilet",
       "Place_Name": "Abrakha Dharmshala, Chandan",
       "Latitude": "24.7952",
       "Longitude": "86.68859",
@@ -399,17 +377,6 @@
     {
       "Slno": "35",
       "Category": "Toilet",
-      "Place_Name": "Abrakha Dharmshala, Chandan",
-      "Latitude": "24.79512",
-      "Longitude": "86.68855",
-      "type": "Govt.",
-      "distance": "69.49km",
-      "Contact_no": "8544428947",
-      "Address": "Alkosia, Bihar 813106, India"
-    },
-    {
-      "Slno": "37",
-      "Category": "Toilet",
       "Place_Name": "Mega Camp, Katoriya",
       "Latitude": "24.75183",
       "Longitude": "86.7023",
@@ -419,18 +386,7 @@
       "Address": "Deoghar Rd, Chihutjor, Bihar 813106, India"
     },
     {
-      "Slno": "38",
-      "Category": "Toilet",
-      "Place_Name": "Mega Camp, Katoriya",
-      "Latitude": "24.75183",
-      "Longitude": "86.7023",
-      "type": "Govt.",
-      "distance": "71.10km",
-      "Contact_no": "8544428947",
-      "Address": "Deoghar Rd, Chihutjor, Bihar 813106, India"
-    },
-    {
-      "Slno": "39",
+      "Slno": "36",
       "Category": "Toilet",
       "Place_Name": "Inarawan Dharmshala, Katoria",
       "Latitude": "24.67494",
@@ -441,18 +397,7 @@
       "Address": "Deoghar Rd, Bhalua, Bihar 814131, India"
     },
     {
-      "Slno": "40",
-      "Category": "Toilet",
-      "Place_Name": "Inarawan Dharmshala, Katoria",
-      "Latitude": "24.67488",
-      "Longitude": "86.7031",
-      "type": "Govt.",
-      "distance": "80.38km",
-      "Contact_no": "8544428947",
-      "Address": "Deoghar Rd, Bhalua, Bihar 814131, India"
-    },
-    {
-      "Slno": "43",
+      "Slno": "37",
       "Category": "Toilet",
       "Place_Name": "Harkhar Dharmshala",
       "Latitude": "24.6244",
@@ -463,7 +408,7 @@
       "Address": "Harkhar, Bihar 814131, India"
     },
     {
-      "Slno": "41",
+      "Slno": "38",
       "Category": "Toilet",
       "Place_Name": "Yadav Raudih, Chandan",
       "Latitude": "24.599933",
@@ -474,29 +419,7 @@
       "Address": "Heth Chandan, Bihar 814131, India"
     },
     {
-      "Slno": "42",
-      "Category": "Toilet",
-      "Place_Name": "Yadav Raudih, Chandan",
-      "Latitude": "24.599933",
-      "Longitude": "86.7063",
-      "type": "Govt.",
-      "distance": "95.12km",
-      "Contact_no": "8544428947",
-      "Address": "Heth Chandan, Bihar 814131, India"
-    },
-    {
-      "Slno": "45",
-      "Category": "Toilet",
-      "Place_Name": "Dumma Jharkhand Border, Chandan",
-      "Latitude": "24.57392",
-      "Longitude": "86.70025",
-      "type": "Govt.",
-      "distance": "98.09km",
-      "Contact_no": "8544428947",
-      "Address": "Siljori, Bihar, India"
-    },
-    {
-      "Slno": "44",
+      "Slno": "39",
       "Category": "Toilet",
       "Place_Name": "Dumma Jharkhand Border, Chandan",
       "Latitude": "24.57388",

@@ -66,7 +66,7 @@ public class InstructionPage extends AppCompatActivity {
             if (doNotShow.equals("y")){
                 slide1.setVisibility(View.VISIBLE);
 
-                countDownTimer=new CountDownTimer(1500, 500) {
+                countDownTimer=new CountDownTimer(1200, 500) {
                     @Override
                     public void onTick(long millisUntilFinished) {
 

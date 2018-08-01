@@ -705,7 +705,7 @@
                                 android:background="@drawable/circle_bg"
                                 android:contentDescription="@string/app_name"
                                 android:padding="10dp"
-                                app:srcCompat="@drawable/waterfall" />
+                                app:srcCompat="@drawable/panda" />
 
                             <View
                                 android:layout_width="match_parent"
@@ -720,7 +720,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
                                 android:fontFamily="@font/noto_sans"
-                                android:text="@string/waterfall"
+                                android:text="@string/panda_list"
                                 android:textColor="@color/background"
                                 android:textSize="12sp"
                                 android:textStyle="bold" />

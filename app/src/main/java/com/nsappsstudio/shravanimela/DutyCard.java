@@ -87,20 +87,33 @@ public class DutyCard extends AppCompatActivity {
                     isTitle=false;
                 }
 
-                if (filename.equals("DoctorChart.json")){
-                    DetailCardItem detailCardItem = new DetailCardItem(s_num, description, name, designation,
-                            null, shift, mobile, isTitle, mainTitle, 0);
-                    detailCardItems.add(detailCardItem);
-                    RecyclerView.Adapter adapter = new DetailCardAdaptor(this, detailCardItems);
-                    recyclerView.setAdapter(adapter);
-                }
-                else {
-                    DetailCardItem detailCardItem = new DetailCardItem(s_num, null, name, designation,
-                            description, shift, mobile, isTitle, mainTitle, 0);
-                    detailCardItems.add(detailCardItem);
-                    RecyclerView.Adapter adapter = new DetailCardAdaptor(this, detailCardItems);
-                    recyclerView.setAdapter(adapter);
+                switch (filename) {
+                    case "DoctorChart.json":
+                    case "DoctorChart_eng.json": {
+                        DetailCardItem detailCardItem = new DetailCardItem(s_num, description, name, designation,
+                                null, shift, mobile, isTitle, mainTitle, 0);
+                        detailCardItems.add(detailCardItem);
+                        RecyclerView.Adapter adapter = new DetailCardAdaptor(this, detailCardItems);
+                        recyclerView.setAdapter(adapter);
+                        break;
+                    }
+                    case "Panda_eng.json": {
+                        DetailCardItem detailCardItem = new DetailCardItem(s_num,  description, name,"Father's Name: " +designation,
+                                shift, null, mobile, isTitle, mainTitle, 2);
+                        detailCardItems.add(detailCardItem);
+                        RecyclerView.Adapter adapter = new DetailCardAdaptor(this, detailCardItems);
+                        recyclerView.setAdapter(adapter);
+                        break;
+                    }
+                    default: {
+                        DetailCardItem detailCardItem = new DetailCardItem(s_num, null, name, designation,
+                                description, shift, mobile, isTitle, mainTitle, 0);
+                        detailCardItems.add(detailCardItem);
+                        RecyclerView.Adapter adapter = new DetailCardAdaptor(this, detailCardItems);
+                        recyclerView.setAdapter(adapter);
 
+                        break;
+                    }
                 }
 
 

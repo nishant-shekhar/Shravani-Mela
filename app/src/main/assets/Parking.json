@@ -1,5 +1,7 @@
 {"sightings":[
-{"Slno":1,"Category":"Parking","Place_Name":"Kishangad","Latitude":25.2443267,"Longitude":86.72804,"type":"Govt.","distance":"1.96km","Contact_no":"","Address":"Krishnagarh, Tilakpur Rd, Sultanganj, Bihar 813213, India"},
-{"Slno":2,"Category":"Parking","Place_Name":"Sitarampur ","Latitude":25.241397,"Longitude":86.729111,"type":"Govt.","distance":"2.06km","Contact_no":"","Address":"Deoghar Rd, Sultanganj, Bihar 813213, India"},
-{"Slno":3,"Category":"Parking","Place_Name":"Jilebiyamor Dharmshala, Belhar","Latitude":24.89650,"Longitude":86.66107,"type":"Govt.","distance":"49.82km","Contact_no":"","Address":"Deoghar Rd, Tola Kaithatikar, Bihar 813119, India"}
+{"Slno":1,"Category":"Parking/Bus Stand","Place_Name":"Govt Bus Stand Sultanganj","Latitude":25.2427329,"Longitude":86.7366146,"type":"Govt.","distance":"1.96km","Contact_no":"","Address":"Govt Bus Stand Sultanganj"},
+{"Slno":2,"Category":"Parking/Bus Stand","Place_Name":"Sultanganj 1","Latitude":25.2416904,"Longitude":86.7324481,"type":"Govt.","distance":"2.06km","Contact_no":"","Address":"Sultanganj"},
+{"Slno":3,"Category":"Parking/Bus Stand","Place_Name":"Sultanganj 2","Latitude":25.2416502,"Longitude":86.7325833,"type":"Govt.","distance":"2.06km","Contact_no":"","Address":"Sultanganja"},
+{"Slno":4,"Category":"Parking/Bus Stand","Place_Name":"A K Gopalan Inter College Sultanganj","Latitude":25.2376478,"Longitude":86.7325833,"type":"Govt.","distance":"2.06km","Contact_no":"","Address":"A K Gopalan Inter College Sultanganj"},
+{"Slno":5,"Category":"Parking/Bus Stand","Place_Name":"Jilebiyamor Dharmshala, Belhar","Latitude":24.89650,"Longitude":86.66107,"type":"Govt.","distance":"49.82km","Contact_no":"","Address":"Deoghar Rd, Tola Kaithatikar, Bihar 813119, India"}
 ]}

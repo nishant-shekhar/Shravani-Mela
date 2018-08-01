@@ -47,9 +47,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
 
@@ -71,11 +74,9 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
     private boolean mapIsReady;
     private FirebaseUser user;
     private String uPhoneNo;
-    private SharedPreferences sharedPref;
     private ScrollView scrollView;
     private CardView dangerCard;
-    private CardView kidnapCard;
-    private CardView lostCard;
+    private boolean isDanger=false;
 
 
     @Override
@@ -94,15 +95,40 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
         user= mAuth.getCurrentUser();
         scrollView=findViewById(R.id.scroll);
         dangerCard=findViewById(R.id.danger_card);
-        lostCard=findViewById(R.id.lost_card);
-        kidnapCard=findViewById(R.id.kidnap_card);
+
 
         if (user!=null) {
             uPhoneNo = user.getPhoneNumber();
+            CardView registerMobileCard=findViewById(R.id.reg_mobile_sos);
+            registerMobileCard.setVisibility(View.GONE);
+
+            DatabaseReference mSosRef = mDatabaseReference.child("ControlRoom").child("SOSDangerList").child(uPhoneNo);
+            mSosRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Long ts=dataSnapshot.getValue(Long.class);
+                    if (ts!=null){
+                    toastMessage("Someone soon will attend your request");
+                    dangerCard.setVisibility(View.GONE);
+                    isDanger=true;
+                    }else {
+                        isDanger=false;
+                        dangerCard.setVisibility(View.VISIBLE);
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
         }else{
             uPhoneNo=null;
+            toastMessage("Please Register your mobile number");
         }
-        sharedPref=getSharedPreferences("userInfo", Context.MODE_PRIVATE);
 
 
         createLocationCallback();
@@ -135,84 +161,87 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
         }
     }
     public void helpDanger(View v){
-        String type= "Help I am in Danger";
-        String status="HN";
-        sos(type,status);
-    }
-    public void helpKidnap(View v){
-        String type= "Help I am being Kidnap";
-        String status="HN";
-        sos(type,status);
-
-    }
-    public void helpLost(View v){
-        String type= "Help I am Lost";
-        String status="HN";
-        sos(type,status);
-
-    }
-    public void safe(View v){
-        String type= "Now I am Safe.Marked By User";
-        String status="Safe";
-        sos(type,status);
-
-        onBackPressed();
-        stopLocationUpdates();
-
-
-    }
-
-    private void sos(String type, String status){
-        if(!status.equals("Safe")) {
-            Toast.makeText(this, "We are sending your location to control room", Toast.LENGTH_LONG).show();
-        }
         if (user!=null && uPhoneNo!=null) {
-
-            DatabaseReference mSosRef = mDatabaseReference.child("ControlRoom").child("SOS").child(uPhoneNo);
-            mSosRef.child("type").setValue(type);
-            mSosRef.child("status").setValue(status).addOnSuccessListener(new OnSuccessListener<Void>() {
+            isDanger=true;
+            DatabaseReference mSosRef = mDatabaseReference.child("ControlRoom").child("SOSDangerList").child(uPhoneNo);
+            mSosRef.setValue(ServerValue.TIMESTAMP).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
                     slideDown(scrollView);
                     dangerCard.setFocusable(false);
-                    kidnapCard.setFocusable(false);
-                    lostCard.setFocusable(false);
+                    DatabaseReference mSosArchiveRef = mDatabaseReference.child("ControlRoom").child("SOSArchiveList").child(uPhoneNo);
+                    mSosArchiveRef.setValue(ServerValue.TIMESTAMP);
+                    if(mCurrentLocation!=null){
+                        toastMessage("Your Request is registered");
+                    }else {
+                        toastMessage("Wait! we are fetching your location");
+                    }
+
                 }
             });
         }else {
-            String userId=sharedPref.getString("userId",null);
+            GoToMobileReg();
+        }
+    }
 
-            if (userId == null) {
-                int userNo;
-                Random n = new Random();
-                userNo = n.nextInt(1000000 );
-                userId=String.valueOf(userNo);
+    public void registerMobile(View view){
+        GoToMobileReg();
 
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString("userId", userId);
-                editor.apply();
-            }
-            DatabaseReference mSosRef = mDatabaseReference.child("ControlRoom").child("SOS").child(userId);
-            mSosRef.child("type").setValue(type);
-            mSosRef.child("status").setValue(status).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    slideDown(scrollView);
-                    dangerCard.setFocusable(false);
-                    kidnapCard.setFocusable(false);
-                    lostCard.setFocusable(false);
-                }
-            });
-
+    }
+    public void callHelp(View view){
+        String mobileNum="7070747474";
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + mobileNum));
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
         }
 
+
+    }
+    private void GoToMobileReg() {
+        toastMessage("Please Register Mobile before we send your location");
+        Intent intent = new Intent(this, MobileRegistration.class);
+        intent.putExtra("from","sos");
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    private void toastMessage(String s) {
+        Toast.makeText(SOS.this, s, Toast.LENGTH_LONG).show();
+    }
+
+    public void safe(View v){
+        if (user!=null && uPhoneNo!=null) {
+
+
+            DatabaseReference mSosSafeRef = mDatabaseReference.child("ControlRoom").child("SOSSafeList").child(uPhoneNo);
+            mSosSafeRef.setValue(ServerValue.TIMESTAMP).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    DatabaseReference mSosDangerRef = mDatabaseReference.child("ControlRoom").child("SOSDangerList").child(uPhoneNo);
+                    mSosDangerRef.setValue(null).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            onBackPressed();
+                        }
+                    });
+                }
+            });
+            isDanger=false;
+            stopLocationUpdates();
+        }else {
+            isDanger=false;
+            stopLocationUpdates();
+            onBackPressed();
+
+        }
     }
 
 
     protected void createLocationRequest() {
         mLocationRequest = LocationRequest.create();
-        mLocationRequest.setInterval(15000);
-        mLocationRequest.setFastestInterval(1000);
+        mLocationRequest.setInterval(8000);
+        mLocationRequest.setFastestInterval(5000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
     private void buildLocationSettingsRequest() {
@@ -236,41 +265,45 @@ public class SOS extends FragmentActivity implements OnMapReadyCallback {
                     mCurrentLocation = locationResult.getLastLocation();
                     double mLatitude = mCurrentLocation.getLatitude();
                     double mLongitude = mCurrentLocation.getLongitude();
+                    float mAccuracy=mCurrentLocation.getAccuracy();
                     LatLng latLng = new LatLng(mLatitude, mLongitude);
                     mMap.addMarker(new MarkerOptions().position(latLng).title("My Current Location"));
                     //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
 
-                    if (user!=null && uPhoneNo!=null) {
-                        DatabaseReference mSosRef = mDatabaseReference.child("ControlRoom").child("SOS").child("");
-                        mSosRef.child("lat").setValue(mLatitude);
-                        mSosRef.child("lang").setValue(mLongitude);
-                        mSosRef.child("lastTime").setValue(ServerValue.TIMESTAMP);
-                    }else {
-                        String userId=sharedPref.getString("userId",null);
+                    if (user!=null && uPhoneNo!=null && isDanger) {
+                        final DatabaseReference mSosRef = mDatabaseReference.child("ControlRoom").child("SOS").child(uPhoneNo);
+                        SosData sosData=new SosData(mLatitude,mLongitude,mAccuracy);
+                        mSosRef.setValue(sosData).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                mSosRef.child("lastTime").setValue(ServerValue.TIMESTAMP).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
 
-                        if (userId == null) {
-                            int userNo;
-                            Random n = new Random();
-                            userNo = n.nextInt(1000000 );
-                            userId=String.valueOf(userNo);
+                                    }
+                                });
 
-                            SharedPreferences.Editor editor = sharedPref.edit();
-                            editor.putString("userId", userId);
-                            editor.apply();
                             }
+                        });
 
-                        DatabaseReference mSosRef = mDatabaseReference.child("ControlRoom").child("SOS").child(userId);
-                        mSosRef.child("lat").setValue(mLatitude);
-                        mSosRef.child("lang").setValue(mLongitude);
-                        mSosRef.child("lastTime").setValue(ServerValue.TIMESTAMP);
                     }
 
                 }
             }
         };
     }
+    public class SosData{
+        public double lat;
+        public double lang;
+        public float accuracy;
 
+        public SosData(double lat, double lang, float accuracy) {
+            this.lat = lat;
+            this.lang = lang;
+            this.accuracy = accuracy;
+        }
+    }
 
     private boolean checkPermissions() {
         int permissionState = ActivityCompat.checkSelfPermission(this,

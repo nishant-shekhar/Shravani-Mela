@@ -49,11 +49,22 @@ public class MobileRegistration extends AppCompatActivity {
     private ConstraintLayout verificationForm;
     private ConstraintLayout autoVerificationView;
     private String mobileNo;
+    private String from;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mobile_registration);
+
+        try {
+            Intent intent=getIntent();
+            from = intent.getStringExtra("from");
+            if (from!=null){
+
+            }
+        }catch (NullPointerException error){
+            //do nothing
+        }
 
         mobileNumberView =findViewById(R.id.mr_mobile_no);
         mobileNumberView.setFilters(new InputFilter[] {new InputFilter.LengthFilter(10)});
@@ -241,11 +252,34 @@ public class MobileRegistration extends AppCompatActivity {
     }
 
     private void goToProfile(){
+        Intent intent;
+        switch (from){
+            case "sos":
+                intent = new Intent(this, SOS.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+                break;
+            case "main":
+                intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+                break;
+            case "feedback":
+                intent = new Intent(this, FeedBack.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+                break;
+            default:
+                intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+                break;
+        }
 
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        finish();
     }
     private void toastMessage(String text) {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show();

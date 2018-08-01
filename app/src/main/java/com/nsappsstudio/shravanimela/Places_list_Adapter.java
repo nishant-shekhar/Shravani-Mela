@@ -55,6 +55,9 @@ public class Places_list_Adapter extends RecyclerView.Adapter<Places_list_Adapte
             case "Health Centre":
                 holder.imageType.setImageResource(R.drawable.ic_healing_black_24dp);
                 break;
+            case "Hand Pump":
+                holder.imageType.setImageResource(R.drawable.hand_pump);
+                break;
             case "Information Centre":
                 holder.imageType.setImageDrawable(context.getResources().getDrawable(R.drawable.rangoli_bitmap));
                 break;

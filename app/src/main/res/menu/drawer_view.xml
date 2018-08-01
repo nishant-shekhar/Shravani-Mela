@@ -94,6 +94,10 @@
                     android:icon="@drawable/ic_local_hospital_black_24dp"
                     android:title="@string/health_centre" />
                 <item
+                    android:id="@+id/nav_hand_pump"
+                    android:icon="@drawable/hand_pump"
+                    android:title="@string/hand_pump" />
+                <item
                     android:id="@+id/nav_info_centre"
                     android:icon="@drawable/call_center"
                     android:title="@string/info_centre" />
@@ -136,15 +140,15 @@
                 android:id="@+id/nav_setting">
                 <item
                     android:id="@+id/nav_reg_mobile"
-                    android:icon="@drawable/ic_filter_vintage_black_24dp"
+                    android:icon="@drawable/ic_register_mobile"
                     android:title="@string/register_mobile"/>
                 <item
                     android:id="@+id/nav_feedback"
-                    android:icon="@drawable/ic_filter_vintage_black_24dp"
+                    android:icon="@drawable/ic_feedback_black_24dp"
                     android:title="@string/give_feedback"/>
                 <item
                     android:id="@+id/nav_change_lang"
-                    android:icon="@drawable/ic_filter_vintage_black_24dp"
+                    android:icon="@drawable/ic_settings_black_24dp"
                     android:title="@string/change_lang"/>
               </group>
         </menu>

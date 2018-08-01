@@ -21,7 +21,7 @@
     <string name="crowd_status">Crowd Status</string>
     <string name="sultangunj">Sultangunj</string>
     <string name="heavy_crowd">Heavy Crowd</string>
-    <string name="live_arti">Watch Live Aarti</string>
+    <string name="live_arti">Watch Live Video</string>
     <string name="police_station">Police Station</string>
     <string name="rest_room">Rest room</string>
     <string name="toilet">Toilet</string>
@@ -131,6 +131,8 @@
     <string name="instruction">Instructions</string>
     <string name="note">Note</string>
     <string name="sos_instruction">1. Use this feature only in case of emergency \n2. Register mobile number before you ask for emergency help. </string>
-    <string name="call_helpline" >Call Helpline</string>
+    <string name="call_helpline">Call Helpline</string>
+    <string name="panda_list">Panda List</string>
+    <string name="hand_pump">Hand Pump</string>
 
 </resources>

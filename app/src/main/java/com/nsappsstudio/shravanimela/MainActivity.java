@@ -221,6 +221,12 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("type", "Health Centre.json");
                 startActivity(intent);
                 break;
+            case R.id.nav_hand_pump:
+                intent = new Intent(this, PLaces.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type", "Hand Pump.json");
+                startActivity(intent);
+                break;
             case R.id.nav_info_centre:
                 intent = new Intent(this, PLaces.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -276,6 +282,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.nav_feedback:
                 intent = new Intent(this, FeedBack.class);
+                intent.putExtra("from","main");
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 break;
@@ -386,6 +393,12 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("type", "Health Centre.json");
                     startActivity(intent);
                     break;
+                case R.id.nav_hand_pump:
+                    intent = new Intent(this, PLaces.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("type", "Hand Pump.json");
+                    startActivity(intent);
+                    break;
                 case R.id.nav_info_centre:
                     intent = new Intent(this, PLaces.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -404,6 +417,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("type", "Petrol Pump.json");
                     startActivity(intent);
                     break;
+
                 case R.id.nav_sanskritik_cente:
                     intent = new Intent(this, PLaces.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -441,6 +455,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.nav_feedback:
                     intent = new Intent(this, FeedBack.class);
+                    intent.putExtra("from","main");
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     break;
@@ -544,16 +559,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void GoToCamera(View view){
-        toastMessage("Live Aarti feeding will start after 28th July");
+        //toastMessage("Live Aarti feeding will start after 28th July");
         Intent intent= new Intent(this,Camera.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
     public void GoToSOS(View view){
-        Toast.makeText(this,"SOS Service will start soon",Toast.LENGTH_LONG).show();
-        /*Intent intent= new Intent(this,SOS.class);
+        //Toast.makeText(this,"SOS Service will start soon",Toast.LENGTH_LONG).show();
+        Intent intent= new Intent(this,SOS.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);*/
+        startActivity(intent);
     }
     public void GoToToilet(View view){
 
@@ -599,9 +614,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public void GoToWaterfall(View view){
 
-        Intent intent= new Intent(this,PLaces.class);
+        Intent intent = new Intent(this, DutyCard.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("type","Jharna.json");
+        intent.putExtra("type", "Panda_eng.json");
         startActivity(intent);
     }
     public void GoToNotification(View view){

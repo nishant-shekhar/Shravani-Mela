@@ -87,6 +87,7 @@ public class FeedBack extends AppCompatActivity {
     private void GoToMobileReg() {
         toastMessage("Please Register Mobile before providing feedback");
         Intent intent = new Intent(this, MobileRegistration.class);
+        intent.putExtra("from","feedback");
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();

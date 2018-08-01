@@ -22,7 +22,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Camera"
+        <activity
+            android:name=".Camera"
             android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="com.nsappsstudio.shravanimela.Camera" />
@@ -95,6 +96,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".NotificationPre"></activity>
     </application>
 
 </manifest>

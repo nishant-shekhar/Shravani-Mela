@@ -19,7 +19,7 @@
     <string name="crowd_status">भीड़ स्थिति</string>
     <string name="sultangunj">सुल्तानगंज</string>
     <string name="heavy_crowd">भारी भीड़</string>
-    <string name="live_arti">लाइव आरती देखें</string>
+    <string name="live_arti">लाइव वीडियो देखें</string>
     <string name="police_station">पुलिस स्टेशन</string>
     <string name="toilet">शौचालय</string>
     <string name="waterfall">झरना</string>
@@ -105,5 +105,9 @@
     <string name="enter_mobile_no">मोबाइल नंबर दर्ज करें</string>
     <string name="sign_up">साइन अप करें</string>
     <string name="donot_show">अगली बार ना दिखाएं</string>
-
+    <string name="note">नोट</string>
+    <string name="sos_instruction">1. इस सुविधा का उपयोग केवल आपात स्थिति में करें अन्यथा कॉल हेल्पलाइन का उपयोग करें। \n2. आपातकालीन सहायता मांगने से पहले मोबाइल नंबर पंजीकृत करें </string>
+    <string name="call_helpline" >कॉल हेल्पलाइन</string>
+    <string name="panda_list">पांडा सूची</string>
+    <string name="hand_pump">हैंड पंप</string>
 </resources>

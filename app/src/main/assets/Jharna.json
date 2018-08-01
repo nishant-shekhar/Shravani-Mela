@@ -1,6 +1,7 @@
 {"sightings":[
-{"Slno":1,"Category":"Jharna","Place_Name":"Kamray Chauk ","Latitude":25.1962278,"Longitude":86.7125609,"type":"Public","distance":"7.62km","Contact_no":"","Address":"Asarganj, Rahmatpur"},
-{"Slno":2,"Category":"Jharna","Place_Name":"Rahmatpur ","Latitude":25.1696157,"Longitude":86.7056024,"type":"Public","distance":"11.20km","Contact_no":"","Address":"In Rahmatpur Garden"},
-{"Slno":3,"Category":"Jharna","Place_Name":"Sangrampur, Maniya ","Latitude":25.025701,"Longitude":86.650088,"type":"Public","distance":"31.07km","Contact_no":"","Address":"Sangrampur, Maniya"},
-{"Slno":4,"Category":"Jharna","Place_Name":"Goga Chak","Latitude":25.526948,"Longitude":87.175319,"type":"Public","distance":"83.71km","Contact_no":"","Address":"Tarapur, Teldiha Chowk"}
+{"Slno":1,"Category":"Jharna","Place_Name":"Shahkund Road, Kamray","Latitude":25.15575337,"Longitude":86.69839231,"type":"Public","distance":"13.5km","Contact_no":"","Address":"Shahkund Road, Kamray"},
+{"Slno":2,"Category":"Jharna","Place_Name":"Rahmatpur ","Latitude":25.15111249,"Longitude":86.6972439,"type":"Public","distance":"14.00km","Contact_no":"","Address":"In Rahmatpur Garden"},
+{"Slno":4,"Category":"Jharna","Place_Name":"Goga Chak","Latitude":25.106948,"Longitude":86.675319,"type":"Public","distance":"83.71km","Contact_no":"","Address":"Tarapur, Teldiha Chowk"},
+{"Slno":3,"Category":"Jharna","Place_Name":"Sangrampur, Maniya ","Latitude":25.025701,"Longitude":86.650088,"type":"Public","distance":"31.07km","Contact_no":"","Address":"Sangrampur, Maniya"}
+
 ]}

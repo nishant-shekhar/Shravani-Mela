@@ -264,6 +264,9 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
             case "Health Centre":
                 imageView.setImageResource(R.drawable.ic_healing_black_24dp);
                 break;
+            case "Hand Pump":
+                imageView.setImageResource(R.drawable.hand_pump);
+                break;
             case "Information Centre":
                 imageView.setImageResource(R.drawable.rangoli);
                 break;

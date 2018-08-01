@@ -9,7 +9,7 @@
         android:id="@+id/dc_title_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/title_bg"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
         app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -163,6 +163,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/mobile_linear_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="2dp"

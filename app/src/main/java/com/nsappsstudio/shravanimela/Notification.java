@@ -10,6 +10,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -71,7 +72,11 @@ public class Notification extends AppCompatActivity {
     private void showAllNotifications() {
         recyclerView=findViewById(R.id.n_recyclerView);
         recyclerView.hasFixedSize();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        mLayoutManager.setReverseLayout(true);
+        mLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(mLayoutManager);
+
         cardListItems = new ArrayList<>();
 
         DatabaseReference mNoticeRef= mDatabaseReference.child("Notification");
@@ -144,6 +149,7 @@ public class Notification extends AppCompatActivity {
 
                 nTitle.setText(title);
                 nBody.setText(body);
+                nBody.setMovementMethod(new ScrollingMovementMethod());
                 nType.setText(type);
 
             }

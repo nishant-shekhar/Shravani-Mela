@@ -1,6 +1,18 @@
 {"sightings":[
-{"Slno":1,"Category":"Control Room ","Place_Name":"Jahaj Ghat","Latitude":25.252803,"Longitude":86.739038,"type":"Govt.","distance":"0.26km","Contact_no":"","Address":"Jahaj Ghat, Sultanganj"},
-{"Slno":2,"Category":"Control Room ","Place_Name":"Sidhi Ghat","Latitude":25.251392,"Longitude":86.737249,"type":"Govt.","distance":"0.33km","Contact_no":"","Address":"Sidhi Ghat, Sultanganj"},
-{"Slno":3,"Category":"Control Room ","Place_Name":"Jilebiyamor Dharmshala Belhar","Latitude":24.89690,"Longitude":86.66280,"type":"Govt.","distance":"49.98km","Contact_no":"8986956782","Address":"Deoghar Rd, Tola Kaithatikar, Bihar 813119, India"},
-{"Slno":4,"Category":"Control Room ","Place_Name":"Katoriya Power Grid Campus","Latitude":24.75197,"Longitude":86.70232,"type":"Govt.","distance":"71.09km","Contact_no":"8986956780","Address":"Deoghar Rd, Chihutjor, Bihar 813106, India"}
+{"Slno":1,"Category":"Control Room ","Place_Name":"Ajgaibinath Mandir, Sultanganj","Latitude":25.253726,"Longitude":86.744729,"type":"Govt.","distance":"0.00km","Contact_no":"06412492062","Address":"Ajgaibinath Mandir, Sultanganj"},
+{"Slno":2,"Category":"Control Room ","Place_Name":"Jahaj Ghat","Latitude":25.252803,"Longitude":86.739038,"type":"Govt.","distance":"0.26km","Contact_no":"06412492012","Address":"Jahaj Ghat, Sultanganj"},
+{"Slno":3,"Category":"Control Room ","Place_Name":"Sidhi Ghat","Latitude":25.251392,"Longitude":86.737249,"type":"Govt.","distance":"0.33km","Contact_no":"06412492086","Address":"Sidhi Ghat, Sultanganj"},
+{"Slno":4,"Category":"Control Room ","Place_Name":"Sultanganj Thana","Latitude":25.2468792,"Longitude":86.7414856,"type":"Govt.","distance":"0.00km","Contact_no":"06412492064","Address":"Sultanganj Thana"},
+{"Slno":5,"Category":"Control Room ","Place_Name":"Krishnagadh","Latitude":25.2465833,"Longitude":86.737905,"type":"Govt.","distance":"0.98km","Contact_no":"06412492085","Address":"Krishnagadh"},
+{"Slno":6,"Category":"Control Room ","Place_Name":"Block Campus Sultanganj","Latitude":25.246458,"Longitude":86.749978,"type":"Govt.","distance":"0.00km","Contact_no":"06412492065","Address":"Block Campus, Sultanganj"},
+{"Slno":7,"Category":"Control Room ","Place_Name":"Adarsh Madhya Vidyalay Sultanganj","Latitude":25.2451362,"Longitude":86.7383817,"type":"Govt.","distance":"8.18km","Contact_no":"","Address":"Adarsh Madhya Vidyalay Sultanganj"},
+{"Slno":8,"Category":"Control Room ","Place_Name":"Budhanath School Sultanganj","Latitude":25.2417689,"Longitude":86.7397587,"type":"Govt.","distance":"8.18km","Contact_no":"","Address":"Budhanath School Sultanganj"},
+{"Slno":9,"Category":"Control Room ","Place_Name":"Near Railway Crossing(Jila Parishad Dak Bunglow)","Latitude":25.2404519,"Longitude":86.7291966,"type":"Govt.","distance":"8.18km","Contact_no":"","Address":"Near Railway Crossing(Jila Parishad Dak Bunglow)"},
+{"Slno":10,"Category":"Control Room ","Place_Name":"Jahangira(Kamarganj Panchayat Bhawan)","Latitude":25.2401972,"Longitude":86.692873,"type":"Govt.","distance":"8.18km","Contact_no":"","Address":"Jahangira(Kamarganj Panchayat Bhawan)"},
+{"Slno":11,"Category":"Control Room ","Place_Name":"Shahabad Chauk","Latitude":25.2319672,"Longitude":86.752997,"type":"Govt.","distance":"8.18km","Contact_no":"","Address":"Shahabad Chauk"},
+{"Slno":12,"Category":"Control Room ","Place_Name":"Kamray","Latitude":25.1913995,"Longitude":86.7108171,"type":"Govt.","distance":"8.18km","Contact_no":"","Address":"Kamray"},
+{"Slno":13,"Category":"Control Room ","Place_Name":"Dhandhi Belary","Latitude":25.1308921,"Longitude":86.6868864,"type":"Govt.","distance":"15.46km","Contact_no":"","Address":"Dhandhi Belary"},
+{"Slno":14,"Category":"Control Room ","Place_Name":"Teghra","Latitude":25.1229696,"Longitude":86.6857674,"type":"Govt.","distance":"15.98km","Contact_no":"","Address":"Teghra"},
+{"Slno":15,"Category":"Control Room ","Place_Name":"Jilebiyamor Dharmshala Belhar","Latitude":24.89690,"Longitude":86.66280,"type":"Govt.","distance":"49.98km","Contact_no":"","Address":"Deoghar Rd, Tola Kaithatikar, Bihar 813119, India"},
+{"Slno":16,"Category":"Control Room ","Place_Name":"Katoriya Power Grid Campus","Latitude":24.75197,"Longitude":86.70232,"type":"Govt.","distance":"71.09km","Contact_no":"","Address":"Deoghar Rd, Chihutjor, Bihar 813106, India"}
 ]}

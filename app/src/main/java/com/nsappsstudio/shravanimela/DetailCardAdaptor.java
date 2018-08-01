@@ -56,6 +56,11 @@ public class DetailCardAdaptor extends RecyclerView.Adapter<DetailCardAdaptor.Vi
             if (detailCardItem.getDescription()==null){
                 holder.descriptionLinearLayout.setVisibility(View.GONE);
             }
+            if(detailCardItem.getType()==2){
+                holder.call.setVisibility(View.GONE);
+                holder.mobileLinearLayout.setVisibility(View.GONE);
+                holder.shift.setVisibility(View.GONE);
+            }
 
         }
 
@@ -79,6 +84,7 @@ public class DetailCardAdaptor extends RecyclerView.Adapter<DetailCardAdaptor.Vi
         public TextView shift;
         public TextView call;
         public LinearLayout descriptionLinearLayout;
+        public LinearLayout mobileLinearLayout;
 
 
 
@@ -96,6 +102,7 @@ public class DetailCardAdaptor extends RecyclerView.Adapter<DetailCardAdaptor.Vi
             call=itemView.findViewById(R.id.dc_call);
             mainTitle=itemView.findViewById(R.id.dc_mainTitle);
             descriptionLinearLayout=itemView.findViewById(R.id.dc_description_layout);
+            mobileLinearLayout=itemView.findViewById(R.id.mobile_linear_layout);
 
         }
     }
