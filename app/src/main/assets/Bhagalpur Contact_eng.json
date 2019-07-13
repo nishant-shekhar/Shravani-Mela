@@ -1,128 +1,275 @@
 {
   "table": [
     {
-      "cell1": "Officer/ Control Room ",
+      "cell1": "Officer/ Control Room",
       "cell2": "Office/Residential",
       "cell3": "Mobile No.",
+      "cell4": " ",
+      "cell5": "title"
+    },
+    {
+      "cell1": "Commisioner, Bhagalpur Division, Bhagalpur",
+      "cell2": " ",
+      "cell3": "9473191433",
       "cell4": " ",
       "cell5": " "
     },
     {
-      "cell1": "District Magistrate, Bhagalpur ",
-      "cell2": "06412402200\r\n06412402300",
+      "cell1": "I.G., Bhagalpur",
+      "cell2": " ",
+      "cell3": "9431822953",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "D.I.G., Bhagalpur",
+      "cell2": " ",
+      "cell3": "9431822958",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "District Magistrate, Bhagalpur",
+      "cell2": " ",
       "cell3": "9473191381",
       "cell4": " ",
       "cell5": " "
     },
     {
-      "cell1": "Senior Superintendant of Police,  Bhagalpur ",
-      "cell2": "06412400103\r\n06412401003",
+      "cell1": "SSP,  Bhagalpur",
+      "cell2": " ",
       "cell3": "9431800003",
       "cell4": " ",
       "cell5": " "
     },
     {
-      "cell1": "Superintendant of Police,  Naugachia ",
-      "cell2": "06421223343\r\n06421223285",
+      "cell1": "SP, Naugachiya",
+      "cell2": " ",
       "cell3": "9431800005",
       "cell4": " ",
       "cell5": " "
     },
     {
-      "cell1": "Deputy Development Commissioner, Bhagalpur ",
-      "cell2": "06412303284\r\n06412401101",
+      "cell1": "DDC, Bhagalpur",
+      "cell2": " ",
       "cell3": "9431818374",
       "cell4": " ",
       "cell5": " "
     },
     {
-      "cell1": " Additional Collector, Bhagalpur",
-      "cell2": "6412400891",
+      "cell1": "ADM, Bhagalpur",
+      "cell2": " ",
       "cell3": "9473191382",
       "cell4": " ",
       "cell5": " "
     },
     {
-      "cell1": "District Public Relation Officer, Bhagalpur ",
-      "cell2": "6412400023",
-      "cell3": "9430427585",
+      "cell1": "ADM(Departmental Enquiry)-cum- Mela Magistrate, Bhagalpur",
+      "cell2": " ",
+      "cell3": "7004438383",
       "cell4": " ",
       "cell5": " "
     },
     {
-      "cell1": "D.C.L.R. Sadar Bhagalpur ",
+      "cell1": "SDM Sadar, Bhagalpur",
+      "cell2": " ",
+      "cell3": "9473191383",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "DCLR Sadar, Bhagalpur",
       "cell2": " ",
       "cell3": "8544412312",
       "cell4": " ",
       "cell5": " "
     },
     {
-      "cell1": "Sub-Divisonal Officer, Sadar Bhagalpur ",
-      "cell2": "0641240013 \r\n06412401203",
-      "cell3": "9473191383",
+      "cell1": "DTO, Bhagalpur",
+      "cell2": " ",
+      "cell3": "9955238499",
       "cell4": " ",
       "cell5": " "
     },
     {
-      "cell1": "Deputy Superintendant of Police, Law & Order, Bhagalpur",
-      "cell2": "06412420853\r\n06412420824",
+      "cell1": "Civil Surgeon-cum-CMO, Bhagalpur",
+      "cell2": " ",
+      "cell3": "9470003118",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "DPRO, Bhagalpur",
+      "cell2": " ",
+      "cell3": "9430279088",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "DSP(Town) Bhagalpur",
+      "cell2": " ",
+      "cell3": "9431800031",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "DSP(Law & Order) Bhagalpur",
+      "cell2": " ",
       "cell3": "9431822601",
       "cell4": " ",
       "cell5": " "
     },
     {
-      "cell1": "Executive Officer, Nagar Parisad, Sultanganj",
-      "cell2": "06412492306",
-      "cell3": "9631098726 \r\n97979099223 \r\n9006943625",
-      "cell4": " ",
-      "cell5": " "
-    },
-    {
-      "cell1": "Block Development Officer, Sultanganj",
-      "cell2": "06412492014",
-      "cell3": "9431818594 \r\n9431000265",
-      "cell4": " ",
-      "cell5": " "
-    },
-    {
-      "cell1": "Circle Officer, Sultanganj",
+      "cell1": "DSP(Headquarter) Bhagalpur",
       "cell2": " ",
-      "cell3": "8544412468",
+      "cell3": "9431822604",
       "cell4": " ",
       "cell5": " "
     },
     {
-      "cell1": "Sultanganj Thana Incharge ",
-      "cell2": "06412492027",
-      "cell3": "9431822617",
-      "cell4": " ",
-      "cell5": " "
-    },
-    {
-      "cell1": "Bath Thana Incharge",
-      "cell2": "06412309200",
-      "cell3": "9431822608",
-      "cell4": " ",
-      "cell5": " "
-    },
-    {
-      "cell1": "Incharge Medical Officer, Sultanganj",
-      "cell2": "06412492477",
-      "cell3": "9470003132",
-      "cell4": " ",
-      "cell5": " "
-    },
-    {
-      "cell1": "Health Manager, Sultanganj",
+      "cell1": "DSP Kahalgaon",
       "cell2": " ",
-      "cell3": "9097108155",
+      "cell3": "9431800032",
       "cell4": " ",
       "cell5": " "
     },
     {
-      "cell1": "Control Room, Sidhighat, Sultanganj",
-      "cell2": "06412492085",
+      "cell1": "DSP Naugachiya",
+      "cell2": " ",
+      "cell3": "9431800029",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "DSP(Headquarter) Naugachiya",
+      "cell2": " ",
+      "cell3": "9431092990",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "SI (Sidhi Ghat, Sultanganj)",
+      "cell2": " ",
+      "cell3": "7480004973",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "ASI (Sidhi Ghat, Sultanganj)",
+      "cell2": " ",
+      "cell3": "995555047",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "ASI (Jahaj Ghat, Sultanganj)",
+      "cell2": " ",
+      "cell3": "9801445456",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "ASI (A K Gopalan Coolege/Bath/Belari Sultanganj)",
+      "cell2": " ",
+      "cell3": "9473197533",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "ASI(Krishngadh Overbridge, Rest House Sultanganj)",
+      "cell2": " ",
+      "cell3": "934442672",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "ASI(Railway Station Sultanganj)",
+      "cell2": " ",
+      "cell3": "8825193310",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "SI(Belhar Dhauri Dharmshala), Banka",
+      "cell2": " ",
+      "cell3": "9473197537",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "Inspector(Jilebia Control Room and Rest House), Banka",
+      "cell2": " ",
+      "cell3": "9430927934",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "SI(Katoriya Control Room), Banka",
+      "cell2": " ",
+      "cell3": "9905276995",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "PHED, Bhagalpur West",
+      "cell2": " ",
       "cell3": " ",
+      "cell4": " ",
+      "cell5": "title"
+    },
+    {
+      "cell1": "Er. Sunil Kumar Suman",
+      "cell2": "Exe. Engineer",
+      "cell3": "8544428969",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "Er. Dilip Kumar Choudhary",
+      "cell2": "Assistant Engineer",
+      "cell3": "8544428740",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "Er. Nasim Nazar",
+      "cell2": "Assistant Engineer",
+      "cell3": "8544428741",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "Er. Dinesh Kumar Singh",
+      "cell2": "Junior Engineer",
+      "cell3": "9471227822",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "Er. Mahendra Choudhary",
+      "cell2": "Junior Engineer",
+      "cell3": "9934825814",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "Er. Vikash Kumar Gupta",
+      "cell2": "Junior Engineer",
+      "cell3": "9155547292",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "Er. Niraj Kumar",
+      "cell2": "Junior Engineer",
+      "cell3": "9431891865",
+      "cell4": " ",
+      "cell5": " "
+    },
+    {
+      "cell1": "Er. Shipra Choudhary",
+      "cell2": "Junior Engineer",
+      "cell3": "7542808736",
       "cell4": " ",
       "cell5": " "
     }

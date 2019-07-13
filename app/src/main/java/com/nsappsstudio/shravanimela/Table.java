@@ -2,12 +2,11 @@ package com.nsappsstudio.shravanimela;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,25 +39,25 @@ public class Table extends AppCompatActivity {
         String title = null;
         switch (filename){
             case "Puja Samagari.json":
-                title="सुलतानगंज श्रावणी मेला- 2018\n" +
+                title="सुलतानगंज श्रावणी मेला- 2019\n" +
                         "प्रस्तावित मूल्य तालिका\n" +
                         "पूजा एवं अन्य सामग्री";
                 type=5;
                 break;
             case "Puja Samagari_eng.json":
-                title="Sultangunj Shravani Mela- 2018\n" +
+                title="Sultangunj Shravani Mela- 2019\n" +
                         "Rate Chart\n" +
                         "Puja Samagari";
                 type=5;
                 break;
             case "Food Rate.json":
-                title="सुलतानगंज श्रावणी मेला- 2018\n" +
+                title="सुलतानगंज श्रावणी मेला- 2019\n" +
                         "प्रस्तावित मूल्य  तालिका\n" +
                         "खाद्य सामग्री";
                 type=4;
                 break;
             case "Food Rate_eng.json":
-                title="Sultangunj Shravani Mela- 2018\n" +
+                title="Sultangunj Shravani Mela- 2019\n" +
                         "Rate Chart\n" +
                         "Food Items";
                 type=4;

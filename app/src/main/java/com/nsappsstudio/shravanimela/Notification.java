@@ -1,14 +1,15 @@
 package com.nsappsstudio.shravanimela;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.CountDownTimer;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.format.DateFormat;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -43,30 +44,40 @@ public class Notification extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
 
-        mDatabaseReference= FirebaseDatabase.getInstance().getReference();
-        nCardView=findViewById(R.id.full_notification_card);
-        nCardView.setVisibility(View.GONE);
-        nType=findViewById(R.id.notification_type);
-        nTitle=findViewById(R.id.notification_title);
-        nBody=findViewById(R.id.notification_body);
-        progressBar=findViewById(R.id.n_progressBar);
-        progressBar.setVisibility(View.VISIBLE);
-        showAllNotifications();
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            Intent intent = new Intent(this, NotificationPre.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        } else {
+            // Implement this feature without material design
 
-        try {
-            Intent intent=getIntent();
-            String noticeId = intent.getStringExtra("noticeId");
-            if (noticeId!=null){
 
-                showNotice(noticeId);
+            setContentView(R.layout.activity_notification);
+
+            mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+            nCardView = findViewById(R.id.full_notification_card);
+            nCardView.setVisibility(View.GONE);
+            nType = findViewById(R.id.notification_type);
+            nTitle = findViewById(R.id.notification_title);
+            nBody = findViewById(R.id.notification_body);
+            progressBar = findViewById(R.id.n_progressBar);
+            progressBar.setVisibility(View.VISIBLE);
+            showAllNotifications();
+
+            try {
+                Intent intent = getIntent();
+                String noticeId = intent.getStringExtra("noticeId");
+                if (noticeId != null) {
+
+                    showNotice(noticeId);
+                }
+            } catch (NullPointerException error) {
+                //do nothing
             }
-        }catch (NullPointerException error){
-            //do nothing
+
         }
-
-
     }
 
     private void showAllNotifications() {

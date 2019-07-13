@@ -1,17 +1,18 @@
 package com.nsappsstudio.shravanimela;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -108,10 +109,18 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolderCl
                 holder.cell5.setVisibility(View.VISIBLE);
                 break;
             case 3:
+                final String callCell4=tableList.getCell4();
                 holder.cell1.setVisibility(View.GONE);
                 holder.cell2.setVisibility(View.VISIBLE);
                 holder.cell3.setVisibility(View.VISIBLE);
                 holder.cell4.setVisibility(View.VISIBLE);
+                holder.cell4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(context,"calling",Toast.LENGTH_LONG).show();
+                        call(callCell4);
+                    }
+                });
                 holder.cell5.setVisibility(View.GONE);
                 break;
             case 4:
@@ -189,5 +198,15 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.ViewHolderCl
             cell5=itemView.findViewById(R.id.cell5);
 
         }
+    }
+    public void call(String phone){
+        if (phone!=null) {
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" + phone));
+            if (intent.resolveActivity(context.getPackageManager()) != null) {
+                context.startActivity(intent);
+            }
+        }
+
     }
 }

@@ -1,9 +1,9 @@
 package com.nsappsstudio.shravanimela;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,14 +34,15 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolderClas
         holder.cTitle.setText(cardListItem.getcTitle());
         holder.cSubtitle.setText(cardListItem.getcSubtitle());
         holder.cBody.setText(cardListItem.getcBody());
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((Notification)context).showNotificationOnClick(cardListItem.getcTitle(),cardListItem.getcSubtitle(),cardListItem.getcBody(),cardListItem.getcType());
+        if (cardListItem.getLoadType()==1) {
+            holder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((Notification) context).showNotificationOnClick(cardListItem.getcTitle(), cardListItem.getcSubtitle(), cardListItem.getcBody(), cardListItem.getcType());
 
-            }
-        });
-
+                }
+            });
+        }
 
     }
 

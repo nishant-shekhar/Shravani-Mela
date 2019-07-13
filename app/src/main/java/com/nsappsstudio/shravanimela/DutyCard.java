@@ -3,10 +3,10 @@ package com.nsappsstudio.shravanimela;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -97,9 +97,18 @@ public class DutyCard extends AppCompatActivity {
                         recyclerView.setAdapter(adapter);
                         break;
                     }
+                    case "Panda.json":
+                    {
+                        DetailCardItem detailCardItem = new DetailCardItem(s_num,  null, name,"पिता: " +designation,
+                                description, "आयु: "+ shift+"   ", mobile, isTitle, mainTitle, 2);
+                        detailCardItems.add(detailCardItem);
+                        RecyclerView.Adapter adapter = new DetailCardAdaptor(this, detailCardItems);
+                        recyclerView.setAdapter(adapter);
+                        break;
+                    }
                     case "Panda_eng.json": {
-                        DetailCardItem detailCardItem = new DetailCardItem(s_num,  description, name,"Father's Name: " +designation,
-                                shift, null, mobile, isTitle, mainTitle, 2);
+                        DetailCardItem detailCardItem = new DetailCardItem(s_num,  null, name,"Father's Name: " +designation,
+                                description, "Age: "+ shift+"   ", mobile, isTitle, mainTitle, 2);
                         detailCardItems.add(detailCardItem);
                         RecyclerView.Adapter adapter = new DetailCardAdaptor(this, detailCardItems);
                         recyclerView.setAdapter(adapter);

@@ -2,7 +2,7 @@
   "table": [
 
     {
-      "title": "Food Inspector and Sanity Inspector deputed",
+      "title": "Shravani Mela 2019 Food Inspector",
       "s_num": " ",
       "name": " ",
       "designation": " ",
@@ -14,23 +14,12 @@
     {
       "title": " ",
       "s_num": "1",
-      "name": "Md. Iqbal ",
-      "designation": "Joint officer-cum-Food Safety Officer",
-      "shift": "Starting from 28.07.2018, the whole month of Shrawani ",
+      "name": "Md. Iqbal",
+      "designation": "Food Inspector",
+      "shift": "From 17-07-2019 to the End of Shrawani Mela",
       "mobile": "9939703947",
-      "description": "Referral Hospital, Sultanganj",
-      "type": "0"
-    },
-    {
-      "title": " ",
-      "s_num": "2",
-      "name": " Sri Shyam Nandan Roy",
-      "designation": "In-charge, Sanitary Inspector",
-      "shift": "Starting from 28.07.2018, the whole month of Shrawani ",
-      "mobile": " ",
-      "description": "Referral Hospital, Sultanganj",
+      "description": " ",
       "type": "0"
     }
-
   ]
 }

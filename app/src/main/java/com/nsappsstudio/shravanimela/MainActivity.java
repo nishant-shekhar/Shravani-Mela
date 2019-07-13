@@ -5,30 +5,27 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.text.format.DateFormat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+
 import android.text.format.DateUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,9 +37,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -138,12 +133,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
 
-            case R.id.nav_ambulance:
+            /*case R.id.nav_ambulance:
                 intent = new Intent(this, DutyCard.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("type", "Ambulance_eng.json");
                 startActivity(intent);
-                break;
+                break;*/
             case R.id.nav_doctor:
                 intent = new Intent(this, DutyCard.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -162,11 +157,11 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("type", "Disaster_eng.json");
                 startActivity(intent);
                 break;
-            case R.id.nav_electricity_helpline:
+            /*case R.id.nav_electricity_helpline:
                 intent = new Intent(this, Electric.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-                break;
+                break;*/
             case R.id.nav_food_inspector:
                 intent = new Intent(this, DutyCard.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -298,6 +293,9 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 break;
+                default:
+                    toastMessage("To be Updated");
+                    break;
 
         }
         }else {
@@ -310,12 +308,12 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     break;
 
-                case R.id.nav_ambulance:
+                /*case R.id.nav_ambulance:
                     intent = new Intent(this, DutyCard.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("type", "Ambulance.json");
                     startActivity(intent);
-                    break;
+                    break;*/
                 case R.id.nav_doctor:
                     intent = new Intent(this, DutyCard.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -334,11 +332,11 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("type", "Disaster.json");
                     startActivity(intent);
                     break;
-                case R.id.nav_electricity_helpline:
+                /*case R.id.nav_electricity_helpline:
                     intent = new Intent(this, Electric.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
-                    break;
+                    break;*/
                 case R.id.nav_food_inspector:
                     intent = new Intent(this, DutyCard.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -471,6 +469,9 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                     break;
+                default:
+                    toastMessage("सक्रिय किया जाएगा");
+                    break;
             }
         }
     }
@@ -585,11 +586,21 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void GoToAmbulance(View view){
-
-        Intent intent= new Intent(this,DutyCard.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("type","Ambulance.json");
-        startActivity(intent);
+        /*SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        String language= sharedPref.getString("lang",null);
+        if(language!=null && language.equals("en")){
+            Intent intent= new Intent(this,DutyCard.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("type","Ambulance_eng.json");
+            startActivity(intent);
+        }
+        else {
+            Intent intent= new Intent(this,DutyCard.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("type","Ambulance.json");
+            startActivity(intent);
+        }*/
+        toastMessage("To be updated");
     }
     public void GoToPolice(View view){
 
@@ -613,11 +624,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void GoToWaterfall(View view){
-
-        Intent intent = new Intent(this, DutyCard.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("type", "Panda_eng.json");
-        startActivity(intent);
+        SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        String language= sharedPref.getString("lang",null);
+        if(language!=null && language.equals("en")){
+            Intent intent = new Intent(this, DutyCard.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("type", "Panda_eng.json");
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(this, DutyCard.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("type", "Panda.json");
+            startActivity(intent);
+        }
     }
     public void GoToNotification(View view){
 

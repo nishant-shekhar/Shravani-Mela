@@ -2,7 +2,7 @@
     <string name="app_name">Shravani Mela</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="urgent_notifcation">Urgent Notification</string>
     <string name="ambulance">Ambulance</string>
     <string name="atm">Atm</string>
@@ -43,7 +43,7 @@
     <string name="register_now">Register Now</string>
     <string name="welcome">Welcome</string>
     <string name="next">Next</string>
-    <string name="welcome_note">Bhagalpur Administration welcomes you to Shravani mela 2018 celebrating from 27th July to 28th Aug. This app is dedicated towards pilgrims safe and comfortable journey to Baba Dham.</string>
+    <string name="welcome_note">Bhagalpur Administration welcomes you to Shravani mela 2019 celebrating from 16th July to 15th Aug. This app is dedicated towards pilgrims safe and comfortable journey to Baba Dham.</string>
     <string name="back">Back</string>
     <string name="finish">Finish</string>
     <string name="donts">Don\'ts</string>
@@ -134,5 +134,7 @@
     <string name="call_helpline">Call Helpline</string>
     <string name="panda_list">Panda List</string>
     <string name="hand_pump">Hand Pump</string>
+    <string name="updateNotice">All the features will be activated by 15th July including Ganga Aarti.</string>
+    <string name="made_in_bihar">MADE IN BIHAR</string>
 
 </resources>

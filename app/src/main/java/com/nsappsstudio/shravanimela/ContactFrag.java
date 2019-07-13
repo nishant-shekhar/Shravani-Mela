@@ -4,16 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -201,10 +197,11 @@ public class ContactFrag extends Fragment {
                 String cell1 = jo_inside.getString("cell1");
                 String cell2 = jo_inside.getString("cell2");
                 String cell3 = jo_inside.getString("cell3");
+                String cell5 = jo_inside.getString("cell5");
                 boolean title;
                 boolean even;
 
-                if (i==0){
+                if (i==0 || cell5.equals("title")){
                     title=true;
                     even=false;
                 }else {

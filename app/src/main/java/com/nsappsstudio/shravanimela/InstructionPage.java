@@ -6,10 +6,10 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.CountDownTimer;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -66,7 +66,7 @@ public class InstructionPage extends AppCompatActivity {
             if (doNotShow.equals("y")){
                 slide1.setVisibility(View.VISIBLE);
 
-                countDownTimer=new CountDownTimer(1200, 500) {
+                countDownTimer=new CountDownTimer(1000, 500) {
                     @Override
                     public void onTick(long millisUntilFinished) {
 
@@ -151,7 +151,7 @@ public class InstructionPage extends AppCompatActivity {
                 next.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                            goToMain();
+                            goToMainAndDoNotShow(v);
                     }
                 });
             }else {
