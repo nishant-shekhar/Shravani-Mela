@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="2dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginEnd="2dp"
+    android:background="@drawable/date_bg_4"
+    android:orientation="horizontal"
+    android:paddingStart="8dp"
+    android:paddingTop="4dp"
+    android:paddingEnd="8dp"
+    android:paddingBottom="4dp">
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/helvetica_neue_medium"
+        android:lines="1"
+        android:text="Name"
+        android:textColor="@color/mm_navy_text"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/helvetica_neue_medium"
+        android:lines="1"
+        android:text="Designation"
+        android:textAlignment="center"
+        android:textColor="@color/mm_navy_text"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/helvetica_neue_medium"
+        android:lines="1"
+        android:textAlignment="center"
+        android:textColor="@color/mm_navy_text"
+        android:textSize="13sp" />
+</LinearLayout>

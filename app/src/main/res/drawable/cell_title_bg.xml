@@ -4,7 +4,7 @@
     android:thicknessRatio="2"
     android:useLevel="false" >
     <gradient android:angle="270"
-        android:startColor="@color/dark"
+        android:startColor="@color/dark_blue"
         android:endColor="@color/cardview_dark_background"
         />
     <stroke

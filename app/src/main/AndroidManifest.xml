@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.nsappsstudio.shravanimela">
-
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <queries>
+
+        <!-- Browser -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <data android:scheme="http" />
+        </intent>
+
+        <!-- Camera -->
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+
+        <!-- Gallery -->
+        <intent>
+            <action android:name="android.intent.action.GET_CONTENT" />
+        </intent>
+        <!-- Specific intents you query for -->
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+        </intent>
+    </queries>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,96 +44,55 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Gallery"></activity>
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="com.nsappsstudio.shravanimela.MainActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".Camera"
-            android:configChanges="orientation|keyboardHidden">
-            <intent-filter>
-                <action android:name="com.nsappsstudio.shravanimela.Camera" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <service
-            android:name=".NotificationServices"
-            android:exported="false" />
-        <service
-            android:name=".MusicService"
-            android:exported="false" />
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-
-        <activity android:name=".Notification">
-            <intent-filter>
-                <action android:name="com.nsappsstudio.shravanimela.Notification" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".SOS"
-            android:label="@string/title_activity_sos">
-            <intent-filter>
-                <action android:name="com.nsappsstudio.shravanimela.SOS" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity android:name=".Video2"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize"/>
+        <activity android:name=".LanguageSelect" />
+        <activity android:name=".DoctorShift" />
+        <activity android:name=".Feedback" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
              Note that the API key is linked to the encryption key used to sign the APK.
              You need a different API key for each encryption key, including the release key that is used to
              sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <service android:name=".MyFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".PLaces"
-            android:label="@string/title_activity_places" />
-        <activity android:name=".InstructionPage">
+        <activity android:name=".UploadingExcel" />
+        <activity android:name=".Update" />
+        <activity android:name=".MobileReg" />
+        <activity android:name=".FindPlaces" />
+        <activity android:name=".SubmitPhoto" />
+        <activity android:name=".Gallery" />
+        <activity android:name=".PLaces" />
+        <activity android:name=".Camera" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Intro"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Table" />
-        <activity android:name=".Electric" />
-        <activity android:name=".DutyCard" />
-        <activity android:name=".CentralizeContact" />
-        <activity android:name=".LanguageSelect" />
-        <activity android:name=".AboutMela" />
-        <activity android:name=".ImageHolder" />
-        <activity android:name=".FeedBack" />
-        <activity android:name=".MobileRegistration">
-            <intent-filter>
-                <action android:name="com.nsappsstudio.shravanimela.MobileRegistration" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+        <service android:name=".Adapter.MyFirebaseInstanceIDService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </activity>
-        <activity android:name=".NotificationPre" />
+        </service>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

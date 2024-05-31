@@ -8,22 +8,21 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
-import android.os.Bundle;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -40,11 +39,12 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
+import com.nsappsstudio.shravanimela.Model.PlacesItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,6 +54,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.internal.annotations.EverythingIsNonNull;
 
 
 public class PLaces extends FragmentActivity implements OnMapReadyCallback {
@@ -84,10 +86,7 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
 
         flagRecyclerView=false;
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -207,8 +206,8 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
                 String title=String.valueOf(i+1)+". "+place_name;
                 PlacesItem placesItem = new PlacesItem(title, distance,category,i,null ,latitude,longitude,contact,address);
                 placesItems.add(placesItem);
-                RecyclerView.Adapter adapter = new Places_list_Adapter(placesItems, PLaces.this);
-                recyclerView.setAdapter(adapter);
+                //RecyclerView.Adapter adapter = new Places_list_Adapter(placesItems, PLaces.this);
+                //recyclerView.setAdapter(adapter);
 
             }
         } catch (JSONException e) {
@@ -404,7 +403,6 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
 
     private void createLocationCallback() {
         mLocationCallback = new LocationCallback() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
 
             @Override
             public void onLocationResult(LocationResult locationResult) {
@@ -474,8 +472,9 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @EverythingIsNonNull String[] permissions,
+                                           @EverythingIsNonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         Log.i(TAG, "onRequestPermissionResult");
         if (requestCode == REQUEST_PERMISSIONS_REQUEST_CODE) {
             if (grantResults.length <= 0) {
@@ -543,7 +542,7 @@ public class PLaces extends FragmentActivity implements OnMapReadyCallback {
                 })
                 .addOnFailureListener(this, new OnFailureListener() {
                     @Override
-                    public void onFailure(@NonNull Exception e) {
+                    public void onFailure(@EverythingIsNonNull Exception e) {
                         int statusCode = ((ApiException) e).getStatusCode();
                         switch (statusCode) {
                             case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:

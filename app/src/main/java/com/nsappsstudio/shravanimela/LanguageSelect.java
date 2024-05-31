@@ -4,9 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
@@ -15,6 +16,7 @@ public class LanguageSelect extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_language_select);
     }
 
@@ -48,7 +50,7 @@ public class LanguageSelect extends AppCompatActivity {
 
     }
     private void loadInstruction(){
-        Intent intent= new Intent(this,InstructionPage.class);
+        Intent intent= new Intent(this,Intro.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();

@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">Shravani Mela</string>
+    <string name="app_name_Display">Shravani Mela\nMuzaffarpur 2022</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="subtext_verify">Please enter your mobile number to receive an One Time Password.</string>
+    <string name="wait_for_autoVerification">Wait while we are automatically authenticating your Number</string>
+    <string name="otp_subtext">OTP has been sent to you on your mobile phone. Please enter it below</string>
+    <string name="rationale_doc_picker">We need this permission to read documents from device.</string>
+    <string name="rationale_photo_picker">We require this permission to select photo from gallery and camera.</string>
+
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="urgent_notifcation">Urgent Notification</string>
     <string name="ambulance">Ambulance</string>
@@ -16,7 +23,6 @@
     <string name="food_inspector">Food Inspector</string>
     <string name="medical_store">Medical Store</string>
     <string name="parking">Parking</string>
-    <string name="bhagalpur">Bhagalpur</string>
     <string name="medium_crowd">Medium Crowd</string>
     <string name="crowd_status">Crowd Status</string>
     <string name="sultangunj">Sultangunj</string>
@@ -43,7 +49,7 @@
     <string name="register_now">Register Now</string>
     <string name="welcome">Welcome</string>
     <string name="next">Next</string>
-    <string name="welcome_note">Bhagalpur Administration welcomes you to Shravani mela 2019 celebrating from 16th July to 15th Aug. This app is dedicated towards pilgrims safe and comfortable journey to Baba Dham.</string>
+    <string name="welcome_note">Bhagalpur Administration welcomes you to Shravani mela 2022 celebrating from 14th July. This app is dedicated towards pilgrims safe and comfortable journey to Baba Dham.</string>
     <string name="back">Back</string>
     <string name="finish">Finish</string>
     <string name="donts">Don\'ts</string>
@@ -61,6 +67,8 @@
 \n11.	Send Kanwaria to the nearest Police Help Center who get lost.
 \n12.	Do not go on rumor
 </string>
+    <string name="photo_instruction">1. Winner will receive a Certificate from\n   <B>Muzaffarpur District Magistrate</B>\n \n 2. Only 1 entry is allowed per day per Person \n   other entries will be ignored \n \n3. Winner will be listed in Pic of the Day section \n \n4. All the selected Photos will be displayed \n   in the Gallery Section \n \n5. Photo must be relevant to Shravani Mela \n \n6. District Admin decision will be final</string>
+
     <string name="do_not_list">1.	Kanwaria Bandhu do not go alone in the night.
 \n2.	Do not eat any drug during travel.
 \n3.	Female travelers are requested to not go alone in the night.
@@ -136,5 +144,16 @@
     <string name="hand_pump">Hand Pump</string>
     <string name="updateNotice">All the features will be activated by 15th July including Ganga Aarti.</string>
     <string name="made_in_bihar">MADE IN BIHAR</string>
+    <string name="spe">[</string>
+    <string name="verify_number">Mobile Verification</string>
+    <string name="welcome_note_muz">Muzaffarpur Adminstration welcomes you to the prestigious Shravani Mela in the auspicious month of sawan 2022.</string>
+    <string name="virtual_pooja">Virtual Pooja</string>
+    <string name="live_aarti">Live Darshan</string>
+    <string name="mela_route">Mela Route</string>
+    <string name="gallery">Gallery</string>
+    <string name="live_aarti_crowd_status">Live Aarti &amp; Crowd Status</string>
+    <string name="pic_of_the_day">Pic of the Day</string>
+    <string name="facility_contact">Facilities &amp; Contacts</string>
+    <string name="upload">Upload</string>
 
 </resources>

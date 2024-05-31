@@ -1,33 +1,43 @@
 package com.nsappsstudio.shravanimela;
 
-import android.app.ActivityManager;
+import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.CountDownTimer;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import com.google.android.material.navigation.NavigationView;
-import androidx.core.view.GravityCompat;
-import androidx.core.view.ViewCompat;
-import androidx.viewpager.widget.ViewPager;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.text.Html;
 import android.text.format.DateUtils;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.gms.common.annotation.NonNullApi;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -35,39 +45,62 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.ValueEventListener;
+import com.nsappsstudio.shravanimela.Adapter.AmbulanceAdapter;
+import com.nsappsstudio.shravanimela.Adapter.ContactAdapter;
+import com.nsappsstudio.shravanimela.Adapter.CrowdAdapter;
+import com.nsappsstudio.shravanimela.Adapter.FacilitiesAdapter;
+import com.nsappsstudio.shravanimela.Adapter.PhotoSlideAdapter;
+import com.nsappsstudio.shravanimela.Adapter.PotDAdapter;
+import com.nsappsstudio.shravanimela.Animation.Animations;
+import com.nsappsstudio.shravanimela.Model.AmbulanceModel;
+import com.nsappsstudio.shravanimela.Model.ContactModel;
+import com.nsappsstudio.shravanimela.Model.CrowdItemList;
+import com.nsappsstudio.shravanimela.Model.FacilityItem;
+import com.nsappsstudio.shravanimela.Model.PoDModel;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
+import com.stfalcon.imageviewer.StfalconImageViewer;
+
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+import okhttp3.internal.annotations.EverythingIsNonNull;
+
 
 public class MainActivity extends AppCompatActivity {
-
     private DrawerLayout mDrawerLayout;
     private DatabaseReference mDatabaseReference;
-    private List<CrowdItemList> crowdItemLists;
+    private TextView[] dots;
+    private LinearLayout dotsLayout;
+    private Context ctx;
+    private ViewPager2 photoViewPager2;
+    private List<String> images;
+    private int bannerCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent serviceIntent = new Intent(this, NotificationServices.class);
-        startService(serviceIntent);
-        
-        mDatabaseReference= FirebaseDatabase.getInstance().getReference();
-
+        String project="Muzaffarpur 2022";
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child(project);
         mDrawerLayout=findViewById(R.id.drawer_layout);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        ctx=this;
+        welcomeDialog();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                    public boolean onNavigationItemSelected(@EverythingIsNonNull MenuItem menuItem) {
                         // set item as selected to persist highlight
                         menuItem.setChecked(true);
                         // close drawer when item is tapped
@@ -80,380 +113,76 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
-        /*AppBarLayout.OnOffsetChangedListener mListener = new AppBarLayout.OnOffsetChangedListener() {
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                CollapsingToolbarLayout collapsingToolbar=findViewById(R.id.collapsing_toolbar);
-                android.support.v7.widget.Toolbar hello=findViewById(R.id.toolbar);
-                if (collapsingToolbar.getHeight() + verticalOffset < 2 * ViewCompat.getMinimumHeight(collapsingToolbar)) {
-                    hello.animate().alpha(1).setDuration(600);
-                } else {
-                    hello.animate().alpha(0).setDuration(600);
-                }
-            }
-        };
 
-        AppBarLayout appBar=findViewById(R.id.appBar);
-        appBar.addOnOffsetChangedListener(mListener);*/
 
-        final ViewPager slides = findViewById(R.id.slideshow_pager);
+        dotsLayout = findViewById(R.id.dot_container);
+        photoViewPager2 = findViewById(R.id.slideshow_pager);
+        LoadBanner();
 
-        SlideshowAdapter sliderAdaptor= new SlideshowAdapter(this);
-        slides.setAdapter(sliderAdaptor);
 
-        new CountDownTimer(5000000, 5000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                if (slides.getCurrentItem()<6){
-                    slides.setCurrentItem(slides.getCurrentItem()+1 );
-                } else {
-                    slides.setCurrentItem(0);
-                }
-            }
+        //welcomeDialog();
+        loadPotD();
 
-            @Override
-            public void onFinish() {
-
-            }
-        }.start();
+        //loadCrowdStatus();
+        loadFacilities();
+        /*photoList.add("https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2FSlidingPhotos%2FPhoto%20Contest%20Poster%202.png?alt=media&token=174cfc09-2436-474a-8f4d-641e3de5b1f3");
+        photoList.add("https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2FSlidingPhotos%2Fbanner2.png?alt=media&token=4b02d381-15f1-4c33-b318-ea23b4e5d8da");
+        photoList.add("");
+        photoList.add("");
+        photoList.add("https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2FSlidingPhotos%2FPhoto%20Contest%20Poster%202.png?alt=media&token=174cfc09-2436-474a-8f4d-641e3de5b1f3");
+        photoList.add("");
+        */
 
     }
-
     private void loadFromMenu(int id) {
         SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         String language= sharedPref.getString("lang",null);
-        if(language!=null && language.equals("en")){
-
-        Intent intent;
-        switch (id) {
-            case R.id.nav_secure_ghat:
-                intent = new Intent(this, ImageHolder.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "secure_ghats");
-                startActivity(intent);
-                break;
-
-            /*case R.id.nav_ambulance:
-                intent = new Intent(this, DutyCard.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Ambulance_eng.json");
-                startActivity(intent);
-                break;*/
-            case R.id.nav_doctor:
-                intent = new Intent(this, DutyCard.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "DoctorChart_eng.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_mela_helpline:
-                intent = new Intent(this, AboutMela.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "helpline");
-                startActivity(intent);
-                break;
-            case R.id.nav_disaster_helpline:
-                intent = new Intent(this, Table.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Disaster_eng.json");
-                startActivity(intent);
-                break;
-            /*case R.id.nav_electricity_helpline:
-                intent = new Intent(this, Electric.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                break;*/
-            case R.id.nav_food_inspector:
-                intent = new Intent(this, DutyCard.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Food Inspector_eng.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_medicine_inspector:
-                intent = new Intent(this, DutyCard.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Medicine Inspector_eng.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_paramedic:
-                intent = new Intent(this, DutyCard.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Paramedic_eng.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_dutyChart:
-                intent = new Intent(this, DutyCard.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "DutyChart_eng.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_centralize_helpline:
-                intent = new Intent(this, CentralizeContact.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                break;
-            case R.id.nav_food_rate:
-                intent = new Intent(this, Table.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Food Rate_eng.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_puja_samagari:
-                intent = new Intent(this, Table.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Puja Samagari_eng.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_atm:
-                intent = new Intent(this, PLaces.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Atm.json");
-                startActivity(intent);
-
-                break;
-            case R.id.nav_health_centre:
-                intent = new Intent(this, PLaces.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Health Centre.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_hand_pump:
-                intent = new Intent(this, PLaces.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Hand Pump.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_info_centre:
-                intent = new Intent(this, PLaces.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Information Centre.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_parking:
-                intent = new Intent(this, PLaces.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Parking.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_petrol_pump:
-                intent = new Intent(this, PLaces.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Petrol Pump.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_sanskritik_cente:
-                intent = new Intent(this, PLaces.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Sanskritik Centre.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_shivir:
-                intent = new Intent(this, PLaces.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Shivir.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_stay_places:
-                intent = new Intent(this, PLaces.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Stay Place.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_waterfall:
-                intent = new Intent(this, PLaces.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Jharna.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_vehicle_workshop:
-                intent = new Intent(this, PLaces.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", "Vehicle Workshop.json");
-                startActivity(intent);
-                break;
-            case R.id.nav_change_lang:
-                intent = new Intent(this, LanguageSelect.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                break;
-            case R.id.nav_feedback:
-                intent = new Intent(this, FeedBack.class);
-                intent.putExtra("from","main");
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                break;
-            case R.id.nav_reg_mobile:
-                FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                FirebaseUser user= mAuth.getCurrentUser();
-                if (user!=null){
-                    String mobileNo=user.getPhoneNumber();
-                    toastMessage("Mobile is registered with "+mobileNo);
-                }else {
-                    intent = new Intent(this, MobileRegistration.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }
-                break;
-                default:
-                    toastMessage("To be Updated");
-                    break;
-
-        }
-        }else {
             Intent intent;
             switch (id) {
-                case R.id.nav_secure_ghat:
-                    intent = new Intent(this, ImageHolder.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "secure_ghats");
-                    startActivity(intent);
-                    break;
 
-                /*case R.id.nav_ambulance:
-                    intent = new Intent(this, DutyCard.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Ambulance.json");
-                    startActivity(intent);
-                    break;*/
+
+            case R.id.nav_ambulance:
+                loadAmbulanceList();
+                break;
                 case R.id.nav_doctor:
-                    intent = new Intent(this, DutyCard.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "DoctorChart.json");
-                    startActivity(intent);
-                    break;
-                case R.id.nav_mela_helpline:
-                    intent = new Intent(this, AboutMela.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "helpline");
-                    startActivity(intent);
-                    break;
-                case R.id.nav_disaster_helpline:
-                    intent = new Intent(this, Table.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Disaster.json");
-                    startActivity(intent);
-                    break;
-                /*case R.id.nav_electricity_helpline:
-                    intent = new Intent(this, Electric.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    break;*/
-                case R.id.nav_food_inspector:
-                    intent = new Intent(this, DutyCard.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Food Inspector.json");
-                    startActivity(intent);
-                    break;
-                case R.id.nav_medicine_inspector:
-                    intent = new Intent(this, DutyCard.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Medicine Inspector.json");
-                    startActivity(intent);
-                    break;
-                case R.id.nav_paramedic:
-                    intent = new Intent(this, DutyCard.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Paramedic.json");
-                    startActivity(intent);
-                    break;
-                case R.id.nav_dutyChart:
-                    intent = new Intent(this, DutyCard.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "DutyChart.json");
-                    startActivity(intent);
-                    break;
-                case R.id.nav_centralize_helpline:
-                    intent = new Intent(this, CentralizeContact.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    break;
-                case R.id.nav_food_rate:
-                    intent = new Intent(this, Table.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Food Rate.json");
-                    startActivity(intent);
-                    break;
-                case R.id.nav_puja_samagari:
-                    intent = new Intent(this, Table.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Puja Samagari.json");
-                    startActivity(intent);
-                    break;
-                case R.id.nav_atm:
-                    intent = new Intent(this, PLaces.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Atm.json");
-                    startActivity(intent);
+                    goToDocShift();
 
-                    break;
-                case R.id.nav_health_centre:
-                    intent = new Intent(this, PLaces.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Health Centre.json");
-                    startActivity(intent);
-                    break;
-                case R.id.nav_hand_pump:
-                    intent = new Intent(this, PLaces.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Hand Pump.json");
-                    startActivity(intent);
-                    break;
-                case R.id.nav_info_centre:
-                    intent = new Intent(this, PLaces.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Information Centre.json");
-                    startActivity(intent);
                     break;
                 case R.id.nav_parking:
-                    intent = new Intent(this, PLaces.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Parking.json");
-                    startActivity(intent);
-                    break;
-                case R.id.nav_petrol_pump:
-                    intent = new Intent(this, PLaces.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Petrol Pump.json");
-                    startActivity(intent);
+                    openPlaces("Parking","Parking");
                     break;
 
-                case R.id.nav_sanskritik_cente:
-                    intent = new Intent(this, PLaces.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Sanskritik Centre.json");
-                    startActivity(intent);
+                case R.id.nav_centralize_helpline:
+                    loadContactList("Centralize Contact");
+
                     break;
+                case R.id.nav_mela_helpline:
+                    loadContactList("Mela HelpLine");
+
+                    break;
+                case R.id.nav_disaster_helpline:
+                    loadContactList("Emergency");
+
+                    break;
+
+                case R.id.nav_health_centre:
+                    openPlaces("Medical Camp","Health Center");
+
+                    break;
+
+
                 case R.id.nav_shivir:
-                    intent = new Intent(this, PLaces.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Shivir.json");
-                    startActivity(intent);
+                    openPlaces("Shivir","Shivir");
+
                     break;
-                case R.id.nav_stay_places:
-                    intent = new Intent(this, PLaces.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Stay Place.json");
-                    startActivity(intent);
-                    break;
-                case R.id.nav_waterfall:
-                    intent = new Intent(this, PLaces.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Jharna.json");
-                    startActivity(intent);
-                    break;
-                case R.id.nav_vehicle_workshop:
-                    intent = new Intent(this, PLaces.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("type", "Vehicle Workshop.json");
-                    startActivity(intent);
-                    break;
+
                 case R.id.nav_change_lang:
                     intent = new Intent(this, LanguageSelect.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     break;
                 case R.id.nav_feedback:
-                    intent = new Intent(this, FeedBack.class);
-                    intent.putExtra("from","main");
+                    intent = new Intent(this, Feedback.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     break;
@@ -464,46 +193,558 @@ public class MainActivity extends AppCompatActivity {
                         String mobileNo=user.getPhoneNumber();
                         toastMessage("Mobile is registered with "+mobileNo);
                     }else {
-                        intent = new Intent(this, MobileRegistration.class);
+                        intent = new Intent(this, MobileReg.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("from","Main");
                         startActivity(intent);
                     }
                     break;
                 default:
-                    toastMessage("सक्रिय किया जाएगा");
+                    toastMessage("To be Updated");
                     break;
+
             }
-        }
+    }
+
+    private void toastMessage(String s) {
+        Toast.makeText(ctx,s,Toast.LENGTH_SHORT).show();
+    }
+
+    private void LoadBanner(){
+
+        mDatabaseReference.child("Banner").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@EverythingIsNonNull  DataSnapshot snapshot) {
+                bannerCount=0;
+                List<String> photoList=new ArrayList<>();
+
+                for (DataSnapshot snapshot1:snapshot.getChildren()){
+                    String picUrl=snapshot1.getValue(String.class);
+                    if (picUrl!=null && picUrl.contains("https:")){
+                        bannerCount++;
+                        photoList.add(picUrl);
+                        //Toast.makeText(ctx,picUrl,Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+                dots = new TextView[photoList.size()];
+
+
+                PhotoSlideAdapter photoSlideAdapter = new PhotoSlideAdapter(photoList, ctx);
+                photoViewPager2.setAdapter(photoSlideAdapter);
+                dotsIndicator();
+                photoViewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        selectIndicator(position);
+                        super.onPageSelected(position);
+                    }
+                });
+
+
+                new CountDownTimer(5000000, 5000) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        if (photoViewPager2.getCurrentItem()<(photoList.size()-1)){
+                            photoViewPager2.setCurrentItem(photoViewPager2.getCurrentItem()+1 );
+                        } else {
+                            photoViewPager2.setCurrentItem(0);
+                        }
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+                }.start();
+            }
+
+            @Override
+            public void onCancelled(@EverythingIsNonNull  DatabaseError error) {
+
+            }
+        });
+
+    }
+    private void openPlaces(String name ,String display){
+        Intent intent=new Intent(ctx, FindPlaces.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("type",name);
+        intent.putExtra("display",display);
+        ctx.startActivity(intent);
+    }
+    private void loadPotD(){
+        final RecyclerView recyclerView=findViewById(R.id.potd_rc);
+        recyclerView.hasFixedSize();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+
+        PotDAdapter adapter=new PotDAdapter(this);
+        recyclerView.setAdapter(adapter);
+
+        images=new ArrayList<>();
+        adapter.insertItem(new PoDModel("","Submit Your Entry","Daily Winner","","Participate"));
+        /*String link1="https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2Fbaba%2Fbaba1.jpg?alt=media&token=48fc2504-090a-4096-986d-2895c1999655";
+        String link2="https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2Fbaba%2Fbaba2.jpg?alt=media&token=cc319e51-dbda-4e04-be77-fe2e4f3711dd";
+        String link3="https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2Fbaba%2Fbaba3.jpg?alt=media&token=5c48a7a6-aeaa-44b9-8215-e6794e54a754";
+        String link4="https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2Fbaba%2Fbaba4.jpg?alt=media&token=204004e3-62a8-44e0-abf1-b8a5dfc67d90";
+        String link5="https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2Fbaba%2Fbaba5.jpg?alt=media&token=9fa84df4-8278-4118-8511-7ae2c585a455";
+        String link6="https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2Fbaba%2Fbaba6.jpg?alt=media&token=65251413-6724-4df4-bfd4-ca0aeefe8683";
+        adapter.insertItem(new PoDModel(link1,"Nishant Shekhar","BIT Mesra","834039178","03 July 2022"));
+        images.add(link1);
+
+        adapter.insertItem(new PoDModel(link2,"Ashish Kumar","BIT Mesra","834039178","04 July 2022"));
+        images.add(link2);
+        adapter.insertItem(new PoDModel(link3,"Vijay Shekhar","BIT Mesra","834039178","05 July 2022"));
+        images.add(link3);
+        adapter.insertItem(new PoDModel(link4,"Anil Kumar","BIT Mesra","834039178","06 July 2022"));
+        images.add(link4);
+        adapter.insertItem(new PoDModel(link5,"Sahil Kumar","BIT Mesra","834039178","07 July 2022"));
+        images.add(link5);
+        adapter.insertItem(new PoDModel(link6,"Vinayak","BIT Mesra","834039178","08 July 2022"));
+        images.add(link6);*/
+
+        mDatabaseReference.child("PotD").child("Winner").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@EverythingIsNonNull  DataSnapshot snapshot, @Nullable  String previousChildName) {
+                PoDModel poDModel=snapshot.getValue(PoDModel.class);
+                if (poDModel!=null && poDModel.getUrl()!=null) {
+                    adapter.insertItem(poDModel);
+                    images.add(poDModel.getUrl());
+                }
+
+            }
+
+            @Override
+            public void onChildChanged(@EverythingIsNonNull  DataSnapshot snapshot, @Nullable  String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@EverythingIsNonNull  DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@EverythingIsNonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@EverythingIsNonNull  DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
 
-    public void loadCrowdStatus(final View view){
-        //Toast.makeText(this,"This feature will be activated by 28th July",Toast.LENGTH_LONG).show();
 
 
-        view.setEnabled(false);
-        final RecyclerView recyclerView=findViewById(R.id.crowd_recyclerview);
+    public void GoToCamera(View view){
+        Intent intent=new Intent(this,Video2.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        /*
+        String urlString = "https://rtsp.me/embed/kzEEkH3A";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlString));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setPackage("com.android.chrome");
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException ex) {
+            // Chrome browser presumably not installed so allow user to choose instead
+            intent.setPackage(null);
+            startActivity(intent);
+        }*/
+    }
+    public void virtualAarti(View view) {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        dialog.setContentView(R.layout.virtual_pooja);
+        dialog.setCancelable(true);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(Objects.requireNonNull(dialog.getWindow()).getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        LottieAnimationView lottieAnimationView=dialog.findViewById(R.id.lottieAnim);
+        lottieAnimationView.setAnimation(R.raw.shiv_phool);
+        lottieAnimationView.setFrame(1);
+        MediaPlayer mPlayer2= MediaPlayer.create(ctx, R.raw.om_nanah_shivaye);
+
+
+        Button button=dialog.findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!mPlayer2.isPlaying()) {
+                    analytics("VirtualAarti");
+                    lottieAnimationView.setSpeed(1f);
+                    lottieAnimationView.playAnimation();
+                    mPlayer2.start();
+                    Animations.goneTranslateWithAlpha(button,0,200,2,1f,0f);
+                    Animations.goneTranslateWithAlpha(button,0,200,2,1f,0f);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Animations.translateWithAlpha(button,0,200,2,1f,0f);
+                        }
+                    },mPlayer2.getDuration());
+                }
+            }
+        });
+        lottieAnimationView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!mPlayer2.isPlaying()) {
+                    analytics("VirtualAarti");
+
+                    lottieAnimationView.setSpeed(1f);
+                    lottieAnimationView.playAnimation();
+                    mPlayer2.start();
+                    Animations.goneTranslateWithAlpha(button,0,200,2,1f,0f);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Animations.translateWithAlpha(button,0,200,2,1f,0f);
+                        }
+                    },mPlayer2.getDuration());
+                }
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+    }
+    public void analytics(String analysisOf){
+            Map<String, Object> updates = new HashMap<>();
+            updates.put(analysisOf, ServerValue.increment(1));
+
+            mDatabaseReference.child("Analytics").updateChildren(updates);
+
+
+
+    }
+    private void welcomeDialog() {
+        SharedPreferences sharedPreferences = getSharedPreferences("info", Context.MODE_PRIVATE);
+        boolean first=sharedPreferences.getBoolean("firstTime",true);
+        if (first) {
+            Dialog dialog = new Dialog(this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+            dialog.setContentView(R.layout.photo_dialog);
+            dialog.setCancelable(true);
+            WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+            lp.copyFrom(Objects.requireNonNull(dialog.getWindow()).getAttributes());
+            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+            dialog.show();
+            dialog.getWindow().setAttributes(lp);
+        }
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("firstTime", false);
+        editor.apply();
+    }
+    private void selectIndicator(int position) {
+        for (int i=0;i<dots.length;i++) {
+            if (i==position){
+                dots[i].setTextColor(ContextCompat.getColor(this,R.color.salmon));
+                dots[i].setTextSize(16);
+
+            }else {
+                dots[i].setTextColor(ContextCompat.getColor(this,R.color.white));
+                dots[i].setTextSize(14);
+
+            }
+        }
+    }
+    private void dotsIndicator(){
+        dotsLayout.removeAllViews();
+        for (int i=0;i<dots.length;i++){
+            dots[i]=new TextView(this);
+            dots[i].setText(Html.fromHtml("&#9679; "));
+            dots[i].setTextSize(16);
+            dots[i].setTextColor(ContextCompat.getColor(this,R.color.white));
+            dotsLayout.addView(dots[i]);
+        }
+
+    }
+    private void loadFacilities(){
+        RecyclerView recyclerView=findViewById(R.id.facilities);
         recyclerView.hasFixedSize();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-        crowdItemLists = new ArrayList<>();
+        GridLayoutManager gridLayoutManager=new GridLayoutManager(this,4);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        FacilitiesAdapter adapter=new FacilitiesAdapter(this);
+
+        recyclerView.setAdapter(adapter);
+        adapter.insertItem(new FacilityItem("Mela Route"));
+        adapter.insertItem(new FacilityItem("Gallery"));
+        adapter.insertItem(new FacilityItem("Centralize Contact"));
+        adapter.insertItem(new FacilityItem("Ambulance"));
+        adapter.insertItem(new FacilityItem("Police Station"));
+        adapter.insertItem(new FacilityItem("Control Room"));
+
+        adapter.insertItem(new FacilityItem("Drinking Water"));
+
+        adapter.insertItem(new FacilityItem("Toilets"));
+        adapter.insertItem(new FacilityItem("Bathroom"));
+        adapter.insertItem(new FacilityItem("Rest Room"));
+
+
+
+    }
+
+    public void loadContactList(String type){
+        //Toast.makeText(this,"This feature will be activated by 28th July",Toast.LENGTH_LONG).show();
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        dialog.setContentView(R.layout.rc_dialog);
+        dialog.setCancelable(true);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(Objects.requireNonNull(dialog.getWindow()).getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        ConstraintLayout layout=dialog.findViewById(R.id.layout);
+        RecyclerView recyclerView=dialog.findViewById(R.id.rc);
+        TextView title=dialog.findViewById(R.id.textView3);
+        ProgressBar pb=dialog.findViewById(R.id.progressBar);
+        pb.setVisibility(View.VISIBLE);
+        title.setText(type);
+
+        // Gets linearlayout
+        ViewGroup.LayoutParams params = layout.getLayoutParams();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        params.height = displayMetrics.heightPixels-400;
+
+        params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+        layout.setLayoutParams(params);
+
+
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+
+
+        recyclerView.hasFixedSize();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        ContactAdapter adapter=new ContactAdapter(ctx,1);
+        recyclerView.setAdapter(adapter);
+
+        DatabaseReference mContactRef= mDatabaseReference.child("GlobalParameter").child("Contacts").child(type);
+        mContactRef.addChildEventListener(new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(@EverythingIsNonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                pb.setVisibility(View.GONE);
+
+                String data=dataSnapshot.getValue(String.class);
+                if (data!=null&& data.contains(";")){
+                    String[] separator= data.split(";");
+                    if (separator.length==3){
+                        String designationEng=separator[0];
+                        String designationHindi=separator[1];
+                        String contact=separator[2];
+
+                        if ( designationEng!=null && contact!=null) {
+                            adapter.insertItem(new ContactModel(null,null, designationEng,designationHindi,contact));
+                        }
+                    }
+                }
+
+
+
+            }
+
+            @Override
+            public void onChildChanged(@EverythingIsNonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+
+
+            }
+
+            @Override
+            public void onChildRemoved(@EverythingIsNonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@EverythingIsNonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@EverythingIsNonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+    public void loadAmbulanceList(){
+        //Toast.makeText(this,"This feature will be activated by 28th July",Toast.LENGTH_LONG).show();
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        dialog.setContentView(R.layout.rc_dialog);
+        dialog.setCancelable(true);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(Objects.requireNonNull(dialog.getWindow()).getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        ConstraintLayout layout=dialog.findViewById(R.id.layout);
+        RecyclerView recyclerView=dialog.findViewById(R.id.rc);
+        TextView title=dialog.findViewById(R.id.textView3);
+        ProgressBar pb=dialog.findViewById(R.id.progressBar);
+        pb.setVisibility(View.VISIBLE);
+        String t1="Ambulance List";
+        title.setText(t1);
+
+        // Gets linearlayout
+        ViewGroup.LayoutParams params = layout.getLayoutParams();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        params.height = displayMetrics.heightPixels-400;
+
+        params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+        layout.setLayoutParams(params);
+
+
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+
+
+        recyclerView.hasFixedSize();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        AmbulanceAdapter adapter=new AmbulanceAdapter(ctx);
+        recyclerView.setAdapter(adapter);
+
+        DatabaseReference mContactRef= mDatabaseReference.child("GlobalParameter").child("Ambulance");
+        mContactRef.addChildEventListener(new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(@EverythingIsNonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                pb.setVisibility(View.GONE);
+
+                String data=dataSnapshot.getValue(String.class);
+                if (data!=null&& data.contains(";")){
+                    String[] mainSeparator= data.split(";");
+                    if (mainSeparator.length==6){
+                        String carNo=mainSeparator[0];
+                        String address=mainSeparator[1];
+                        List<ContactModel> contactModels=new ArrayList<>();
+                        for (int i=2;i<mainSeparator.length;i++){
+                            if (mainSeparator[i]!=null && mainSeparator[i].contains(",") ) {
+                                String[] separator = mainSeparator[i].split(",");
+                                if (separator.length==3) {
+                                    String designation = separator[0];
+                                    String name=separator[1];
+                                    String contact=separator[2];
+                                    ContactModel contactModel=new ContactModel(name,name,designation,designation,contact);
+                                    contactModels.add(contactModel);
+                                }
+                            }
+                        }
+                        AmbulanceModel ambulanceModel=new AmbulanceModel(carNo,address,contactModels);
+                        adapter.insertItem(ambulanceModel);
+
+                    }
+                }
+
+
+
+            }
+
+            @Override
+            public void onChildChanged(@EverythingIsNonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+
+
+            }
+
+            @Override
+            public void onChildRemoved(@EverythingIsNonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@EverythingIsNonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@EverythingIsNonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+    public void loadCrowdStatus(View view){
+        //Toast.makeText(this,"This feature will be activated by 28th July",Toast.LENGTH_LONG).show();
+        Animations.squeeze(view,ctx);
+
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        dialog.setContentView(R.layout.rc_dialog);
+        dialog.setCancelable(true);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(Objects.requireNonNull(dialog.getWindow()).getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        ConstraintLayout layout=dialog.findViewById(R.id.layout);
+        RecyclerView recyclerView=dialog.findViewById(R.id.rc);
+        TextView title=dialog.findViewById(R.id.textView3);
+        ProgressBar pb=dialog.findViewById(R.id.progressBar);
+        pb.setVisibility(View.VISIBLE);
+        title.setText("Crowd Status");
+
+        // Gets linearlayout
+        ViewGroup.LayoutParams params = layout.getLayoutParams();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        params.height = displayMetrics.heightPixels-400;
+
+        params.width = LinearLayout.LayoutParams.MATCH_PARENT;
+        layout.setLayoutParams(params);
+
+
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+
+
+        recyclerView.hasFixedSize();
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        List<CrowdItemList> crowdItemLists = new ArrayList<>();
         DatabaseReference mCrowdRef= mDatabaseReference.child("CrowdStatus").child("Live");
         mCrowdRef.addChildEventListener(new ChildEventListener() {
 
             @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                
+            public void onChildAdded(@EverythingIsNonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                pb.setVisibility(View.GONE);
+
                 String place=dataSnapshot.getKey();
                 String crowdLevel=dataSnapshot.child("level").getValue(String.class);
                 String date = null;
 
                 try {
                     Long timeStamp= dataSnapshot.child("ts").getValue(Long.class);
+                    if (timeStamp!=null) {
 
-                    CharSequence ago =
-                            DateUtils.getRelativeDateTimeString(MainActivity.this, timeStamp, DateUtils.MINUTE_IN_MILLIS, DateUtils.WEEK_IN_MILLIS,0);
+                        CharSequence ago =
+                                DateUtils.getRelativeDateTimeString(MainActivity.this, timeStamp, DateUtils.MINUTE_IN_MILLIS, DateUtils.WEEK_IN_MILLIS, 0);
 
-                    //DateUtils.getRelativeTimeSpanString(timeStamp, now, DateUtils.MINUTE_IN_MILLIS);
-                    date=String.valueOf(ago);
+                        //DateUtils.getRelativeTimeSpanString(timeStamp, now, DateUtils.MINUTE_IN_MILLIS);
+                        date = String.valueOf(ago);
+                    }
 
                 }catch (NullPointerException e){
                     //do nothing
@@ -513,169 +754,79 @@ public class MainActivity extends AppCompatActivity {
 
                 CrowdItemList crowdItemList=new CrowdItemList(date,place,crowdLevel);
                 crowdItemLists.add(crowdItemList);
-                RecyclerView.Adapter adapter = new CrowdAdapter(crowdItemLists, MainActivity.this);
+                CrowdAdapter adapter = new CrowdAdapter(crowdItemLists, MainActivity.this);
                 recyclerView.setAdapter(adapter);
-                
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-
 
             }
 
             @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+            public void onChildChanged(@EverythingIsNonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+
 
             }
 
             @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            public void onChildRemoved(@EverythingIsNonNull DataSnapshot dataSnapshot) {
 
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onChildMoved(@EverythingIsNonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@EverythingIsNonNull DatabaseError databaseError) {
 
             }
         });
 
+    }
+    public void loadFullScreenImage(String url){
 
-    }
+        int index=images.indexOf(url);
+        new StfalconImageViewer.Builder<>(this, images, (imageView, image) -> Picasso.get().load(image).networkPolicy(NetworkPolicy.OFFLINE).into(imageView, new Callback() {
+            @Override
+            public void onSuccess() {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    public void GoToInstruction(View view){
-
-        Intent intent= new Intent(this,InstructionPage.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
-    public void GoToCamera(View view){
-        //toastMessage("Live Aarti feeding will start after 28th July");
-        Intent intent= new Intent(this,Camera.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
-    public void GoToSOS(View view){
-        //Toast.makeText(this,"SOS Service will start soon",Toast.LENGTH_LONG).show();
-        Intent intent= new Intent(this,SOS.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
-    public void GoToToilet(View view){
-
-        Intent intent= new Intent(this,PLaces.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("type","Toilet.json");
-        startActivity(intent);
-    }
-    public void GoToDrinkingWater(View view){
-
-        Intent intent= new Intent(this,PLaces.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("type","Drinking Water.json");
-        startActivity(intent);
-    }
-    public void GoToAmbulance(View view){
-        /*SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-        String language= sharedPref.getString("lang",null);
-        if(language!=null && language.equals("en")){
-            Intent intent= new Intent(this,DutyCard.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra("type","Ambulance_eng.json");
-            startActivity(intent);
-        }
-        else {
-            Intent intent= new Intent(this,DutyCard.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra("type","Ambulance.json");
-            startActivity(intent);
-        }*/
-        toastMessage("To be updated");
-    }
-    public void GoToPolice(View view){
-
-        Intent intent= new Intent(this,PLaces.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("type", "Police Station.json");
-        startActivity(intent);
-    }
-    public void GoToCtrlRoom(View view){
-
-        Intent intent= new Intent(this,PLaces.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("type","Control Room.json");
-        startActivity(intent);
-    }
-    public void GoToBathroom(View view){
-
-        Intent intent= new Intent(this,PLaces.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("type","Bathroom.json");
-        startActivity(intent);
-    }
-    public void GoToWaterfall(View view){
-        SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-        String language= sharedPref.getString("lang",null);
-        if(language!=null && language.equals("en")){
-            Intent intent = new Intent(this, DutyCard.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra("type", "Panda_eng.json");
-            startActivity(intent);
-        }else {
-            Intent intent = new Intent(this, DutyCard.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra("type", "Panda.json");
-            startActivity(intent);
-        }
-    }
-    public void GoToNotification(View view){
-
-        Intent intent= new Intent(this,Notification.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
-    public void play_pauseMusic(View view){
-        Intent svc=new Intent(this, MusicService.class);
-        ImageButton floatingActionButton=findViewById(R.id.music_button);
-
-        if (isMyServiceRunning(MusicService.class)){
-            stopService(svc);
-            floatingActionButton.setImageResource(R.drawable.ic_volume_up_black_24dp);
-
-        }else {
-            startService(svc);
-            floatingActionButton.setImageResource(R.drawable.ic_volume_off_black_24dp);
-
-        }
-
-    }
-    private boolean isMyServiceRunning(Class<?> serviceClass) {
-        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (serviceClass.getName().equals(service.service.getClassName())) {
-                return true;
             }
-        }
-        return false;
-    }
-    private void growUpAnim(View view){
 
-        Animation grow = AnimationUtils.loadAnimation(this, R.anim.grow);
-        view.setVisibility(View.VISIBLE);
-        view.setEnabled(true);
-        view.startAnimation(grow);
+            @Override
+            public void onError(Exception e) {
+                Picasso.get().load(image).into(imageView);
+
+            }
+        })).withStartPosition(index).show();
     }
-    private void toastMessage(String text){
-        Toast.makeText(this,text,Toast.LENGTH_SHORT).show();
+    public void openDrawer(View view){
+        mDrawerLayout.openDrawer(Gravity.LEFT);
+
+    }
+    public void goToSubmitPhoto() {
+    }
+    private void goToDocShift() {
+        Intent intent=new Intent(ctx, DoctorShift.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+    public void routeImage(){
+        String image1="https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2FSlidingPhotos%2Fshrawani%20road%20chart%20anumandal%20copy.png?alt=media&token=9014ee52-dcd0-47d2-a25c-53ecec6965d7";
+        String image2="https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2FSlidingPhotos%2Froute%20dto.png?alt=media&token=247216ab-944b-45b4-9a51-5e197bc85fb2";
+        List<String> route=new ArrayList<>();
+        route.add(image1);
+        route.add(image2);
+        new StfalconImageViewer.Builder<>(this, route, (imageView, image) -> Picasso.get().load(image).placeholder(R.drawable.ic_route).networkPolicy(NetworkPolicy.OFFLINE).into(imageView, new Callback() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError(Exception e) {
+                Picasso.get().load(image).placeholder(R.drawable.ic_route).into(imageView);
+
+            }
+        })).withStartPosition(0).show();
     }
 }

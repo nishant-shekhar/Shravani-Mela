@@ -14,7 +14,6 @@
     <string name="food_inspector">खाद्य निरीक्षक</string>
     <string name="medical_store">मेडिकल स्टोर</string>
     <string name="parking">पार्किंग</string>
-    <string name="bhagalpur">भागलपुर</string>
     <string name="medium_crowd">मध्यम भीड़</string>
     <string name="crowd_status">भीड़ स्थिति</string>
     <string name="sultangunj">सुल्तानगंज</string>
@@ -36,12 +35,13 @@
     <string name="sos">SOS</string>
     <string name="welcome">स्वागतम्</string>
     <string name="next">आगे</string>
-    <string name="welcome_note">भागलपुर जिला प्रशासन श्रवानी मेला 2019 में आपका स्वागत करता है। यह ऐप तीर्थयात्रियों को सुल्तानगंज से बाबा धाम की सुरक्षित एवं  सुविधाजनक यात्रा के लिए समर्पित है। इस ऐप में एम्बुलेंस, डॉक्टर की शिफ्ट, टॉयलेट की लोकेशन से लेकर कई तरह की जानकारियां उपलब्ध है।</string>
+    <string name="welcome_note_muz">मुजफ्फरपुर प्रशासन सावन 2022 के शुभ माह में प्रतिष्ठित श्रावणी मेले में आपका स्वागत करता है। इस ऐप में एम्बुलेंस, डॉक्टर की शिफ्ट, टॉयलेट की लोकेशन से लेकर कई तरह की जानकारियां उपलब्ध है।</string>
+    <string name="welcome_note">भागलपुर जिला प्रशासन श्रवानी मेला 2022 में आपका स्वागत करता है। यह ऐप तीर्थयात्रियों को सुल्तानगंज से बाबा धाम की सुरक्षित एवं  सुविधाजनक यात्रा के लिए समर्पित है। इस ऐप में एम्बुलेंस, डॉक्टर की शिफ्ट, टॉयलेट की लोकेशन से लेकर कई तरह की जानकारियां उपलब्ध है।</string>
     <string name="back">पीछे</string>
     <string name="finish">प्रवेश करें</string>
     <string name="donts">क्या नहीं करें</string>
     <string name="dos">क्या करें</string>
-    <string name="updateNotice">गंगा आरती सहित सभी सुविधाओं को 15 जुलाई तक सक्रिय कर दिया जाएगा।</string>
+    <string name="updateNotice">गंगा आरती सहित सभी सुविधाओं को 14 जुलाई तक सक्रिय कर दिया जाएगा।</string>
 
     <string name="dos_list">1. कांवरिया बन्धु हमेशा जत्था में चले।
 \n2. जंगली और पहाड़ी रास्ते में रात के समय टॉर्च  और लाठी का इस्तेमाल अवश्य करें ।
@@ -111,7 +111,7 @@
     <string name="call_helpline" >कॉल हेल्पलाइन</string>
     <string name="panda_list">पांडा सूची</string>
     <string name="hand_pump">हैंड पंप</string>
-    <string name="rest_room">Rest room</string>
+    <string name="rest_room">विश्राम कक्ष</string>
     <string name="permission_rationale">Location permission is needed for core functionality</string>
     <string name="permission_denied_explanation">Permission was denied, but is needed for core
         functionality.</string>
@@ -140,5 +140,22 @@
     <string name="road_map">Road Map</string>
     <string name="instruction">Instructions</string>
     <string name="made_in_bihar">MADE IN BIHAR</string>
+    <string name="photo_instruction">1. विजेता को <B>मुजफ्फरपुर जिला मजिस्ट्रेट</B> से एक प्रमाण पत्र प्राप्त होगा \n \n2. प्रति व्यक्ति प्रति दिन केवल 1 प्रविष्टि की अनुमति है अन्य प्रविष्टियों को अनदेखा कर दिया जाएगा \n \n3. विजेता को ऐप में सूचीबद्ध किया जाएगा। \n \n4. सभी चयनित तस्वीरें होंगी गैलरी अनुभाग में प्रदर्शित \n \n5. फोटो श्रावणी मेला के लिए प्रासंगिक होना चाहिए \n \n6. जिला प्रशासन का निर्णय अंतिम होगा</string>
+    <string name="verify_number">मोबाइल सत्यापन</string>
+    <string name="subtext_verify">" वन टाइम पासवर्ड प्राप्त करने के लिए कृपया अपना मोबाइल नंबर दर्ज करें।"</string>
+    <string name="wait_for_autoVerification">" प्रतीक्षा करें जब तक हम आपके नंबर को स्वचालित रूप से प्रमाणित कर रहे हैं"</string>
+    <string name="otp_subtext">OTP has been sent to you on your mobile phone. Please enter it below</string>
+    <string name="rationale_doc_picker">We need this permission to read documents from device.</string>
+    <string name="rationale_photo_picker">We require this permission to select photo from gallery and camera.</string>
+    <string name="app_name_Display">"श्रावणी मेला\nमुजफ्फरपुर २०२२ "</string>
+    <string name="spe">[</string>
+    <string name="virtual_pooja">वर्चुअल पूजा</string>
+    <string name="live_aarti">लाइव दर्शन</string>
+    <string name="mela_route">मेला रूट</string>
+    <string name="gallery">फोटो गैलरी</string>
+    <string name="live_aarti_crowd_status">लाइव आरती एवं भीड़ की स्थिति</string>
+    <string name="pic_of_the_day">दिन की सबसे अच्छी तस्वीर</string>
+    <string name="facility_contact">सुविधाएं और संपर्क</string>
+    <string name="upload">Upload</string>
 
 </resources>

@@ -6,13 +6,13 @@
             <group android:checkableBehavior="single"
                 android:id="@+id/nav_emergency">
                 <item
-                    android:id="@+id/nav_ambulance"
-                    android:icon="@drawable/ambulance"
-                    android:title="@string/ambulance" />
-                <item
                     android:id="@+id/nav_doctor"
                     android:icon="@drawable/doctor"
                     android:title="@string/doctor_availability" />
+                <item
+                    android:id="@+id/nav_ambulance"
+                    android:icon="@drawable/ambulance"
+                    android:title="@string/ambulance" />
 
             </group>
         </menu>
@@ -30,26 +30,7 @@
                     android:id="@+id/nav_disaster_helpline"
                     android:icon="@drawable/disaster"
                     android:title="@string/disaster" />
-                <item
-                    android:id="@+id/nav_electricity_helpline"
-                    android:icon="@drawable/electric"
-                    android:title="@string/electric" />
-                <item
-                    android:id="@+id/nav_food_inspector"
-                    android:icon="@drawable/inspection"
-                    android:title="@string/food_inspector" />
-                <item
-                    android:id="@+id/nav_medicine_inspector"
-                    android:icon="@drawable/inspection"
-                    android:title="@string/medicine_inspector" />
-                <item
-                    android:id="@+id/nav_paramedic"
-                    android:icon="@drawable/doctor"
-                    android:title="@string/paramedic" />
-                <item
-                    android:id="@+id/nav_dutyChart"
-                    android:icon="@drawable/ic_description"
-                    android:title="@string/health" />
+
                 <item
                     android:id="@+id/nav_centralize_helpline"
                     android:icon="@drawable/call_center"
@@ -58,77 +39,30 @@
             </group>
         </menu>
     </item>
-    <item android:id="@+id/group3"
-        android:title="@string/rate_chart" >
-        <menu>
-            <group android:checkableBehavior="single"
-                android:id="@+id/nav_rate_chart">
-                <item
-                    android:id="@+id/nav_food_rate"
-                    android:icon="@drawable/food_rate"
-                    android:title="@string/food_rate" />
-                <item
-                    android:id="@+id/nav_puja_samagari"
-                    android:icon="@drawable/puja_rate"
-                    android:title="@string/puja_samagari" />
 
-            </group>
-        </menu>
-    </item>
     <item android:id="@+id/group4"
         android:title="@string/find_places" >
         <menu>
             <group android:checkableBehavior="single"
                 android:id="@+id/nav_find_places">
-                <item
-                    android:id="@+id/nav_secure_ghat"
-                    android:icon="@drawable/ic_ghats"
-                    android:title="@string/secure_ghats" />
 
-                <item
-                    android:id="@+id/nav_atm"
-                    android:icon="@drawable/atm"
-                    android:title="@string/atm" />
                 <item
                     android:id="@+id/nav_health_centre"
                     android:icon="@drawable/ic_local_hospital_black_24dp"
                     android:title="@string/health_centre" />
-                <item
-                    android:id="@+id/nav_hand_pump"
-                    android:icon="@drawable/hand_pump"
-                    android:title="@string/hand_pump" />
-                <item
-                    android:id="@+id/nav_info_centre"
-                    android:icon="@drawable/call_center"
-                    android:title="@string/info_centre" />
+
                 <item
                     android:id="@+id/nav_parking"
                     android:icon="@drawable/parking"
                     android:title="@string/parking" />
-                <item
-                    android:id="@+id/nav_petrol_pump"
-                    android:icon="@drawable/ic_local_gas_station_black_24dp"
-                    android:title="@string/petrol_pump" />
-                <item
-                    android:id="@+id/nav_sanskritik_cente"
-                    android:icon="@drawable/ic_filter_vintage_black_24dp"
-                    android:title="@string/sanskritik_centre" />
+
+
                 <item
                     android:id="@+id/nav_shivir"
                     android:icon="@drawable/tent"
                     android:title="@string/shivir" />
-                <item
-                    android:id="@+id/nav_stay_places"
-                    android:icon="@drawable/rest_room"
-                    android:title="@string/stay_place" />
-                <item
-                    android:id="@+id/nav_waterfall"
-                    android:icon="@drawable/waterfall"
-                    android:title="@string/waterfall" />
-                <item
-                    android:id="@+id/nav_vehicle_workshop"
-                    android:icon="@drawable/workshop"
-                    android:title="@string/vehicle_workshop" />
+
+
 
             </group>
         </menu>

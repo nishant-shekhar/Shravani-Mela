@@ -2,74 +2,89 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="160dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="2dp">
-
+    android:layout_marginBottom="16dp">
 
     <TextView
         android:id="@+id/last_update"
         android:layout_width="0dp"
         android:layout_height="16dp"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/sofia_light"
         android:textAlignment="center"
         android:textColor="@android:color/darker_gray"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crowd_status" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-    <TextView
-        android:id="@+id/crowd_status"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_bright"
-        android:fontFamily="@font/roboto"
-        android:text="@string/medium_crowd"
-        android:textAlignment="center"
-        android:textColor="@color/background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crowd_location" />
-
-    <TextView
-        android:id="@+id/crowd_location"
-        android:layout_width="wrap_content"
-        android:layout_height="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/bhagalpur"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crowd_image" />
-
-    <TextView
-        android:id="@+id/crowd_location2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:fontFamily="@font/roboto"
-        android:text="@string/crowd_status"
-        android:textAlignment="center"
-        android:textColor="@color/background"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <View
+        android:id="@+id/spacer"
+        android:layout_width="16dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/crowd_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="140dp"
+        android:layout_height="110dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintEnd_toEndOf="@+id/crowd_status"
-        app:layout_constraintStart_toStartOf="@+id/crowd_status"
-        app:layout_constraintTop_toBottomOf="@+id/crowd_location2"
-        app:srcCompat="@drawable/crowd_3" />
+        android:padding="2dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spacer"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/crowd_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_blue_bright"
+                android:fontFamily="@font/sofia_regular"
+                android:text="@string/medium_crowd"
+                android:textAlignment="center"
+                android:textColor="@color/background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/crowd_location2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/chocolate_brown"
+                android:fontFamily="@font/sofia_regular"
+                android:padding="3dp"
+                android:text="@string/crowd_status"
+                android:textAlignment="center"
+                android:textColor="@color/background"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/crowd_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintBottom_toTopOf="@+id/crowd_status"
+                app:layout_constraintEnd_toEndOf="@+id/crowd_status"
+                app:layout_constraintStart_toStartOf="@+id/crowd_status"
+                app:layout_constraintTop_toBottomOf="@+id/crowd_location2"
+                app:srcCompat="@drawable/crowd_3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
