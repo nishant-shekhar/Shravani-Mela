@@ -87,7 +87,7 @@ public class FindPlaces extends AppCompatActivity implements OnMapReadyCallback 
         ctx=this;
         mUpdatedLang=0d;
         mUpdatedLat=0d;
-        String project="Muzaffarpur 2022";
+        String project="Bhagalpur24";
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child(project);
         flagSelf=true;
         type=getIntent().getStringExtra("type");

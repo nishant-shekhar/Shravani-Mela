@@ -27,7 +27,7 @@ public class Update extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
-        String project="Muzaffarpur 2022";
+        String project="Bhagalpur24";
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child(project);
         appVersion = BuildConfig.VERSION_CODE;

@@ -47,9 +47,16 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".Video2"
-            android:screenOrientation="landscape"
-            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name=".HowToReach"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterYourself"
+            android:exported="false" />
+        <activity
+            android:name=".Video2"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="landscape" />
         <activity android:name=".LanguageSelect" />
         <activity android:name=".DoctorShift" />
         <activity android:name=".Feedback" />
@@ -74,7 +81,8 @@
         <activity android:name=".PLaces" />
         <activity android:name=".Camera" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Intro"
+        <activity
+            android:name=".Intro"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -83,7 +91,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".Adapter.MyFirebaseInstanceIDService"
+        <service
+            android:name=".Adapter.MyFirebaseInstanceIDService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

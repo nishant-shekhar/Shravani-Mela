@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -47,9 +48,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
+import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.nsappsstudio.shravanimela.Adapter.AmbulanceAdapter;
 import com.nsappsstudio.shravanimela.Adapter.ContactAdapter;
 import com.nsappsstudio.shravanimela.Adapter.CrowdAdapter;
+import com.nsappsstudio.shravanimela.Adapter.EventAdapter;
 import com.nsappsstudio.shravanimela.Adapter.FacilitiesAdapter;
 import com.nsappsstudio.shravanimela.Adapter.PhotoSlideAdapter;
 import com.nsappsstudio.shravanimela.Adapter.PotDAdapter;
@@ -57,6 +60,7 @@ import com.nsappsstudio.shravanimela.Animation.Animations;
 import com.nsappsstudio.shravanimela.Model.AmbulanceModel;
 import com.nsappsstudio.shravanimela.Model.ContactModel;
 import com.nsappsstudio.shravanimela.Model.CrowdItemList;
+import com.nsappsstudio.shravanimela.Model.EventModel;
 import com.nsappsstudio.shravanimela.Model.FacilityItem;
 import com.nsappsstudio.shravanimela.Model.PoDModel;
 import com.squareup.picasso.Callback;
@@ -90,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String project="Muzaffarpur 2022";
+        String project="Bhagalpur24";
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child(project);
         mDrawerLayout=findViewById(R.id.drawer_layout);
         ctx=this;
@@ -125,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
         //loadCrowdStatus();
         loadFacilities();
+        loadEvents();
         /*photoList.add("https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2FSlidingPhotos%2FPhoto%20Contest%20Poster%202.png?alt=media&token=174cfc09-2436-474a-8f4d-641e3de5b1f3");
         photoList.add("https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2FSlidingPhotos%2Fbanner2.png?alt=media&token=4b02d381-15f1-4c33-b318-ea23b4e5d8da");
         photoList.add("");
@@ -136,74 +141,58 @@ public class MainActivity extends AppCompatActivity {
     }
     private void loadFromMenu(int id) {
         SharedPreferences sharedPref = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-        String language= sharedPref.getString("lang",null);
-            Intent intent;
-            switch (id) {
+        String language = sharedPref.getString("lang", null);
+        Intent intent;
 
-
-            case R.id.nav_ambulance:
-                loadAmbulanceList();
-                break;
-                case R.id.nav_doctor:
-                    goToDocShift();
-
-                    break;
-                case R.id.nav_parking:
-                    openPlaces("Parking","Parking");
-                    break;
-
-                case R.id.nav_centralize_helpline:
-                    loadContactList("Centralize Contact");
-
-                    break;
-                case R.id.nav_mela_helpline:
-                    loadContactList("Mela HelpLine");
-
-                    break;
-                case R.id.nav_disaster_helpline:
-                    loadContactList("Emergency");
-
-                    break;
-
-                case R.id.nav_health_centre:
-                    openPlaces("Medical Camp","Health Center");
-
-                    break;
-
-
-                case R.id.nav_shivir:
-                    openPlaces("Shivir","Shivir");
-
-                    break;
-
-                case R.id.nav_change_lang:
-                    intent = new Intent(this, LanguageSelect.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    break;
-                case R.id.nav_feedback:
-                    intent = new Intent(this, Feedback.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    break;
-                case R.id.nav_reg_mobile:
-                    FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                    FirebaseUser user= mAuth.getCurrentUser();
-                    if (user!=null){
-                        String mobileNo=user.getPhoneNumber();
-                        toastMessage("Mobile is registered with "+mobileNo);
-                    }else {
-                        intent = new Intent(this, MobileReg.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.putExtra("from","Main");
-                        startActivity(intent);
-                    }
-                    break;
-                default:
-                    toastMessage("To be Updated");
-                    break;
-
+        if (id == R.id.nav_ambulance) {
+            loadAmbulanceList();
+        } if (id == R.id.nav_ambulance) {
+            loadAmbulanceList();
+        } else if (id == R.id.nav_doctor) {
+            goToDocShift();
+        } else if (id == R.id.nav_parking) {
+            openPlaces("Parking", "Parking");
+        } else if (id == R.id.nav_centralize_helpline) {
+            loadContactList("Centralize Contact");
+        } else if (id == R.id.nav_mela_helpline) {
+            loadContactList("Mela HelpLine");
+        } else if (id == R.id.nav_disaster_helpline) {
+            loadContactList("Emergency");
+        } else if (id == R.id.nav_health_centre) {
+            openPlaces("Medical Camp", "Health Center");
+        } else if (id == R.id.nav_shivir) {
+            openPlaces("Shivir", "Shivir");
+        } else if (id == R.id.nav_change_lang) {
+            intent = new Intent(this, LanguageSelect.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else if (id == R.id.nav_how_to_reach) {
+            intent = new Intent(this, HowToReach.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }else if (id == R.id.nav_register) {
+            intent = new Intent(this, RegisterYourself.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }else if (id == R.id.nav_feedback) {
+            intent = new Intent(this, Feedback.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else if (id == R.id.nav_reg_mobile) {
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            FirebaseUser user = mAuth.getCurrentUser();
+            if (user != null) {
+                String mobileNo = user.getPhoneNumber();
+                toastMessage("Mobile is registered with " + mobileNo);
+            } else {
+                intent = new Intent(this, MobileReg.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("from", "Main");
+                startActivity(intent);
             }
+        } else {
+            toastMessage("To be Updated");
+        }
     }
 
     private void toastMessage(String s) {
@@ -272,6 +261,75 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("type",name);
         intent.putExtra("display",display);
         ctx.startActivity(intent);
+    }
+    private void loadEvents(){
+        final RecyclerView recyclerView=findViewById(R.id.events_rc);
+        recyclerView.hasFixedSize();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+
+        EventAdapter adapter=new EventAdapter(this);
+        recyclerView.setAdapter(adapter);
+
+        images=new ArrayList<>();
+        EventModel event1 = new EventModel(
+                "Shravani Mela Inauguration",
+                "22-07-2024",
+                "10:00 AM",
+                "Join us for the grand inauguration of Shravani Mela with traditional rituals and performances.",
+                "https://example.com/images/shravani_mela_inauguration.jpg",
+                4.8f,
+                1658448000L
+        );
+
+        EventModel event2 = new EventModel(
+                "Cultural Dance Performance",
+                "29-07-2024",
+                "05:00 PM",
+                "Experience the rich cultural heritage of Bhagalpur with mesmerizing dance performances by local artists.",
+                "https://example.com/images/cultural_dance_performance.jpg",
+                4.7f,
+                1659052800L
+        );
+
+        EventModel event3 = new EventModel(
+                "Traditional Music Concert",
+                "05-08-2024",
+                "07:00 PM",
+                "Enjoy an evening of soulful traditional music featuring renowned musicians from Bhagalpur.",
+                "https://example.com/images/traditional_music_concert.jpg",
+                4.9f,
+                1659657600L
+        );
+
+        EventModel event4 = new EventModel(
+                "Handicraft Exhibition",
+                "12-08-2024",
+                "11:00 AM",
+                "Explore and purchase beautiful handicrafts made by local artisans, showcasing the talent of Bhagalpur.",
+                "https://example.com/images/handicraft_exhibition.jpg",
+                4.6f,
+                1660262400L
+        );
+
+        EventModel event5 = new EventModel(
+                "Food Festival",
+                "19-08-2024",
+                "01:00 PM",
+                "Savor the flavors of Bhagalpur with a variety of traditional dishes and street food at our food festival.",
+                "https://example.com/images/food_festival.jpg",
+                4.7f,
+                1660867200L
+        );
+
+
+        adapter.insertItem(event1);
+        adapter.insertItem(event2);
+        adapter.insertItem(event3);
+        adapter.insertItem(event4);
+        adapter.insertItem(event5);
+
+
+
     }
     private void loadPotD(){
         final RecyclerView recyclerView=findViewById(R.id.potd_rc);
@@ -493,6 +551,10 @@ public class MainActivity extends AppCompatActivity {
         adapter.insertItem(new FacilityItem("Toilets"));
         adapter.insertItem(new FacilityItem("Bathroom"));
         adapter.insertItem(new FacilityItem("Rest Room"));
+        adapter.insertItem(new FacilityItem("Dharamshala"));
+        adapter.insertItem(new FacilityItem("Parking"));
+        adapter.insertItem(new FacilityItem("Health Centre"));
+        adapter.insertItem(new FacilityItem("Shivir"));
 
 
 
@@ -828,5 +890,68 @@ public class MainActivity extends AppCompatActivity {
 
             }
         })).withStartPosition(0).show();
+    }
+
+    public void loadEventDialog(EventModel item) {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        dialog.setContentView(R.layout.event_dialog);
+        dialog.setCancelable(true);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(Objects.requireNonNull(dialog.getWindow()).getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        TextView eventName=dialog.findViewById(R.id.first_line);
+        TextView eventDetails=dialog.findViewById(R.id.first_line2);
+        TextView eventStar=dialog.findViewById(R.id.first_line3);
+        TextView eventDate=dialog.findViewById(R.id.first_line4);
+        TextView eventTime=dialog.findViewById(R.id.first_line5);
+        TextView feedback=dialog.findViewById(R.id.first_line6);
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Animations.squeeze(v,ctx);
+                loadEventFeedbackDialog(item);
+            }
+        });
+        SimpleRatingBar simpleRatingBar=dialog.findViewById(R.id.simpleRatingBar);
+        eventName.setText(item.getEventName());
+        eventDetails.setText(item.getDetails());
+        eventDate.setText(item.getEventDate());
+        eventTime.setText(item.getEventTime());
+        eventStar.setText(String.valueOf(item.getStars()));
+        simpleRatingBar.setRating(item.getStars());
+        simpleRatingBar.setEnabled(false);
+
+
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+    }
+    public void loadEventFeedbackDialog(EventModel item) {
+        Dialog feedbackDialog = new Dialog(this);
+        feedbackDialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        feedbackDialog.setContentView(R.layout.event_feedback_dialog);
+        feedbackDialog.setCancelable(true);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(Objects.requireNonNull(feedbackDialog.getWindow()).getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        EditText feedback=feedbackDialog.findViewById(R.id.name4);
+        Button button=feedbackDialog.findViewById(R.id.button5);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                feedbackDialog.dismiss();
+            }
+        });
+
+        SimpleRatingBar simpleRatingBar=feedbackDialog.findViewById(R.id.simpleRatingBar);
+
+
+
+        feedbackDialog.show();
+        feedbackDialog.getWindow().setAttributes(lp);
     }
 }

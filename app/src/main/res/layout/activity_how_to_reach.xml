@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HowToReach">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:onClick="back"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            app:srcCompat="@drawable/ic_keyboard_backspace_black_24dp"
+            app:tint="@color/dark_blue_card" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/helvetica_neue_medium"
+            android:text="How to reach"
+            android:textColor="@color/dark_blue"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/bg_blue_light"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/date_bg_4"
+                android:backgroundTint="@color/bg_blue_trans"
+                android:fontFamily="@font/sofia_semi_bold"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="4dp"
+                android:text="Via. Aeroplane"
+                android:textColor="@color/dark_blue"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/first_line2" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/date_bg_4"
+                android:backgroundTint="@color/white_transparent"
+                android:fontFamily="@font/sofia_medium"
+                android:lineSpacingExtra="8sp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="To reach Sultanganj via aeroplane, you'll need to fly to the nearest airport and then take a road trip to Sultanganj."
+                android:textColor="@color/dark_blue"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/first_line"
+                app:layout_constraintTop_toBottomOf="@+id/first_line" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/bg_light"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0.2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white"
+                        android:fontFamily="@font/sofia_semi_bold"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Fly to Patna Airport (Jay Prakash Narayan International Airport):"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white"
+                        android:fontFamily="@font/sofia_medium"
+                        android:lineSpacingExtra="10sp"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Location: Patna, Bihar\nIATA Code: PAT\nDistance to Sultanganj: Approximately 200 km "
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/bg_light"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0.2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white_transparent"
+                        android:fontFamily="@font/sofia_semi_bold"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Fly to Bagdogra Airport:"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white_transparent"
+                        android:fontFamily="@font/sofia_medium"
+                        android:lineSpacingExtra="10sp"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Location: Bagdogra, West Bengal \nIATA Code: IXB \nDistance to Sultanganj: Approximately 300 km"
+                        android:textColor="@color/dark_blue"
+
+
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/bg_light"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0.2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white_transparent"
+                        android:fontFamily="@font/sofia_semi_bold"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Fly to Gaya Airport:"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white_transparent"
+                        android:fontFamily="@font/sofia_medium"
+                        android:lineSpacingExtra="10sp"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Location: Patna, Bihar\nIATA Code: PAT\nDistance to Sultanganj: Approximately 200 km "
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/date_bg_4"
+                android:backgroundTint="@color/bg_blue_trans"
+                android:fontFamily="@font/sofia_semi_bold"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="4dp"
+                android:text="Via. Train"
+                android:textColor="@color/dark_blue"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/first_line2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/date_bg_4"
+                android:backgroundTint="@color/white_transparent"
+                android:fontFamily="@font/sofia_medium"
+                android:lineSpacingExtra="8sp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="To reach Sultanganj via train, you can take a train to the nearest railway station and then travel by road to Sultanganj."
+                android:textColor="@color/dark_blue"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/bg_light"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0.2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white_transparent"
+                        android:fontFamily="@font/sofia_semi_bold"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Train to Bhagalpur Railway Station:"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white_transparent"
+                        android:fontFamily="@font/sofia_medium"
+                        android:lineSpacingExtra="10sp"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Location: Bhagalpur, Bihar\nStation Code: BGP\nDistance to Sultanganj: Approximately 30 km"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/bg_light"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0.2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white_transparent"
+                        android:fontFamily="@font/sofia_semi_bold"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Train to Jamalpur Junction:"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white_transparent"
+                        android:fontFamily="@font/sofia_medium"
+                        android:lineSpacingExtra="10sp"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Location: Jamalpur, Bihar\nStation Code: JMP\nDistance to Sultanganj: Approximately 25 km"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/date_bg_4"
+                android:backgroundTint="@color/bg_blue_trans"
+                android:fontFamily="@font/sofia_semi_bold"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="4dp"
+                android:text="Via. Bus"
+                android:textColor="@color/dark_blue"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/first_line2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/date_bg_4"
+                android:backgroundTint="@color/white_transparent"
+                android:fontFamily="@font/sofia_medium"
+                android:lineSpacingExtra="8sp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:text="To reach Sultanganj via bus, you can take a bus to the nearest bus stop and then travel by road to Sultanganj."
+                android:textColor="@color/dark_blue"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/bg_light"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0.2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white_transparent"
+                        android:fontFamily="@font/sofia_semi_bold"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Bus to Bhagalpur Bus Stand:"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white_transparent"
+                        android:fontFamily="@font/sofia_medium"
+                        android:lineSpacingExtra="10sp"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Location: Bhagalpur, Bihar\nBus Stand Code: BGP\nDistance to Sultanganj: Approximately 30 km"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:visibility="visible"
+                app:cardBackgroundColor="@color/bg_light"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="0.2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white_transparent"
+                        android:fontFamily="@font/sofia_semi_bold"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Bus to Jamalpur Bus Stand:"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/date_bg_4"
+                        android:backgroundTint="@color/white_transparent"
+                        android:fontFamily="@font/sofia_medium"
+                        android:lineSpacingExtra="10sp"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="Location: Jamalpur, Bihar\nBus Stand Code: JMP\nDistance to Sultanganj: Approximately 25 km"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/first_line"
+                        app:layout_constraintTop_toBottomOf="@+id/first_line" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

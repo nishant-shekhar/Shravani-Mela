@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baba3" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image">
+
+        <com.iarcuschin.simpleratingbar.SimpleRatingBar
+            android:id="@+id/simpleRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srb_borderColor="@color/golden_yellow"
+            app:srb_fillColor="@color/yellow2"
+            app:srb_numberOfStars="5"
+            app:srb_rating="4.3"
+            app:srb_starBorderWidth="3"
+            app:srb_starSize="18dp"
+            app:srb_stepSize="0.1" />
+
+        <TextView
+            android:id="@+id/first_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/date_bg_4"
+            android:backgroundTint="@color/white_transparent"
+            android:fontFamily="@font/sofia_semi_bold"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="Event Name"
+            android:textColor="@color/dark_blue"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/simpleRatingBar" />
+
+        <TextView
+            android:id="@+id/first_line6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/date_bg_4"
+            android:backgroundTint="@color/bg_blue_trans"
+            android:fontFamily="@font/sofia_semi_bold"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="Give Your Feedback"
+            android:textColor="@color/dark_blue"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_line2" />
+
+        <TextView
+            android:id="@+id/first_line4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/date_bg_4"
+            android:backgroundTint="@color/white_transparent"
+            android:fontFamily="@font/sofia_semi_bold"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="24th July"
+            android:textColor="@color/dark_blue"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/first_line5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/date_bg_4"
+            android:backgroundTint="@color/white_transparent"
+            android:fontFamily="@font/sofia_semi_bold"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="5 PM"
+            android:textColor="@color/dark_blue"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_line4" />
+
+        <TextView
+            android:id="@+id/first_line3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:background="@drawable/date_bg_4"
+            android:backgroundTint="@color/mm_green"
+            android:fontFamily="@font/sofia_semi_bold"
+            android:paddingStart="4dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="2dp"
+            android:text="4.3"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/simpleRatingBar"
+            app:layout_constraintStart_toEndOf="@+id/simpleRatingBar"
+            app:layout_constraintTop_toTopOf="@+id/simpleRatingBar" />
+
+        <TextView
+            android:id="@+id/first_line2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/date_bg_4"
+            android:backgroundTint="@color/white_transparent"
+            android:fontFamily="@font/sofia_regular"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="Details"
+            android:textColor="@color/dark_blue"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/first_line"
+            app:layout_constraintTop_toBottomOf="@+id/first_line" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

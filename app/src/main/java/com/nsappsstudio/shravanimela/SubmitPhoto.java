@@ -51,7 +51,7 @@ public class SubmitPhoto extends AppCompatActivity {
         setContentView(R.layout.activity_submit_photo);
         ctx=this;
         String fromClass=getIntent().getStringExtra("from");
-        String project="Muzaffarpur 2022";
+        String project="Bhagalpur24";
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child(project);
         storageReference = FirebaseStorage.getInstance().getReference().child(project);
         FirebaseAuth auth=FirebaseAuth.getInstance();

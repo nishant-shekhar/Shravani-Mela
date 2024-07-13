@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/group0"
+        android:title="@string/welcome" >
+        <menu>
+            <group android:checkableBehavior="single"
+                android:id="@+id/nav_general">
+                <item
+                    android:id="@+id/nav_register"
+                    android:icon="@drawable/ic_register_mobile"
+                    android:title="@string/register_yourself" />
+                <item
+                    android:id="@+id/nav_how_to_reach"
+                    android:icon="@drawable/ic_route"
+                    android:title="@string/how_to_reach" />
+
+            </group>
+        </menu>
+    </item>
     <item android:id="@+id/group1"
         android:title="@string/emergency" >
         <menu>

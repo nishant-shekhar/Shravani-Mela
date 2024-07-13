@@ -44,7 +44,6 @@ public class Video2 extends AppCompatActivity {
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setAllowFileAccess(true);
-        webSettings.setAppCacheEnabled(true);
 
         if (savedInstanceState == null) {
             mWebView.loadUrl("http://rtsp.me/embed/kzEEkH3A");

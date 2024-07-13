@@ -305,12 +305,26 @@
                   <entry key="vectorAssetStep">
                     <value>
                       <PersistentState>
+                        <option name="children">
+                          <map>
+                            <entry key="clipartAsset">
+                              <value>
+                                <PersistentState>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/calendar_month/baseline_calendar_month_24.xml" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                         <option name="values">
                           <map>
-                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="5349cc" />
-                            <entry key="outputName" value="ic_title" />
-                            <entry key="sourceFile" value="C:\Users\nisha\Desktop\Shravani mela22\title.svg" />
+                            <entry key="outputName" value="baseline_calendar_month_24" />
+                            <entry key="sourceFile" value="/C:\Users\nisha\Desktop\Shravani mela22\title.svg" />
                           </map>
                         </option>
                       </PersistentState>

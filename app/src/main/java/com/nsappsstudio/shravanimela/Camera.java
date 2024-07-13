@@ -45,7 +45,7 @@ public class Camera extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
         ctx=this;
-        String project="Muzaffarpur 2022";
+        String project="Bhagalpur24";
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child(project);
         webView=findViewById(R.id.web_view);
         //webView.setWebViewClient(new WebViewClient());

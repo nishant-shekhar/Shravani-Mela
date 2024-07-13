@@ -78,7 +78,7 @@ public class FacilitiesAdapter extends RecyclerView.Adapter<FacilitiesAdapter.Vi
 
                 break;
             case "Gallery":
-                holder.imageView.setImageDrawable(ContextCompat.getDrawable(ctx,R.drawable.ic_photo_black_48dp));
+                holder.imageView.setImageDrawable(ContextCompat.getDrawable(ctx, com.github.dhaval2404.imagepicker.R.drawable.ic_photo_black_48dp));
                 holder.name.setText(ctx.getResources().getString(R.string.gallery));
 
                 break;
@@ -95,6 +95,26 @@ public class FacilitiesAdapter extends RecyclerView.Adapter<FacilitiesAdapter.Vi
             case "Mela Route":
                 holder.imageView.setImageDrawable(ContextCompat.getDrawable(ctx,R.drawable.ic_route));
                 holder.name.setText(ctx.getResources().getString(R.string.mela_route));
+
+                break;
+            case "Parking":
+                holder.imageView.setImageDrawable(ContextCompat.getDrawable(ctx,R.drawable.parking));
+                holder.name.setText(ctx.getResources().getString(R.string.parking));
+
+                break;
+            case "Health Centre":
+                holder.imageView.setImageDrawable(ContextCompat.getDrawable(ctx,R.drawable.ic_healing_black_24dp));
+                holder.name.setText(ctx.getResources().getString(R.string.health_centre));
+
+                break;
+            case "Shivir":
+                holder.imageView.setImageDrawable(ContextCompat.getDrawable(ctx,R.drawable.tent));
+                holder.name.setText(ctx.getResources().getString(R.string.shivir));
+
+                break;
+            case "Dharamshala":
+                holder.imageView.setImageDrawable(ContextCompat.getDrawable(ctx,R.drawable.tent));
+                holder.name.setText(ctx.getResources().getString(R.string.dharamshala));
 
                 break;
         }
@@ -131,6 +151,22 @@ public class FacilitiesAdapter extends RecyclerView.Adapter<FacilitiesAdapter.Vi
                         break;
                     case "Mela Route":
                         ((MainActivity)ctx).routeImage();
+                        break;
+                    case "Parking":
+                        openPlaces("Parking",item.getName());
+
+
+                        break;
+                    case "Health Centre":
+                        openPlaces("Health Centre",item.getName());
+
+                        break;
+                    case "Shivir":
+                        openPlaces("Shivir",item.getName());
+                        break;
+                    case "Dharamshala":
+                        openPlaces("Dharamshala",item.getName());
+
                         break;
                 }
             }

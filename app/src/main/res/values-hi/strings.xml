@@ -36,7 +36,7 @@
     <string name="welcome">स्वागतम्</string>
     <string name="next">आगे</string>
     <string name="welcome_note_muz">मुजफ्फरपुर प्रशासन सावन 2022 के शुभ माह में प्रतिष्ठित श्रावणी मेले में आपका स्वागत करता है। इस ऐप में एम्बुलेंस, डॉक्टर की शिफ्ट, टॉयलेट की लोकेशन से लेकर कई तरह की जानकारियां उपलब्ध है।</string>
-    <string name="welcome_note">भागलपुर जिला प्रशासन श्रवानी मेला 2022 में आपका स्वागत करता है। यह ऐप तीर्थयात्रियों को सुल्तानगंज से बाबा धाम की सुरक्षित एवं  सुविधाजनक यात्रा के लिए समर्पित है। इस ऐप में एम्बुलेंस, डॉक्टर की शिफ्ट, टॉयलेट की लोकेशन से लेकर कई तरह की जानकारियां उपलब्ध है।</string>
+    <string name="welcome_note">भागलपुर प्रशासन आपको श्रावणी मेला 2024 में स्वागत करता है जो 22 जुलाई से मनाया जा रहा है। यह ऐप बाबा धाम की तीर्थ यात्रा को सुरक्षित और आरामदायक बनाने के लिए समर्पित है।</string>
     <string name="back">पीछे</string>
     <string name="finish">प्रवेश करें</string>
     <string name="donts">क्या नहीं करें</string>
@@ -140,7 +140,7 @@
     <string name="road_map">Road Map</string>
     <string name="instruction">Instructions</string>
     <string name="made_in_bihar">MADE IN BIHAR</string>
-    <string name="photo_instruction">1. विजेता को <B>मुजफ्फरपुर जिला मजिस्ट्रेट</B> से एक प्रमाण पत्र प्राप्त होगा \n \n2. प्रति व्यक्ति प्रति दिन केवल 1 प्रविष्टि की अनुमति है अन्य प्रविष्टियों को अनदेखा कर दिया जाएगा \n \n3. विजेता को ऐप में सूचीबद्ध किया जाएगा। \n \n4. सभी चयनित तस्वीरें होंगी गैलरी अनुभाग में प्रदर्शित \n \n5. फोटो श्रावणी मेला के लिए प्रासंगिक होना चाहिए \n \n6. जिला प्रशासन का निर्णय अंतिम होगा</string>
+    <string name="photo_instruction">1. विजेता को <B>भागलपुर जिला मजिस्ट्रेट</B> से एक प्रमाण पत्र प्राप्त होगा \n \n2. प्रति व्यक्ति प्रति दिन केवल 1 प्रविष्टि की अनुमति है अन्य प्रविष्टियों को अनदेखा कर दिया जाएगा \n \n3. विजेता को ऐप में सूचीबद्ध किया जाएगा। \n \n4. सभी चयनित तस्वीरें होंगी गैलरी अनुभाग में प्रदर्शित \n \n5. फोटो श्रावणी मेला के लिए प्रासंगिक होना चाहिए \n \n6. जिला प्रशासन का निर्णय अंतिम होगा</string>
     <string name="verify_number">मोबाइल सत्यापन</string>
     <string name="subtext_verify">" वन टाइम पासवर्ड प्राप्त करने के लिए कृपया अपना मोबाइल नंबर दर्ज करें।"</string>
     <string name="wait_for_autoVerification">" प्रतीक्षा करें जब तक हम आपके नंबर को स्वचालित रूप से प्रमाणित कर रहे हैं"</string>
@@ -157,5 +157,10 @@
     <string name="pic_of_the_day">दिन की सबसे अच्छी तस्वीर</string>
     <string name="facility_contact">सुविधाएं और संपर्क</string>
     <string name="upload">Upload</string>
+    <string name="shravani_mela_event">Shravani Mela Events</string>
+    <string name="register_yourself">खुद को पंजीकृत करें</string>
+    <string name="how_to_reach">कैसे पहुँचें</string>
+    <string name="via_plane">Fly to Patna Airport (Jay Prakash Narayan International Airport):\n\nLocation: Patna, Bihar\nIATA Code: PAT\nDistance to Sultanganj: Approximately 200 km (124 miles)\nFly to Bagdogra Airport:\n\nLocation: Bagdogra, West Bengal\nIATA Code: IXB\nDistance to Sultanganj: Approximately 300 km (186 miles)\nFly to Gaya Airport:\n\nLocation: Gaya, Bihar\nIATA Code: GAY\nDistance to Sultanganj: Approximately 250 km (155 miles)\nFrom the Airport to Sultanganj:\n\nBy Taxi or Private Car: You can hire a taxi or book a private car from the airport to Sultanganj. This is the most convenient and direct option.\nBy Train: From Patna, you can take a train to Sultanganj. The Patna Junction railway station has frequent trains to Sultanganj.\nBy Bus: You can also take a bus from Patna to Sultanganj. Buses are available from the Patna bus stand to Bhagalpur, and from there, you can take a local bus or taxi to Sultanganj.</string>
+    <string name="dharamshala">धर्मशाला</string>
 
 </resources>

@@ -22,15 +22,13 @@ public class LanguageSelect extends AppCompatActivity {
 
     public void SelectLanguage(View view){
 
-        switch (view.getId()){
-            case R.id.english:
-                setLanguage("en");
-                break;
-            case R.id.hindi:
-                setLanguage("hi");
-                break;
 
+        if (view.getId() == R.id.english) {
+            setLanguage("en");
+        } else if (view.getId() == R.id.hindi) {
+            setLanguage("hi");
         }
+
 
     }
     private void setLanguage(String language){

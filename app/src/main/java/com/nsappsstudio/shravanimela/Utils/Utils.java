@@ -122,6 +122,51 @@ public class Utils {
         Calendar monthStart = new GregorianCalendar(year, month-1, 1);
         return (monthStart.getActualMaximum(Calendar.DAY_OF_MONTH)+1);
     }
+    public static boolean compareFuture(int year,int month,int day){
+        Calendar calendar= Calendar.getInstance();
+        calendar.set(year, month-1, day);
+        long dateTime=calendar.getTimeInMillis();
+        return dateTime < System.currentTimeMillis();
+
+    }
+    public static boolean compareDeadLine(String targetDate){
+        try {
+            int year = Integer.parseInt(targetDate.substring(0, 4));
+            int month = Integer.parseInt(targetDate.substring(4, 6));
+            int date = Integer.parseInt(targetDate.substring(6, 8));
+
+            Calendar calendar= Calendar.getInstance();
+            calendar.set(year, month-1, date);
+            long dateTime=calendar.getTimeInMillis();
+            return dateTime < System.currentTimeMillis();
+        }catch (NumberFormatException e){
+            return false;
+        }
+
+
+    }
+    public static String DayOfWeek3Letter(int year,int month, int date){
+        Calendar calendar= Calendar.getInstance();
+        calendar.set(year, month-1, date);
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        String weekDay;
+        if (Calendar.MONDAY == dayOfWeek) {
+            weekDay = "Mon";
+        } else if (Calendar.TUESDAY == dayOfWeek) {
+            weekDay = "Tue";
+        } else if (Calendar.WEDNESDAY == dayOfWeek) {
+            weekDay = "Wed";
+        } else if (Calendar.THURSDAY == dayOfWeek) {
+            weekDay = "Thu";
+        } else if (Calendar.FRIDAY == dayOfWeek) {
+            weekDay = "Fri";
+        } else if (Calendar.SATURDAY == dayOfWeek) {
+            weekDay = "Sat";
+        } else if (Calendar.SUNDAY == dayOfWeek) {
+            weekDay = "Sun";
+        }else {weekDay="";}
+        return weekDay;
+    }
     public static String getDisplayMonth(int month) {
 
         String monthFinal=String.valueOf(month);
