@@ -10,6 +10,7 @@ public class EventModel {
     public float stars;
     public long ts;
 
+    public EventModel(){}
     public EventModel(String eventName, String eventDate, String eventTime, String details, String dpUrl, float stars, long ts) {
         this.eventName = eventName;
         this.eventDate = eventDate;

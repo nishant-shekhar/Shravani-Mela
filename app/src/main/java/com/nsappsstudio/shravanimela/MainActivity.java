@@ -21,6 +21,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -64,6 +65,7 @@ import com.nsappsstudio.shravanimela.Model.CrowdItemList;
 import com.nsappsstudio.shravanimela.Model.EventModel;
 import com.nsappsstudio.shravanimela.Model.FacilityItem;
 import com.nsappsstudio.shravanimela.Model.PoDModel;
+import com.nsappsstudio.shravanimela.Utils.Utils;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -274,11 +276,16 @@ public class MainActivity extends AppCompatActivity {
 
         images=new ArrayList<>();
 
-        mDatabaseReference.child("GlobalParameter").child("Events").addListenerForSingleValueEvent(new ValueEventListener() {
+
+
+        mDatabaseReference.child("Event").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snapshot1:snapshot.getChildren()){
                     EventModel eventModel=snapshot1.getValue(EventModel.class);
+                    if (eventModel!=null) {
+                        adapter.insertItem(eventModel);
+                    }
 
                 }
             }
@@ -341,11 +348,6 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
-        adapter.insertItem(event1);
-        adapter.insertItem(event2);
-        adapter.insertItem(event3);
-        adapter.insertItem(event4);
-        adapter.insertItem(event5);
 
 
 
@@ -922,6 +924,7 @@ public class MainActivity extends AppCompatActivity {
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 
+        ImageView image=dialog.findViewById(R.id.image);
         TextView eventName=dialog.findViewById(R.id.first_line);
         TextView eventDetails=dialog.findViewById(R.id.first_line2);
         TextView eventStar=dialog.findViewById(R.id.first_line3);
@@ -935,6 +938,20 @@ public class MainActivity extends AppCompatActivity {
                 loadEventFeedbackDialog(item);
             }
         });
+        if (item.getDpUrl() != null && item.getDpUrl().contains("https:")) {
+            Picasso.get().load(item.getDpUrl()).resize(Utils.dpToPx(160,ctx),Utils.dpToPx(90,ctx)).networkPolicy(NetworkPolicy.OFFLINE).into(image, new Callback() {
+                @Override
+                public void onSuccess() {
+
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    Picasso.get().load(item.getDpUrl()).resize(Utils.dpToPx(160,ctx),Utils.dpToPx(90,ctx)).into(image);
+
+                }
+            });
+        }
         SimpleRatingBar simpleRatingBar=dialog.findViewById(R.id.simpleRatingBar);
         eventName.setText(item.getEventName());
         eventDetails.setText(item.getDetails());

@@ -66,8 +66,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
 
             Animations.scaleWithAlpha(holder.name,0f,1f,0.5f,0.5f,200);
+        if (item.getDpUrl() == null ) {
 
-                item.setDpUrl("https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela24%2FUntitled%20design.png?alt=media&token=aa39bc46-264a-420c-8541-6f82371aa202");
+
+            item.setDpUrl("https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela24%2FUntitled%20design.png?alt=media&token=aa39bc46-264a-420c-8541-6f82371aa202");
+
+        }
             if (item.getDpUrl() != null && item.getDpUrl().contains("https:")) {
                 Picasso.get().load(item.getDpUrl()).resize(Utils.dpToPx(160,ctx),Utils.dpToPx(90,ctx)).networkPolicy(NetworkPolicy.OFFLINE).into(holder.image, new Callback() {
                     @Override

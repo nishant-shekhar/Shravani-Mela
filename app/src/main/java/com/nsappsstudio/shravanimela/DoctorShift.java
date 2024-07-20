@@ -48,7 +48,7 @@ public class DoctorShift extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_shift);
         ctx=this;
-        String project="Muzaffarpur 2022";
+        String project="Bhagalpur24";
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child(project);
         loadPlaceSpinner();
         loadDateSpinner();

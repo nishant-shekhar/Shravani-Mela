@@ -34,7 +34,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/helvetica_neue_medium"
-            android:text="Nearest Places"
+            android:text="@string/nearest"
             android:textColor="@color/dark_blue"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"

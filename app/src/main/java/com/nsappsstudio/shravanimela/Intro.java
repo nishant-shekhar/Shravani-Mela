@@ -48,7 +48,7 @@ public class Intro extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_intro);
-        String project="Muzaffarpur 2022";
+        String project="Bhagalpur24";
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child(project);
         checkAppVersion();
 
