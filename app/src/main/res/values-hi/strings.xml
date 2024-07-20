@@ -147,7 +147,7 @@
     <string name="otp_subtext">OTP has been sent to you on your mobile phone. Please enter it below</string>
     <string name="rationale_doc_picker">We need this permission to read documents from device.</string>
     <string name="rationale_photo_picker">We require this permission to select photo from gallery and camera.</string>
-    <string name="app_name_Display">"श्रावणी मेला\nमुजफ्फरपुर २०२२ "</string>
+    <string name="app_name_Display">"श्रावणी मेला\nभागलपुर 2024 "</string>
     <string name="spe">[</string>
     <string name="virtual_pooja">वर्चुअल पूजा</string>
     <string name="live_aarti">लाइव दर्शन</string>
@@ -162,5 +162,6 @@
     <string name="how_to_reach">कैसे पहुँचें</string>
     <string name="via_plane">Fly to Patna Airport (Jay Prakash Narayan International Airport):\n\nLocation: Patna, Bihar\nIATA Code: PAT\nDistance to Sultanganj: Approximately 200 km (124 miles)\nFly to Bagdogra Airport:\n\nLocation: Bagdogra, West Bengal\nIATA Code: IXB\nDistance to Sultanganj: Approximately 300 km (186 miles)\nFly to Gaya Airport:\n\nLocation: Gaya, Bihar\nIATA Code: GAY\nDistance to Sultanganj: Approximately 250 km (155 miles)\nFrom the Airport to Sultanganj:\n\nBy Taxi or Private Car: You can hire a taxi or book a private car from the airport to Sultanganj. This is the most convenient and direct option.\nBy Train: From Patna, you can take a train to Sultanganj. The Patna Junction railway station has frequent trains to Sultanganj.\nBy Bus: You can also take a bus from Patna to Sultanganj. Buses are available from the Patna bus stand to Bhagalpur, and from there, you can take a local bus or taxi to Sultanganj.</string>
     <string name="dharamshala">धर्मशाला</string>
+    <string name="fire_brigade">अग्नि शामक दल</string>
 
 </resources>

@@ -62,6 +62,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
         }else {
             holder.spacer.setVisibility(View.GONE);
+        }
 
 
             Animations.scaleWithAlpha(holder.name,0f,1f,0.5f,0.5f,200);
@@ -81,7 +82,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
                     }
                 });
             }
-        }
+
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

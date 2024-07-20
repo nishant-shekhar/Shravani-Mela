@@ -117,6 +117,16 @@ public class FacilitiesAdapter extends RecyclerView.Adapter<FacilitiesAdapter.Vi
                 holder.name.setText(ctx.getResources().getString(R.string.dharamshala));
 
                 break;
+            case "DataType2":
+                holder.imageView.setImageDrawable(ContextCompat.getDrawable(ctx,R.drawable.baseline_atm_24));
+                holder.name.setText(ctx.getResources().getString(R.string.atm));
+
+                break;
+            case "Fire Brigade":
+                holder.imageView.setImageDrawable(ContextCompat.getDrawable(ctx,R.drawable.baseline_fire_truck_24));
+                holder.name.setText(ctx.getResources().getString(R.string.fire_brigade));
+
+                break;
         }
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +176,14 @@ public class FacilitiesAdapter extends RecyclerView.Adapter<FacilitiesAdapter.Vi
                         break;
                     case "Dharamshala":
                         openPlaces("Dharamshala",item.getName());
+
+                        break;
+                    case "DataType2":
+                        openPlaces("DataType2","ATM");
+
+                        break;
+                    case "Fire Brigade":
+                        openPlaces("Fire Brigade",item.getName());
 
                         break;
                 }

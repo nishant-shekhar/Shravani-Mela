@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
@@ -152,7 +153,8 @@ public class MainActivity extends AppCompatActivity {
             goToDocShift();
         } else if (id == R.id.nav_parking) {
             openPlaces("Parking", "Parking");
-        } else if (id == R.id.nav_centralize_helpline) {
+        }
+        else if (id == R.id.nav_centralize_helpline) {
             loadContactList("Centralize Contact");
         } else if (id == R.id.nav_mela_helpline) {
             loadContactList("Mela HelpLine");
@@ -271,6 +273,23 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         images=new ArrayList<>();
+
+        mDatabaseReference.child("GlobalParameter").child("Events").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1:snapshot.getChildren()){
+                    EventModel eventModel=snapshot1.getValue(EventModel.class);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
         EventModel event1 = new EventModel(
                 "Shravani Mela Inauguration",
                 "22-07-2024",
@@ -555,6 +574,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.insertItem(new FacilityItem("Parking"));
         adapter.insertItem(new FacilityItem("Health Centre"));
         adapter.insertItem(new FacilityItem("Shivir"));
+        adapter.insertItem(new FacilityItem("DataType2"));
+        adapter.insertItem(new FacilityItem("Fire Brigade"));
 
 
 
@@ -873,11 +894,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void routeImage(){
-        String image1="https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2FSlidingPhotos%2Fshrawani%20road%20chart%20anumandal%20copy.png?alt=media&token=9014ee52-dcd0-47d2-a25c-53ecec6965d7";
-        String image2="https://firebasestorage.googleapis.com/v0/b/shravanimela18.appspot.com/o/ShravaniMela22%2FSlidingPhotos%2Froute%20dto.png?alt=media&token=247216ab-944b-45b4-9a51-5e197bc85fb2";
+        String image1="https://i.postimg.cc/Y9rX5CKm/mela-route-bhagalpur.jpg";
         List<String> route=new ArrayList<>();
         route.add(image1);
-        route.add(image2);
+        //route.add(image2);
         new StfalconImageViewer.Builder<>(this, route, (imageView, image) -> Picasso.get().load(image).placeholder(R.drawable.ic_route).networkPolicy(NetworkPolicy.OFFLINE).into(imageView, new Callback() {
             @Override
             public void onSuccess() {
@@ -922,8 +942,6 @@ public class MainActivity extends AppCompatActivity {
         eventTime.setText(item.getEventTime());
         eventStar.setText(String.valueOf(item.getStars()));
         simpleRatingBar.setRating(item.getStars());
-        simpleRatingBar.setEnabled(false);
-
 
         dialog.show();
         dialog.getWindow().setAttributes(lp);
