@@ -147,9 +147,7 @@ public class MainActivity extends AppCompatActivity {
         String language = sharedPref.getString("lang", null);
         Intent intent;
 
-        if (id == R.id.nav_ambulance) {
-            loadAmbulanceList();
-        } if (id == R.id.nav_ambulance) {
+         if (id == R.id.nav_ambulance) {
             loadAmbulanceList();
         } else if (id == R.id.nav_doctor) {
             goToDocShift();
@@ -711,33 +709,34 @@ public class MainActivity extends AppCompatActivity {
         AmbulanceAdapter adapter=new AmbulanceAdapter(ctx);
         recyclerView.setAdapter(adapter);
 
-        DatabaseReference mContactRef= mDatabaseReference.child("GlobalParameter").child("Ambulance");
+        DatabaseReference mContactRef= mDatabaseReference.child("GlobalParameter").child("AmbulanceData");
         mContactRef.addChildEventListener(new ChildEventListener() {
 
             @Override
-            public void onChildAdded(@EverythingIsNonNull DataSnapshot dataSnapshot, @Nullable String s) {
+            public void onChildAdded(@NonNull @EverythingIsNonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 pb.setVisibility(View.GONE);
 
                 String data=dataSnapshot.getValue(String.class);
                 if (data!=null&& data.contains(";")){
                     String[] mainSeparator= data.split(";");
-                    if (mainSeparator.length==6){
+                    if (mainSeparator.length>3){
                         String carNo=mainSeparator[0];
                         String address=mainSeparator[1];
+                        String shift=mainSeparator[2];
                         List<ContactModel> contactModels=new ArrayList<>();
-                        for (int i=2;i<mainSeparator.length;i++){
+                        for (int i=3;i<mainSeparator.length;i++){
                             if (mainSeparator[i]!=null && mainSeparator[i].contains(",") ) {
                                 String[] separator = mainSeparator[i].split(",");
                                 if (separator.length==3) {
-                                    String designation = separator[0];
-                                    String name=separator[1];
+                                    String name=separator[0];
+                                    String designation = separator[1];
                                     String contact=separator[2];
                                     ContactModel contactModel=new ContactModel(name,name,designation,designation,contact);
                                     contactModels.add(contactModel);
                                 }
                             }
                         }
-                        AmbulanceModel ambulanceModel=new AmbulanceModel(carNo,address,contactModels);
+                        AmbulanceModel ambulanceModel=new AmbulanceModel(carNo,address,shift,contactModels);
                         adapter.insertItem(ambulanceModel);
 
                     }

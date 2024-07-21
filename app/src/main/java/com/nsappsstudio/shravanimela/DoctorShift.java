@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +33,8 @@ import com.nsappsstudio.shravanimela.Model.ContactModel;
 import com.nsappsstudio.shravanimela.Model.DocShiftModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
 import java.util.Objects;
 
 import okhttp3.internal.annotations.EverythingIsNonNull;
@@ -51,53 +54,15 @@ public class DoctorShift extends AppCompatActivity {
         String project="Bhagalpur24";
         mDatabaseReference = FirebaseDatabase.getInstance().getReference().child(project);
         loadPlaceSpinner();
-        loadDateSpinner();
-    }
-    private void loadDateSpinner(){
-        ArrayList<String> dateList=new ArrayList<>();
-        dateList.add("16/07/2022");
-        dateList.add("17/07/2022");
-        dateList.add("18/07/2022");
-        dateList.add("23/07/2022");
-        dateList.add("24/07/2022");
-        dateList.add("25/07/2022");
-        dateList.add("30/07/2022");
-        dateList.add("31/07/2022");
-        dateList.add("01/08/2022");
-        dateList.add("06/08/2022");
-        dateList.add("07/08/2022");
-        dateList.add("08/08/2022");
-        Spinner spinner = findViewById(R.id.spinner_scheme2);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(ctx,
-                R.layout.custom_spinner, dateList);
-        adapter.setDropDownViewResource(R.layout.custom_spinner);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                String date =spinner.getSelectedItem().toString();
-                if (place!=null && !date.equals("16/07/2022")){
-                    loadShift();
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
     }
     private void loadPlaceSpinner(){
         ArrayList<String> schemesList=new ArrayList<>();
         Spinner spinner = findViewById(R.id.spinner_scheme);
-        updateDialog("Loading Schemes");
+        updateDialog("Loading Doctor Shift...");
 
         mDatabaseReference.child("GlobalParameter").child("List").child("DocPlace").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@EverythingIsNonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull @EverythingIsNonNull DataSnapshot snapshot) {
                 for (DataSnapshot snapshot1:snapshot.getChildren()){
                     String value=snapshot1.getValue(String.class);
                     if (value!=null){
@@ -176,17 +141,58 @@ public class DoctorShift extends AppCompatActivity {
         LinearLayout card2=findViewById(R.id.card2);
         LinearLayout card3=findViewById(R.id.card3);
 
-        mDatabaseReference.child("GlobalParameter").child("DocShift").child(place).child("20220716").addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabaseReference.child("GlobalParameter").child("DoctorShift").child(place).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@EverythingIsNonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull @EverythingIsNonNull DataSnapshot snapshot) {
                 dialog.dismiss();
-                for (DataSnapshot snapshot1:snapshot.getChildren()){
-                    String shift=snapshot1.getKey();
+                ArrayList<String> shiftList = new ArrayList<>();
+                ArrayList<String> docList = new ArrayList<>();
+                ArrayList<String> docContactList = new ArrayList<>();
+                ArrayList<String> docDesignationList = new ArrayList<>();
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+
+                    String shift = snapshot1.getKey();
+                    shiftList.add(shift);
+                    DocShiftModel docShiftModel = snapshot1.getValue(DocShiftModel.class);
+
+                    if (docShiftModel != null && docShiftModel.getDoc() != null) {
+                        String[] mainSeparator = docShiftModel.getDoc().split(",");
+                        for (int i = 0; i < mainSeparator.length; i++) {
+                            String docName = mainSeparator[0];
+                            String docDesignation = mainSeparator[1];
+                            docList.add(docName);
+                            docDesignationList.add(docDesignation);
+                        }
+                        docContactList.add(docShiftModel.getDocContact());
+                    }
+                    if (docShiftModel != null && docShiftModel.getStaff() != null) {
+                        String[] mainSeparator = docShiftModel.getStaff().split(":");
+                        for (int i = 0; i < mainSeparator.length; i++) {
+                            String[] separator = mainSeparator[i].split(";");
+                            if (separator.length == 3) {
+                                String staffName = separator[0];
+                                String designation = separator[1];
+                                String contact = separator[2];
+                                if (shiftList.size() > 0 && shift != null && shift.equals(shiftList.get(0))) {
+                                    adapter1.insertItem(new ContactModel(staffName, staffName, designation, designation, contact));
+                                }
+                                if (shiftList.size() > 1 && shift != null && shift.equals(shiftList.get(1))) {
+                                    adapter2.insertItem(new ContactModel(staffName, staffName, designation, designation, contact));
+                                }
+                                if (shiftList.size() > 2 && shift != null && shift.equals(shiftList.get(2))) {
+                                    adapter3.insertItem(new ContactModel(staffName, staffName, designation, designation, contact));
+                                }
+                            }
+                        }
+                    }
+
+
+                    /*
                     DocShiftModel docShiftModel=snapshot1.getValue(DocShiftModel.class);
                     if (docShiftModel!=null && docShiftModel.getStaff()!=null){
-                        String[] mainSeparator= docShiftModel.getStaff().split(";");
+                        String[] mainSeparator= docShiftModel.getStaff().split(":");
                         for (int i=0;i<mainSeparator.length;i++){
-                            String[] separator= mainSeparator[i].split(",");
+                            String[] separator= mainSeparator[i].split(";");
                             if (separator.length==3){
                                 String staffName=separator[0];
                                 String designation=separator[1];
@@ -269,9 +275,43 @@ public class DoctorShift extends AppCompatActivity {
                         }
 
 
-                    }
+                    }*/
+                }
+                if (shiftList.size() > 0) {
+                    shift1.setText(shiftList.get(0));
+                    doc1.setText(docList.get(0));
+                    designation1.setText(docDesignationList.get(0));
+                    contact1.setText(docContactList.get(0));
+
+                }
+                if (shiftList.size() > 1) {
+                    shift2.setText(shiftList.get(1));
+                    doc2.setText(docList.get(1));
+                    designation2.setText(docDesignationList.get(1));
+                    contact2.setText(docContactList.get(1));
+
+                }
+                if (shiftList.size() > 2) {
+                    shift3.setText(shiftList.get(2));
+                    doc3.setText(docList.get(2));
+                    designation3.setText(docDesignationList.get(2));
+                    contact3.setText(docContactList.get(2));
+
                 }
             }
+                //shift2.setText(shiftList.get(1));
+                //shift3.setText(shiftList.get(2));
+
+                //doc2.setText(docList.get(1));
+                //doc3.setText(docList.get(2));
+
+                //designation2.setText(docDesignationList.get(1));
+                //designation3.setText(docDesignationList.get(2));
+
+                //contact2.setText(docContactList.get(1));
+                //contact3.setText(docContactList.get(2));
+
+
 
             @Override
             public void onCancelled(@EverythingIsNonNull  DatabaseError error) {

@@ -163,4 +163,25 @@
     <string name="fire_brigade">Fire Brigade</string>
     <string name="nearest">Nearest</string>
 
+    <string name="via_aeroplane">Via. Aeroplane</string>
+    <string name="plane_desc">To reach Sultanganj via aeroplane, you will need to fly to the nearest airport and then take a road trip to Sultanganj</string>
+    <string name="pat_air">Fly to Patna Airport (Jay Prakash Narayan International Airport):</string>
+    <string name="loc_pat">Location: Patna, Bihar\nIATA Code: PAT\nDistance to Sultanganj: Approximately 200 km </string>
+    <string name="fly_bagd">Fly to Bagdogra Airport:</string>
+    <string name="loc_bagd">Location: Bagdogra, West Bengal \nIATA Code: IXB \nDistance to Sultanganj: Approximately 300 km</string>
+    <string name="fly_air">Fly to Gaya Airport:</string>
+    <string name="dis_sul">Location: Patna, Bihar\nIATA Code: PAT\nDistance to Sultanganj: Approximately 200 km</string>
+    <string name="v_train">Via. Train</string>
+    <string name="train_desc">To reach Sultanganj via train, you can take a train to the nearest railway station and then travel by road to Sultanganj.</string>
+    <string name="train_locbhag">Location: Bhagalpur, Bihar\nStation Code: BGP\nDistance to Sultanganj: Approximately 30 km</string>
+    <string name="dis_jamal">Location: Jamalpur, Bihar\nStation Code: JMP\nDistance to Sultanganj: Approximately 25 km</string>
+    <string name="bus_sultan">To reach Sultanganj via bus, you can take a bus to the nearest bus stop and then travel by road to Sultanganj.</string>
+    <string name="dist_sultan">Location: Bhagalpur, Bihar\nBus Stand Code: BGP\nDistance to Sultanganj: Approximately 30 km</string>
+    <string name="busdist_jamal">Location: Jamalpur, Bihar\nBus Stand Code: JMP\nDistance to Sultanganj: Approximately 25 km</string>
+    <string name="train_bhagal">Train to Bhagalpur Railway Station:</string>
+    <string name="train_jamal">Train to Jamalpur Station</string>
+    <string name="v_bus">Via. Bus</string>
+    <string name="bus_jamal">Bus to Jamalpur Bus Stand:</string>
+    <string name="bus_bhagalpur">Bus to Bhagalpur Bus Stand:</string>
+
 </resources>

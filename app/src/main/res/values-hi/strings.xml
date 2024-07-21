@@ -165,4 +165,24 @@
     <string name="fire_brigade">अग्नि शामक दल</string>
     <string name="nearest">नज़दीकी</string>
 
+    <string name="via_aeroplane">विमान द्वारा</string>
+    <string name="plane_desc">विमान द्वारा सुल्तानगंज पहुंचने के लिए, आपको निकटतम हवाई अड्डे पर उड़ान भरनी होगी और फिर सुल्तानगंज तक सड़क यात्रा करनी होगी</string>
+    <string name="pat_air">पटना हवाई अड्डे (जय प्रकाश नारायण अंतर्राष्ट्रीय हवाई अड्डे) के लिए उड़ान भरें:</string>
+    <string name="loc_pat">स्थान: पटना, बिहार\nIATA कोड: PAT\nसुल्तानगंज से दूरी: लगभग 200 किमी</string>
+    <string name="fly_bagd">बागडोगरा हवाई अड्डे के लिए उड़ान भरें:</string>
+    <string name="loc_bagd">स्थान: बागडोगरा, पश्चिम बंगाल\nIATA कोड: IXB\nसुल्तानगंज से दूरी: लगभग 300 किमी</string>
+    <string name="fly_air">गया हवाई अड्डे के लिए उड़ान भरें:</string>
+    <string name="dis_sul">स्थान: पटना, बिहार\nIATA कोड: PAT\nसुल्तानगंज से दूरी: लगभग 200 किमी</string>
+    <string name="v_train">ट्रेन द्वारा</string>
+    <string name="train_desc">ट्रेन द्वारा सुल्तानगंज पहुंचने के लिए, आप निकटतम रेलवे स्टेशन तक ट्रेन ले सकते हैं और फिर सड़क मार्ग से सुल्तानगंज यात्रा कर सकते हैं।</string>
+    <string name="train_locbhag">स्थान: भागलपुर, बिहार\nस्टेशन कोड: BGP\nसुल्तानगंज से दूरी: लगभग 30 किमी</string>
+    <string name="dis_jamal">स्थान: जमालपुर, बिहार\nस्टेशन कोड: JMP\nसुल्तानगंज से दूरी: लगभग 25 किमी</string>
+    <string name="bus_sultan">बस द्वारा सुल्तानगंज पहुंचने के लिए, आप निकटतम बस स्टॉप तक बस ले सकते हैं और फिर सड़क मार्ग से सुल्तानगंज यात्रा कर सकते हैं।</string>
+    <string name="dist_sultan">स्थान: भागलपुर, बिहार\nबस स्टैंड कोड: BGP\nसुल्तानगंज से दूरी: लगभग 30 किमी</string>
+    <string name="busdist_jamal">स्थान: जमालपुर, बिहार\nबस स्टैंड कोड: JMP\nसुल्तानगंज से दूरी: लगभग 25 किमी</string>
+    <string name="train_bhagal">भागलपुर रेलवे स्टेशन के लिए ट्रेन:</string>
+    <string name="train_jamal">जमालपुर स्टेशन के लिए ट्रेन</string>
+    <string name="v_bus">बस द्वारा</string>
+    <string name="bus_jamal">जमालपुर बस स्टैंड के लिए बस:</string>
+    <string name="bus_bhagalpur">भागलपुर बस स्टैंड के लिए बस:</string>
 </resources>

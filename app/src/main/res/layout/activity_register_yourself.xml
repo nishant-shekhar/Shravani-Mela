@@ -17,7 +17,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
         <EditText
-            android:id="@+id/name5"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -37,7 +37,27 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/name6"
+            android:id="@+id/street"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/date_bg_border"
+            android:ems="10"
+            android:fontFamily="@font/sofia_regular"
+            android:hint="Street, Village"
+            android:inputType="textLongMessage"
+            android:lines="4"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/mm_text_dark"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -57,7 +77,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/name7"
+            android:id="@+id/state"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -108,6 +128,16 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/expected_visitor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/helvetica_neue_medium"
+            android:textColor="@color/dark_blue"
+            android:textSize="14sp" />
+
+        <TextView
             android:id="@+id/textView31"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -119,7 +149,7 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/name8"
+            android:id="@+id/person_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -146,7 +176,7 @@
             android:layout_margin="32dp"
             android:backgroundTint="@color/grey_90"
             android:fontFamily="@font/sofia_regular"
-            android:onClick="loadDialog"
+            android:onClick="upload"
             android:text="Register"
             android:textAllCaps="false"
             android:textColor="@color/white"

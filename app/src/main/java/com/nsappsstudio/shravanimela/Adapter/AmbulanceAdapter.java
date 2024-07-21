@@ -48,6 +48,7 @@ public class AmbulanceAdapter extends RecyclerView.Adapter<AmbulanceAdapter.View
         AmbulanceModel item=items.get(position);
         holder.vehicle.setText((position+1)+". "+item.getVehicleNo());
         holder.place.setText(item.getPlace());
+        holder.shift.setText(item.getShift());
 
         holder.recyclerView.hasFixedSize();
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(ctx));
@@ -70,12 +71,14 @@ public class AmbulanceAdapter extends RecyclerView.Adapter<AmbulanceAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView vehicle;
         TextView place;
+        TextView shift;
         RecyclerView recyclerView;
         ConstraintLayout card;
         public ViewHolder(@EverythingIsNonNull View itemView) {
             super(itemView);
             vehicle =itemView.findViewById(R.id.textView21);
             place =itemView.findViewById(R.id.textView23);
+            shift =itemView.findViewById(R.id.textView34);
             recyclerView =itemView.findViewById(R.id.recyclerView);
             card=itemView.findViewById(R.id.card);
 
